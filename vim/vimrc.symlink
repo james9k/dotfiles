@@ -1,4 +1,39 @@
 syntax on
 
-" Wrap gitcommit file types at the appropriate length
-filetype indent plugin on
+filetype plugin indent on
+
+set number
+set hlsearch
+
+" Set a decent font
+if has("mac")
+  " OSX
+  set guifont=Menlo:h14
+else
+  set guifont=DejaVu\ Sans\ Mono\ 10,Bitstream\ Vera\ Sans\ Mono\ 10
+endif
+
+" Show the line and column number of the cursor position
+set ruler
+
+" Show coloured line at column 80
+set colorcolumn=80
+
+execute pathogen#infect()
+
+" Put backup and swap files in one place
+set backupdir=~/tmpvim
+set directory=~/tmpvim
+
+if has("gui_running")
+	set lines=40 columns=120
+endif
+
+"Pathogen
+execute pathogen#infect()
+
+" Set tab at 4
+set tabstop=8
+set expandtab
+set shiftwidth=4
+set softtabstop=4
