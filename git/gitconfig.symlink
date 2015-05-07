@@ -1,0 +1,10 @@
+[user]
+	name =
+	email =
+[push]
+	default = simple
+
+[alias]
+  co = checkout
+  st = status
+  br = branch -a
