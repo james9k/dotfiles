@@ -1,0 +1,15 @@
+# remap prefix to Control + a
+set-option -g prefix C-a
+unbind-key C-b
+# bind 'C-a C-a' to type 'C-a'
+bind-key C-a send-prefix
+
+set -g base-index 1  # start windows from 1
+set -g status-utf8 on
+
+# highlight selected window
+set -g window-status-current-style bg=yellow,fg=black,bold
+
+# Enable mouse wheel scrolling
+# NOTE: on OSX hold "option" key then double click word to copy to clipboard
+setw -g mode-mouse on
