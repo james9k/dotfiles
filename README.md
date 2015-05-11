@@ -1,6 +1,6 @@
 # . Files
 
-Cloneed from [holman / dotfiles](https://github.com/holman/dotfiles)
+Forked from [holman / dotfiles](https://github.com/holman/dotfiles)
 
 ## install
 
