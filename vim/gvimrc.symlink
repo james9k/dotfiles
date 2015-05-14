@@ -1,0 +1,9 @@
+" Set a decent font
+if has("gui_macvim")
+    " OSX
+    set guifont=Menlo:h14
+elseif has("gui_gtk2")
+    set guifont=DejaVu\ Sans\ Mono\ 10,Bitstream\ Vera\ Sans\ Mono\ 10
+elseif has("gui_win32")
+    set guifont=Consolas:h11:cANSI
+endif
