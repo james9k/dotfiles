@@ -5,13 +5,7 @@ filetype plugin indent on
 set number
 set hlsearch
 
-" Set a decent font
-" if has("mac")
-"   " OSX
-"   set guifont=Menlo:h14
-" else
-"   set guifont=DejaVu\ Sans\ Mono\ 10,Bitstream\ Vera\ Sans\ Mono\ 10
-" endif
+" Set a decent font, see gvimrc
 
 " Show the line and column number of the cursor position
 set ruler
