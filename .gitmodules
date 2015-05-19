@@ -1,3 +1,6 @@
 [submodule "vim/vim.symlink/bundle/vim-sensible"]
 	path = vim/vim.symlink/bundle/vim-sensible
 	url = https://github.com/tpope/vim-sensible.git
+[submodule "vim/vim.symlink/bundle/salt-vim"]
+	path = vim/vim.symlink/bundle/salt-vim
+	url = https://github.com/saltstack/salt-vim.git
