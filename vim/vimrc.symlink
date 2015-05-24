@@ -2,16 +2,15 @@ syntax on
 
 filetype plugin indent on
 
-set number
-set hlsearch
+" Fonts are set in gvimrc
 
-" Set a decent font, see gvimrc
-
-" Show the line and column number of the cursor position
-set ruler
-
-" Show coloured line at column 80
-set colorcolumn=80
+set ignorecase      " Do case insensitive matching
+set number          " Show line numbers
+set hlsearch        " Highlight all search matches
+set ruler           " Show the line and column number
+set colorcolumn=80  " Show coloured line at column 80
+set showmatch       " Show matching brackets.
+set incsearch       " Will start highlighting matching parts immediately
 
 execute pathogen#infect()
 
@@ -20,7 +19,7 @@ set backupdir=~/tmpvim
 set directory=~/tmpvim
 
 if has("gui_running")
-	set lines=40 columns=120
+    set lines=40 columns=120
 endif
 
 "Pathogen
