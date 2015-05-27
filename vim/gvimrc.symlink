@@ -7,3 +7,9 @@ elseif has("gui_gtk2")
 elseif has("gui_win32")
     set guifont=Consolas:h11:cANSI
 endif
+
+if has("gui_running")
+    set lines=40 columns=120
+endif
+
+

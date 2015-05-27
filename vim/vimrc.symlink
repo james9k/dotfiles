@@ -1,3 +1,6 @@
+"Pathogen
+execute pathogen#infect()
+
 syntax on
 
 filetype plugin indent on
@@ -13,18 +16,9 @@ set showmatch       " Show matching brackets.
 set incsearch       " Will start highlighting matching parts immediately
 set ignorecase      " Ignore case when searching
 
-execute pathogen#infect()
-
 " Put backup and swap files in one place
 set backupdir=~/tmpvim
 set directory=~/tmpvim
-
-if has("gui_running")
-    set lines=40 columns=120
-endif
-
-"Pathogen
-execute pathogen#infect()
 
 " Set tab at 4
 set tabstop=8
