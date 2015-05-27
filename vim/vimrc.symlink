@@ -11,6 +11,7 @@ set ruler           " Show the line and column number
 set colorcolumn=80  " Show coloured line at column 80
 set showmatch       " Show matching brackets.
 set incsearch       " Will start highlighting matching parts immediately
+set ignorecase      " Ignore case when searching
 
 execute pathogen#infect()
 
@@ -30,5 +31,3 @@ set tabstop=8
 set expandtab
 set shiftwidth=4
 set softtabstop=4
-
-set ignorecase
