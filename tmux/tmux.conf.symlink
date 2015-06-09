@@ -13,3 +13,6 @@ set -g window-status-current-style bg=yellow,fg=black,bold
 # Enable mouse wheel scrolling
 # NOTE: on OSX hold "option" key then double click word to copy to clipboard
 setw -g mode-mouse on
+
+# 256 Colours
+set -g default-terminal "screen-256color"
