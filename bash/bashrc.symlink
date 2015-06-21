@@ -124,3 +124,7 @@ fi
 
 ######## Git Auto Complete ######## 
 source ~/.git-completion.bash
+
+######## Sytemd ######## 
+# I want to control my own output
+export SYSTEMD_PAGER=""
