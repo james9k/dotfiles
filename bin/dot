@@ -9,7 +9,7 @@ export DOTFILES=$HOME/.dotfiles
 # Source bash functions
 . ${DOTFILES}/bash/functions.bash
 
-info "Update .dotfile from git"
+#info "Update .dotfile from git"
 #git pull https://github.com/jamesp9/dotfiles.git
 #git submodule init
 #git submodule update
