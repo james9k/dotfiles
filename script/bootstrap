@@ -5,27 +5,32 @@
 cd "$(dirname "$0")/.."
 DOTFILES_ROOT=$(pwd)
 
+echo "DOTFILES_ROOT ${DOTFILES_ROOT}"
+
 set -e
+
+# Keep bash functions here and allow them to be reused
+. ${DOTFILES_ROOT}/bash/functions.bash
 
 echo ''
 
-info () {
-  printf "  [ \033[00;34m..\033[0m ] $1"
-}
-
-user () {
-  printf "\r  [ \033[0;33m?\033[0m ] $1 "
-}
-
-success () {
-  printf "\r\033[2K  [ \033[00;32mOK\033[0m ] $1\n"
-}
-
-fail () {
-  printf "\r\033[2K  [\033[0;31mFAIL\033[0m] $1\n"
-  echo ''
-  exit
-}
+#info () {
+#  printf "  [ \033[00;34m..\033[0m ] $1"
+#}
+#
+#user () {
+#  printf "\r  [ \033[0;33m?\033[0m ] $1 "
+#}
+#
+#success () {
+#  printf "\r\033[2K  [ \033[00;32mOK\033[0m ] $1\n"
+#}
+#
+#fail () {
+#  printf "\r\033[2K  [\033[0;31mFAIL\033[0m] $1\n"
+#  echo ''
+#  exit
+#}
 
 setup_gitconfig () {
   if ! [ -f git/gitconfig.symlink ]
@@ -140,17 +145,18 @@ install_dotfiles () {
 setup_gitconfig
 install_dotfiles
 
+. ${DOTFILES_ROOT}/bin/dot 
 # If we're on a Mac, let's install and setup homebrew.
-if [ "$(uname -s)" == "Darwin" ]
-then
-  info "installing dependencies"
-  if source bin/dot > /tmp/dotfiles-dot 2>&1
-  then
-    success "dependencies installed"
-  else
-    fail "error installing dependencies"
-  fi
-fi
+#if [ "$(uname -s)" == "Darwin" ]
+#then
+#  info "installing dependencies"
+#  if source bin/dot > /tmp/dotfiles-dot 2>&1
+#  then
+#    success "dependencies installed"
+#  else
+#    fail "error installing dependencies"
+#  fi
+#fi
 
 echo ''
 echo '  All installed!'

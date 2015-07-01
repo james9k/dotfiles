@@ -4,13 +4,46 @@
 #
 # `dot` handles installation, updates, things like that. Run it periodically
 # to make sure you're on the latest and greatest.
-export ZSH=$HOME/.dotfiles
+export DOTFILES=$HOME/.dotfiles
 
-# Set OS X defaults
-$ZSH/osx/set-defaults.sh
+# Source bash functions
+. ${DOTFILES}/bash/functions.bash
 
-# Upgrade homebrew
-brew update
+info "Update .dotfile from git"
+#git pull https://github.com/jamesp9/dotfiles.git
+#git submodule init
+#git submodule update
 
-# Install homebrew packages
-$ZSH/homebrew/install.sh 2>&1
+
+# If we're on a Mac, let's install and setup homebrew.
+if [ "$(uname -s)" == "Darwin" ]
+then
+  #info "installing dependencies"
+  info "Set OS X defaults"
+  if $DOTFILES/osx/set-defaults.sh
+  then
+      success "OSX defaults set"
+  else
+      fail "Failed setting OSX defaults"
+  fi
+
+  #info "Upgrade homebrew"
+  #brew update
+  #success "Homebrew updated"
+  #if $(brew update)
+  #then
+  #    success "Homebrew updated"
+  #else
+  #    fail "Homebrew update failed"
+  #fi
+
+  #info "Install homebrew packages"
+  #$DOTFILES/homebrew/install.sh 2>&1
+  
+  #if source bin/dot > /tmp/dotfiles-dot 2>&1
+  #then
+  #  success "dependencies installed"
+  #else
+  #  fail "error installing dependencies"
+  #fi
+fi
