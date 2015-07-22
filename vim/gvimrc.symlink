@@ -2,14 +2,10 @@
 if has("gui_macvim")
     " OSX
     set guifont=Menlo:h14
-elseif has("gui_gtk2")
-    set guifont=DejaVu\ Sans\ Mono\ 10,Bitstream\ Vera\ Sans\ Mono\ 10
 elseif has("gui_win32")
     set guifont=Consolas:h11:cANSI
+else
+    set guifont=Inconsolata\ Medium\ 12,DejaVu\ Sans\ Mono\ 10,Bitstream\ Vera\ Sans\ Mono\ 10
 endif
 
-if has("gui_running")
-    set lines=40 columns=120
-endif
-
-
+set lines=40 columns=120
