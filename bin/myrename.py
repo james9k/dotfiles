@@ -17,13 +17,15 @@ if not os.path.exists(src_filename):
 
 dst_filename, dst_extension = os.path.splitext(src_filename)
 
-chars_to_remove = [' ', ',', '(', ')', '[', ']', ]
+chars_to_remove = [' ', ',', '(', ')', '[', ']', "'"]
+dst_filename = dst_filename.replace('&', 'and')
 
 for character in chars_to_remove:
     if character in dst_filename:
         dst_filename = dst_filename.replace(character, '.')
 
 dst_filename = dst_filename.replace('..', '.')
+dst_filename = dst_filename.replace('.-.', '-')
 dst_filename = re.sub('\.$', '', dst_filename)
 
 print("Moving {} => {}".format(src_filename, dst_filename + dst_extension))
