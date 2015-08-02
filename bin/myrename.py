@@ -26,6 +26,7 @@ for character in chars_to_remove:
 
 dst_filename = dst_filename.replace('..', '.')
 dst_filename = dst_filename.replace('.-.', '-')
+dst_filename = dst_filename.replace('._.', '.')
 dst_filename = re.sub('\.$', '', dst_filename)
 
 print("Moving {} => {}".format(src_filename, dst_filename + dst_extension))
