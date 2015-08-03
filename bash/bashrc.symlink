@@ -111,9 +111,11 @@ fi
 export VAGRANT_VMWARE_FUSION_APP="/Applications/VMware Fusion 6.app"
 
 
-######## Command Line Editing Mode ######## 
+######## Editing Preferences ######## 
 #set -o vi
 set -o emacs
+
+export EDITOR=$(which vim)
 
 
 ######## Python Virtual Env Wrapper ######## 
