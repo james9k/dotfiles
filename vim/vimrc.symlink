@@ -10,7 +10,6 @@ filetype plugin indent on
 set ignorecase      " Do case insensitive matching
 set number          " Show line numbers
 set hlsearch        " Highlight all search matches
-set ruler           " Show the line and column number
 set colorcolumn=80  " Show coloured line at column 80
 " set showmatch       " Show matching brackets.
 set incsearch       " Will start highlighting matching parts immediately
@@ -27,9 +26,9 @@ set shiftwidth=4
 set softtabstop=4
 
 " Syntastic - Recommended settings
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
+" set statusline+=%#warningmsg#
+" set statusline+=%{SyntasticStatuslineFlag()}
+" set statusline+=%*
 
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
