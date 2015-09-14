@@ -1,7 +1,7 @@
 " Set a decent font
 if has("gui_macvim")
     " OSX
-    set guifont=Menlo:h14
+    set guifont=Hack:h14,Menlo:h14
 elseif has("gui_win32")
     set guifont=Consolas:h11:cANSI
 else
