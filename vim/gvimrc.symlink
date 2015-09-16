@@ -8,4 +8,4 @@ else
     set guifont=Inconsolata\ Medium\ 13,DejaVu\ Sans\ Mono\ 10,Bitstream\ Vera\ Sans\ Mono\ 10
 endif
 
-set lines=40 columns=120
+set lines=40 columns=90
