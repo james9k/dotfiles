@@ -1,0 +1,29 @@
+#!/bin/bash
+
+echo "WARNING: copyA-Z will move files and directories in the current directory"
+echo -e "         to a series of directories A through Z\n"
+read -p "Would you like to continue. (y/n)" yesno
+case ${yesno} in
+    [Yy]) echo "Proceeding"; break;;
+    [Nn]) echo "Exiting"; exit;;
+    *)  echo "Please specify (y or n)";;
+esac
+
+
+
+for dirname in A B C D E F G H I J K L M N O P Q R S T U V W X Y Z '0to9'
+do
+    if [ ! -d ${dirname} ]
+    then
+        echo "Making directory: ${dirname}"
+        mkdir ${dirname}
+    else
+        echo "${dirname}"
+    fi
+
+    for filename in ${dirname}[a-z]*
+    do
+        echo "Moving ${filename} -->> ${dirname}"
+        #mv -v ${filename} ${dirname}
+    done
+done
