@@ -3,7 +3,17 @@ if has("gui_macvim")
     " OSX
     set guifont=Hack:h14,Menlo:h14
 elseif has("gui_gtk2")
-    set guifont=Hack\ 11,Inconsolata\ Medium\ 12
+    let hack=system('fc-list | grep -c Hack')
+    if ( hack > 0 )
+        set guifont=Hack\ 11
+    endif
+    let incon=system('fc-list | grep -c Inconsolata')
+    if ( incon > 0 )
+        set guifont=Inconsolata\ Medium\ 12
+    else
+        set guifont=DejaVu\ Sans\ Mono\ 11
+    endif
+
 endif
 "else
 "    set guifont=Hack\ 10,Inconsolata\ Medium\ 12,DejaVu\ Sans\ Mono\ 10,Bitstream\ Vera\ Sans\ Mono\ 10
