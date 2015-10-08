@@ -4,11 +4,10 @@ if has("gui_macvim")
     set guifont=Hack:h14,Menlo:h14
 elseif has("gui_gtk2")
     let hack=system('fc-list | grep -c Hack')
+    let incon=system('fc-list | grep -c Inconsolata')
     if ( hack > 0 )
         set guifont=Hack\ 11
-    endif
-    let incon=system('fc-list | grep -c Inconsolata')
-    if ( incon > 0 )
+    elseif ( incon > 0 )
         set guifont=Inconsolata\ Medium\ 12
     else
         set guifont=DejaVu\ Sans\ Mono\ 11
