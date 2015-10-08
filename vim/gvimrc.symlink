@@ -3,15 +3,7 @@ if has("gui_macvim")
     " OSX
     set guifont=Hack:h14,Menlo:h14
 elseif has("gui_gtk2")
-    set guifont=Inconsolata\ Medium\ 12
-elseif has("gui_photon")
-    set guifont=Inconsolata\ Medium\ 13:s11
-elseif has("gui_kde")
-    set guifont=Courier\ New/11/-1/5/50/0/0/0/1/0
-elseif has("x11")
-    set guifont=-*-courier-medium-r-normal-*-*-180-*-*-m-*-*
-else
-    set guifont=Courier_New:h11:cDEFAULT
+    set guifont=Hack\ 11,Inconsolata\ Medium\ 12
 endif
 "else
 "    set guifont=Hack\ 10,Inconsolata\ Medium\ 12,DejaVu\ Sans\ Mono\ 10,Bitstream\ Vera\ Sans\ Mono\ 10
