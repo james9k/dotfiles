@@ -7,6 +7,7 @@ if [ -x /usr/bin/dircolors ]; then
     alias rgrep='rgrep --color=auto'
     alias fgrep='fgrep --color=auto'
     alias egrep='egrep --color=auto'
+    alias zgrep='zgrep --color=auto'
 elif [ `uname` = "Darwin" ] ; then
     # From grep(1)
     #--colour=[when, --color=[when]]
