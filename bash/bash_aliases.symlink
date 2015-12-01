@@ -27,10 +27,9 @@ alias h='history'
 # ifconfig is deprecated
 alias ifconfig='ip address show'
 
-# Some more alias to avoid making mistakes:
-# alias rm='rm -i'
-# alias cp='cp -i'
-# alias mv='mv -i'
+alias rm='rm -v'
+alias cp='cp -v'
+alias mv='mv -v'
 
 # For local aliases you don't want checked in
 if [ -f ~/.bash_aliases.local ]; then

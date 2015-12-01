@@ -37,8 +37,3 @@ if [ -n "$BASH_VERSION" ]; then
 	. "${HOME}/.bashrc"
     fi
 fi
-
-# make sure vim tmp folder exists
-if ! [ -d "${HOME}/tmpvim" ] ; then
-	mkdir ${HOME}/tmpvim
-fi

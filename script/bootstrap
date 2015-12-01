@@ -142,8 +142,21 @@ install_dotfiles () {
   done
 }
 
+create_tmp_dirs() {
+for tmpdir in ~/tmp ~/tmpvim
+    do
+        if [ ! -d ${tmpdir} ]
+        then
+            info "Creating ${tmpdir}"
+            mkdir ${tmpdir}
+            success "Created ${tmpdir}"
+        fi
+done
+}
+
 setup_gitconfig
 install_dotfiles
+create_tmp_dirs
 
 . ${DOTFILES_ROOT}/bin/dot 
 # If we're on a Mac, let's install and setup homebrew.

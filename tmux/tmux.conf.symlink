@@ -16,3 +16,6 @@ setw -g mode-mouse on
 
 # 256 Colours
 set -g default-terminal "screen-256color"
+
+# Vi style key bindings
+setw -g mode-keys vi
