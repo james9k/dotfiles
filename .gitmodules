@@ -14,3 +14,6 @@
 	path = vim/vim.symlink/bundle/syntastic
 	url = https://github.com/scrooloose/syntastic.git
         branch = master
+[submodule "vim/vim.symlink/bundle/jedi-vim"]
+	path = vim/vim.symlink/bundle/jedi-vim
+	url = https://github.com/davidhalter/jedi-vim.git
