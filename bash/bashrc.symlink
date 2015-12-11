@@ -126,3 +126,8 @@ source ~/.git-completion.bash
 ######## Sytemd ######## 
 # I want to control my own output
 export SYSTEMD_PAGER=""
+
+if [ $(uname) == "Linux" ]
+then
+    export BROWSER="firefox"
+fi
