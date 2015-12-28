@@ -132,5 +132,9 @@ then
     export BROWSER="firefox"
 
     # Use keychain to manage SSH Keys
-    eval $(keychain --eval --quiet id_rsa) >/dev/null 2>&1 || { echo >&2 "keychain is not installed"; }
+    if [ -f /usr/bin/keychain ]
+    then
+        eval $(keychain --eval --quiet id_rsa)
+    fi
+
 fi
