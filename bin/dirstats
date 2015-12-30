@@ -11,5 +11,6 @@
 TOTAL_DIRS=$(find ${1} -type d | wc -l)
 TOTAL_FILES=$(find ${1} -type f | wc -l)
 
+echo "${1}"
 echo "Directories: ${TOTAL_DIRS}"
 echo "      Files: ${TOTAL_FILES}"
