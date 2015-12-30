@@ -1,0 +1,15 @@
+#!/bin/bash
+
+# Usage: dirstats [directory]
+# 
+# Will give a total count of all directories and files inside the directory
+# given on the command line.
+#
+# NOTE: directory count may be one extra. As "." and the base directory will be 
+#       counted.
+
+TOTAL_DIRS=$(find ${1} -type d | wc -l)
+TOTAL_FILES=$(find ${1} -type f | wc -l)
+
+echo "Directories: ${TOTAL_DIRS}"
+echo "      Files: ${TOTAL_FILES}"
