@@ -1,10 +1,18 @@
 #!/bin/bash
 
+#
 # smartctl exit status
 # 
-# Usage:
-#   smes [device]
-#   e.g. smes sda
+
+if [ "${1}x" == "x" ]
+then
+    echo "Usage:"
+    echo "    smes [device]"
+    echo ""
+    echo "Example:"
+    echo "    smes sda"
+    exit 1
+fi
 
 smartctl -q silent /dev/${1}
 echo "Device: /dev/${1}"
