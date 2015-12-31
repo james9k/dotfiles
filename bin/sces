@@ -14,7 +14,7 @@ then
     exit 1
 fi
 
-smartctl -q silent /dev/${1}
+smartctl -a -q silent /dev/${1}
 echo "Device: /dev/${1}"
 
 val=$?; mask=1
