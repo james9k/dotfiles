@@ -21,6 +21,41 @@ echo "Device: /dev/${1}"
 echo "Exit Status: ${val}"
 
 for i in 0 1 2 3 4 5 6 7; do
-    echo "Bit $i: $(((val & mask) && 1))"
+    case ${i} in
+        0)
+            msg="Command line did not parse."
+            ;;
+        1)
+            msg="Device open failed, device did not return an IDENTIFY DEVICE structure, or device is in a low-power mode."
+            ;;
+        2)
+            msg="Some SMART or other ATA command to the disk failed, or there was a checksum error in a SMART data structure."
+            ;;
+        3)
+            msg="SMART status check returned \"DISK FAILING\"."
+            ;;
+        4)
+            msg="We found prefail Attributes <= threshold."
+            ;;
+        5)
+            msg="SMART status check returned \"DISK OK\" but we found that some (usage or prefail) Attributes have been <= threshold at some time in the past."
+            ;;
+        6)
+            msg="The device error log contains records of errors."
+            ;;
+        7)
+            msg="The  device  self-test  log contains records of errors.  [ATA only] Failed self-tests outdated by a newer successful extended self-test are ignored."
+            ;;
+        *)
+            msg=""
+    esac
+
+    bit_set=$(((val & mask) && 1))
+    if [ ${bit_set} == "1" ]
+    then
+        echo "Bit ${i}: ${bit_set} ${msg}"
+    else
+        echo "Bit ${i}: ${bit_set}"
+    fi
     mask=$((mask << 1))
 done
