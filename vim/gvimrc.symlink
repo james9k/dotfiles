@@ -6,7 +6,7 @@ elseif has("gui_gtk2")
     let hack=system('fc-list | grep -c Hack')
     let incon=system('fc-list | grep -c Inconsolata')
     if ( hack > 0 )
-        set guifont=Hack\ 11
+        set guifont=Hack\ 10
     elseif ( incon > 0 )
         set guifont=Inconsolata\ Medium\ 12
     else
