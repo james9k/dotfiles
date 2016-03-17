@@ -102,7 +102,7 @@ if ! shopt -oq posix; then
 fi
 
 # Vagrant
-export VAGRANT_VMWARE_FUSION_APP="/Applications/VMware Fusion 6.app"
+# export VAGRANT_VMWARE_FUSION_APP="/Applications/VMware Fusion 6.app"
 
 
 ######## Editing Preferences ######## 
