@@ -18,4 +18,4 @@ endif
 "    set guifont=Hack\ 10,Inconsolata\ Medium\ 12,DejaVu\ Sans\ Mono\ 10,Bitstream\ Vera\ Sans\ Mono\ 10
 "endif
 
-set lines=32 columns=86
+set lines=40 columns=86
