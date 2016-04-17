@@ -19,3 +19,6 @@ endif
 "endif
 
 set lines=40 columns=86
+
+set background=dark
+colorscheme solarized
