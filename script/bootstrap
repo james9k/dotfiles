@@ -127,7 +127,7 @@ done
 install_dotfiles
 create_tmp_dirs
 
-. ${DOTFILES_ROOT}/bin/dot 
+cd ${DOTFILES_ROOT} && bin/update_git 
 
 echo ''
 echo '  All installed!'
