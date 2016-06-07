@@ -9,3 +9,4 @@ URxvt.foreground: White
 URxvt.background: Black
 URxvt.scrollBar_right: True
 URxvt.perl-ext-common: tabbed
+Xft.lcdfilter: lcddefault
