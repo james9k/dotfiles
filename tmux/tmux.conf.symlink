@@ -19,3 +19,6 @@ set -g default-terminal "screen-256color"
 
 # Vi style key bindings
 setw -g mode-keys vi
+
+# Scrollback buffer
+set -g history-limit 10000
