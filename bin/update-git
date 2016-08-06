@@ -15,7 +15,7 @@ git_commands
 cd ~/.dotfiles/vim/vim.symlink/bundle
 pwd
 
-for bundle in "MatchTag" "jedi-vim" "salt-vim" "syntastic" "vim-sensible" "vim-surround"
+for bundle in "MatchTag" "jedi-vim" "salt-vim" "syntastic" "vim-sensible" "vim-surround" "vim-terraform"
 do
     echo ""
     cd ${bundle}
