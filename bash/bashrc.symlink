@@ -139,3 +139,9 @@ then
     fi
 
 fi
+
+# For "awscli" installed by brew
+if [ $(uname) == "Darwin" ]
+then
+    complete -C aws_completer aws
+fi
