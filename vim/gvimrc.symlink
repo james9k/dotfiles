@@ -5,7 +5,10 @@ if has("gui_macvim")
 elseif has("gui_gtk2")
     let hack=system('fc-list | grep -c Hack')
     let incon=system('fc-list | grep -c Inconsolata')
-    if ( hack > 0 )
+    let scp=system('fc-list | grep -c Source\ Code\ Pro')
+    if ( scp > 0 )
+        set guifont=Source\ Code\ Pro\ 10
+    elseif ( hack > 0 )
         set guifont=Hack\ 10
     elseif ( incon > 0 )
         set guifont=Inconsolata\ Medium\ 12
