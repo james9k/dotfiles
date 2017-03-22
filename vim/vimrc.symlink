@@ -25,6 +25,9 @@ set expandtab
 set shiftwidth=4
 set softtabstop=4
 
+" Split windows relative to current split
+set noequalalways
+
 " Syntastic - Recommended settings
 " set statusline+=%#warningmsg#
 " set statusline+=%{SyntasticStatuslineFlag()}
