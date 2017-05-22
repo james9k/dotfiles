@@ -2,7 +2,7 @@
 if has("gui_macvim")
     " OSX
     set guifont=Hack:h14,Menlo:h14
-elseif has("gui_gtk2")
+elseif has("gui_gtk2") || has("gui_gtk3")
     let hack=system('fc-list | grep -c Hack')
     let incon=system('fc-list | grep -c Inconsolata')
     let scp=system('fc-list | grep -c Source\ Code\ Pro')
@@ -17,9 +17,6 @@ elseif has("gui_gtk2")
     endif
 
 endif
-"else
-"    set guifont=Hack\ 10,Inconsolata\ Medium\ 12,DejaVu\ Sans\ Mono\ 10,Bitstream\ Vera\ Sans\ Mono\ 10
-"endif
 
 set lines=40 columns=86
 
