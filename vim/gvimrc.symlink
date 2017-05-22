@@ -1,7 +1,7 @@
 " Set a decent font
 if has("gui_macvim")
     " OSX
-    set guifont=Hack:h14,Menlo:h14
+    set guifont=Source\ Code\ Pro:h13,Hack:h13,Menlo:h13
 elseif has("gui_gtk2") || has("gui_gtk3")
     let hack=system('fc-list | grep -c Hack')
     let incon=system('fc-list | grep -c Inconsolata')
