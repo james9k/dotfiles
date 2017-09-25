@@ -37,3 +37,14 @@ if [ -n "$BASH_VERSION" ]; then
 	. "${HOME}/.bashrc"
     fi
 fi
+
+# Setting PATH for Python 3.6
+# The original version is saved in .bash_profile.pysave
+PATH="/Library/Frameworks/Python.framework/Versions/3.6/bin:${PATH}"
+export PATH
+
+# Virtualenv Wrapper
+if [ "$(uname)" == "Darwin" ]
+    then
+    . /Library/Frameworks/Python.framework/Versions/3.6/bin/virtualenvwrapper.sh
+fi
