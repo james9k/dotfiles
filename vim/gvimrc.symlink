@@ -7,13 +7,13 @@ elseif has("gui_gtk2") || has("gui_gtk3")
     let incon=system('fc-list | grep -c Inconsolata')
     let scp=system('fc-list | grep -c Source\ Code\ Pro')
     if ( scp > 0 )
-        set guifont=Source\ Code\ Pro\ 10
+        set guifont=Source\ Code\ Pro\ 9
     elseif ( hack > 0 )
-        set guifont=Hack\ 10
+        set guifont=Hack\ 9
     elseif ( incon > 0 )
-        set guifont=Inconsolata\ Medium\ 12
+        set guifont=Inconsolata\ Medium\ 11
     else
-        set guifont=DejaVu\ Sans\ Mono\ 11
+        set guifont=DejaVu\ Sans\ Mono\ 10
     endif
 
 endif
