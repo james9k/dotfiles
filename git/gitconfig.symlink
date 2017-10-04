@@ -1,10 +1,12 @@
 [user]
-	name = jamesp9
-	email = james@jp-it.net.au
+    name = jamesp9
+    email = james@jp-it.net.au
 [push]
-	default = simple
+    default = simple
 
 [alias]
-  co = checkout
-  st = status
-  br = branch -a
+    co = checkout
+    st = status
+    br = branch -a
+[core]
+    editor = vim

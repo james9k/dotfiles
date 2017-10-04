@@ -1,5 +1,5 @@
-URxvt.font: xft:SourceCodePro-Regular:size=12
-!URxvt.font: xft:Hack:size=11
+!URxvt.font: xft:SourceCodePro-Regular:size=12
+URxvt.font: xft:Hack-Regular:size=12
 !URxvt.font: xft:DejaVu Sans Mono:size=11
 !URxvt.font: xft:VeraMono:size=11
 !URxvt.boldFont: xft:SourceCodePro-Bold:size=11
