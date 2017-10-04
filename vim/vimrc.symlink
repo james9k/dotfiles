@@ -51,4 +51,6 @@ set background=dark
 let g:solarized_termcolors=256
 colorscheme solarized
 
+"Jedi
+let g:jedi#use_tabs_not_buffers = 1
 
