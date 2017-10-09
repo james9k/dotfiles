@@ -116,7 +116,7 @@ export EDITOR=$(which vim)
 ######## Python Virtual Env Wrapper ######## 
 if [ -e /usr/local/bin/virtualenvwrapper.sh ]; then
     source /usr/local/bin/virtualenvwrapper.sh
-elif [ -e /usr/bin/virtualenvwrapper.sh ]; then
+if [ -e /usr/bin/virtualenvwrapper.sh ]; then
     source /usr/bin/virtualenvwrapper.sh
 fi
 
@@ -140,8 +140,15 @@ then
 
 fi
 
-# For "awscli" installed by brew
+########### Do Mac stuff ###########
 if [ $(uname) == "Darwin" ]
 then
+    # For "awscli" installed by brew
     complete -C aws_completer aws
+
+    # Virtualenv
+    export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python3
+    if [ -e /usr/local/bin/virtualenvwrapper.sh ]; then
+        . /usr/local/bin/virtualenvwrapper.sh
+    fi
 fi
