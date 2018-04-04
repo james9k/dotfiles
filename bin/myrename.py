@@ -8,6 +8,8 @@ import shutil
 
 
 def myrename(src_filename):
+    """
+    """
     if os.path.isfile(src_filename):
         filename, extension = os.path.splitext(src_filename)
     elif os.path.isdir(src_filename):
@@ -40,22 +42,25 @@ def myrename(src_filename):
     return filename + extension
 
 
-def mymove(src_filename, dest_filename):
-    print("Moving {} => {}".format(src_filename, dest_filename))
-    shutil.move(src_filename, dest_filename)
+def move_file(source, destination):
+    """
+    Rename the file by moving it from source to destination.
+    """
+    print("Moving {} => {}".format(source, destination))
+    shutil.move(source, destination)
 
 
 if __name__ == '__main__':
-    filename_list = []
+    filenames = []
 
     if len(sys.argv) > 1:
-        filename_list = sys.argv[1:]
+        filenames = sys.argv[1:]
     else:  # presume all files in cwd
-        filename_list = glob.glob('*')
+        filenames = glob.glob('*')
 
-    for filename in filename_list:
+    for filename in filenames:
         if os.path.exists(filename):
             new_filename = myrename(filename)
-            mymove(filename, new_filename)
+            move_file(filename, new_filename)
         else:
             print("{} does't exist".format(filename))
