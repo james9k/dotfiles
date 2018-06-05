@@ -6,7 +6,10 @@
 
 [alias]
     co = checkout
+    com = checkout master
     st = status
     br = branch -a
+    pom = pull origin master
+    rpo = remote prune origin
 [core]
     editor = vim
