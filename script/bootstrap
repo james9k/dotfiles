@@ -131,7 +131,7 @@ function mac_install_homebrew {
 function mac_brew_install_stuff {
     brew update
 
-    for app in ack tree findutils p7zip
+    for app in ack tree findutils p7zip awscli bash-completion
     do
         brew install ${app}
     done
@@ -156,6 +156,7 @@ install_dotfiles
 create_tmp_dirs
 if [ $(uname) == "Darwin" ]; then
     mac_install_homebrew
+    mac_brew_install_stuff
     mac_brew_cask_install_stuff
     mac_brew_cask_install_fonts
 fi
