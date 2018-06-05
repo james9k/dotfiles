@@ -40,6 +40,16 @@ fi
 # Do Mac stuff
 if [ "$(uname)" == "Darwin" ]
     then
-    # Brew installed python2 path
-    export PATH="/usr/local/opt/python/libexec/bin:$PATH"
+
+    #Brew installed python2 path
+    #export PATH="/usr/local/opt/python/libexec/bin:$PATH"
+
+    # Setting PATH for Python 3.6
+    # The original version is saved in .bash_profile.pysave
+    export PATH="/Library/Frameworks/Python.framework/Versions/3.6/bin:${PATH}"
+
+    # MacVim bin PATH
+    export PATH="/Applications/MacVim.app/Contents/bin:${PATH}"
 fi
+
+# vi:syntax=sh
