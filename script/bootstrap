@@ -14,7 +14,7 @@ set -e
 
 echo ''
 
-link_file () {
+function link_file {
   local src=$1 dst=$2
 
   local overwrite= backup= skip=
@@ -92,7 +92,7 @@ link_file () {
   touch ${DOTFILES_ROOT}/.initialized
 }
 
-install_dotfiles () {
+function install_dotfiles {
   info 'installing dotfiles'
 
   local overwrite_all=false skip_all=false
@@ -124,8 +124,41 @@ for tmpdir in ~/tmp ~/tmpvim
 done
 }
 
+function mac_install_homebrew {
+   /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)" 
+}
+
+function mac_brew_install_stuff {
+    brew update
+
+    for app in ack tree findutils p7zip
+    do
+        brew install ${app}
+    done
+}
+
+function mac_brew_cask_install_stuff {
+    brew update
+
+    for app in password-gorilla
+    do
+        brew cask install ${app}
+    done
+}
+
+function mac_brew_cask_install_fonts {
+    brew tap caskroom/fonts
+    brew cask install font-hack
+    brew cask install font-source-code-pro
+}
+
 install_dotfiles
 create_tmp_dirs
+if [ $(uname) == "Darwin" ]; then
+    mac_install_homebrew
+    mac_brew_cask_install_stuff
+    mac_brew_cask_install_fonts
+fi
 
 cd ${DOTFILES_ROOT} && bin/update-git 
 
