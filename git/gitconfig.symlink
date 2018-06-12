@@ -1,10 +1,11 @@
 [user]
-	name = jamesp9
-    email = james@jp-it.net.au
+    name = jamesp9
+    email = james@exitstatus0.net
 [push]
     default = simple
 
 [alias]
+    fo = fetch origin
     co = checkout
     com = checkout master
     st = status
