@@ -128,7 +128,7 @@ export SYSTEMD_PAGER=""
 
 if [ $(uname) == "Linux" ]
 then
-    export BROWSER="firefox"
+    #export BROWSER="firefox"
 
     # Use keychain to manage SSH Keys
     if [ -f /usr/bin/keychain ]

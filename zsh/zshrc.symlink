@@ -13,5 +13,14 @@ autoload -Uz compinit
 compinit
 # End of lines added by compinstall
 
-# Set prompt
-PROMPT='%F{green}%m%F{grey}:%F{blue}%~%F{grey}:%# '
+######## Git Colour Prompt ######## 
+function display_git_branch  {
+  git branch --no-color 2> /dev/null | sed -e 's/* \(.*\)/[\1]/'
+}
+PROMPT='%F{green}%m%f:%F{blue}%~%f:%F{yellow}$(display_git_branch)%f%# '
+setopt promptsubst
+
+# Alias definitions
+if [ -f ~/.bash_aliases ]; then
+    . ~/.bash_aliases
+fi
