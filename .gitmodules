@@ -26,3 +26,6 @@
 [submodule "vim/vim.symlink/bundle/groovy.vim"]
 	path = vim/vim.symlink/bundle/groovy.vim
 	url = https://github.com/vim-scripts/groovy.vim.git
+[submodule "vim/vim.symlink/bundle/Jenkinsfile-vim-syntax"]
+	path = vim/vim.symlink/bundle/Jenkinsfile-vim-syntax
+	url = https://github.com/martinda/Jenkinsfile-vim-syntax.git
