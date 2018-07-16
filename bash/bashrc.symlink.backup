@@ -151,14 +151,3 @@ then
         . /usr/local/bin/virtualenvwrapper.sh
     fi
 fi
-
-# Azure cli autocomplete
-AZURE_COMPLETION_PATH="/home/james/lib/azure-cli/az.completion"
-if [ -f ${AZURE_COMPLETION_PATH} ]; then
-    source ${AZURE_COMPLETION_PATH}
-fi
-
-# Start Gnome with Wayland manually as gdm has been giving trouble
-#if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]] && [[ -z $XDG_SESSION_TYPE ]]; then
-#  XDG_SESSION_TYPE=wayland exec dbus-run-session gnome-session
-#fi
