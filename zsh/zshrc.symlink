@@ -1,7 +1,7 @@
 # Lines configured by zsh-newuser-install
 HISTFILE=~/.histfile
-HISTSIZE=1000
-SAVEHIST=2000
+HISTSIZE=10000
+SAVEHIST=20000
 setopt appendhistory
 unsetopt beep
 bindkey -e
@@ -13,9 +13,12 @@ autoload -Uz compinit
 compinit
 # End of lines added by compinstall
 
+# Make delete key behave like usual
+bindkey '\e[3~' delete-char
+
 ######## Git Colour Prompt ######## 
 function display_git_branch  {
-  git branch --no-color 2> /dev/null | sed -e 's/* \(.*\)/[\1]/'
+  git branch --no-color 2> /dev/null | grep '*' | sed -e 's/* \(.*\)/[\1]/'
 }
 PROMPT='%F{green}%m%f:%F{blue}%~%f:%F{yellow}$(display_git_branch)%f%# '
 setopt promptsubst
