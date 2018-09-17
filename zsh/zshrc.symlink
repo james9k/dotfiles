@@ -24,3 +24,8 @@ setopt promptsubst
 if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
 fi
+
+autoload -U +X bashcompinit && bashcompinit
+# Command completion
+complete -o nospace -C /usr/bin/vault vault
+source /usr/bin/aws_zsh_completer.sh
