@@ -30,8 +30,6 @@ if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
 fi
 
-autoload -U +X bashcompinit && bashcompinit
-
 ######### Command completion #########
 source ~/.git-completion.zsh
 
