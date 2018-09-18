@@ -13,8 +13,10 @@ autoload -Uz compinit
 compinit
 # End of lines added by compinstall
 
-# Make delete key behave like usual
-bindkey '\e[3~' delete-char
+######### Key Bindings #########
+bindkey '\e[3~' delete-char  # delete
+bindkey '\e[H' beginning-of-line  # Home
+bindkey '\e[F' end-of-line  # End
 
 ######### Git Colour Prompt #########
 function display_git_branch  {
