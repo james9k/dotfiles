@@ -31,7 +31,7 @@ if [ -f ~/.bash_aliases ]; then
 fi
 
 ######### Command completion #########
-source ~/.git-completion.zsh
+# git tab completion handled by autoload of compinit
 
 if type vault > /dev/null; then
     complete -o nospace -C /usr/bin/vault vault
