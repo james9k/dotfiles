@@ -16,7 +16,7 @@ compinit
 # Make delete key behave like usual
 bindkey '\e[3~' delete-char
 
-######## Git Colour Prompt ######## 
+######### Git Colour Prompt #########
 function display_git_branch  {
   git branch --no-color 2> /dev/null | grep '*' | sed -e 's/* \(.*\)/[\1]/'
 }
@@ -29,6 +29,16 @@ if [ -f ~/.bash_aliases ]; then
 fi
 
 autoload -U +X bashcompinit && bashcompinit
-# Command completion
-complete -o nospace -C /usr/bin/vault vault
-source /usr/bin/aws_zsh_completer.sh
+
+######### Command completion #########
+if type vault > /dev/null; then
+    complete -o nospace -C /usr/bin/vault vault
+fi
+
+if [ -e /usr/bin/aws_zsh_completer.sh ]; then
+    source /usr/bin/aws_zsh_completer.sh
+fi
+
+if type kubectl > /dev/null; then
+    source <(kubectl completion zsh)
+fi
