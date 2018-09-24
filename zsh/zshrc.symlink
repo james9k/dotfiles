@@ -33,14 +33,18 @@ fi
 ######### Command completion #########
 # git tab completion handled by autoload of compinit
 
+# Vault
 if type vault > /dev/null; then
+    autoload -U +X bashcompinit && bashcompinit
     complete -o nospace -C /usr/bin/vault vault
 fi
 
+# AWS
 if [ -e /usr/bin/aws_zsh_completer.sh ]; then
     source /usr/bin/aws_zsh_completer.sh
 fi
 
+# kubectl
 if type kubectl > /dev/null; then
     source <(kubectl completion zsh)
 fi
