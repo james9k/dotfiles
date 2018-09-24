@@ -15,8 +15,13 @@ compinit
 
 ######### Key Bindings #########
 bindkey '\e[3~' delete-char  # delete
-bindkey '\e[H' beginning-of-line  # Home
-bindkey '\e[F' end-of-line  # End
+if [ "${TERM}" = "linux" ]; then
+    bindkey '\e[1~' beginning-of-line  # Home
+    bindkey '\e[4~' end-of-line  # End
+elif [ "${TERM}" = "xterm-256color" ]; then
+    bindkey '\e[H' beginning-of-line  # Home
+    bindkey '\e[F' end-of-line  # End
+fi
 
 ######### Git Colour Prompt #########
 function display_git_branch  {
