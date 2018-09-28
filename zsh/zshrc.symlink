@@ -69,5 +69,7 @@ fi
 if [ "$(uname)" = "Linux" ]; then
     if [ -f /usr/bin/keychain ]; then
         eval $(keychain --eval --quiet id_rsa)
+    else
+        echo "keychain is not installed."
     fi
 fi

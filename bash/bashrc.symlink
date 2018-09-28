@@ -126,16 +126,13 @@ source ~/.git-completion.bash
 # I want to control my own output
 export SYSTEMD_PAGER=""
 
-if [ $(uname) == "Linux" ]
-then
-    #export BROWSER="firefox"
-
-    # Use keychain to manage SSH Keys
-    if [ -f /usr/bin/keychain ]
-    then
+######### SSH Agent #########
+if [ "$(uname)" == "Linux" ]; then
+    if [ -f /usr/bin/keychain ]; then
         eval $(keychain --eval --quiet id_rsa)
+    else
+        echo "keychain is not installed."
     fi
-
 fi
 
 ########### Do Mac stuff ###########
@@ -166,3 +163,7 @@ fi
 # Command completion
 complete -C /usr/bin/aws_completer aws
 complete -C /usr/bin/vault vault
+
+export PATH=$PATH:/home/james/bin
+
+source '/home/james/lib/azure-cli/az.completion'
