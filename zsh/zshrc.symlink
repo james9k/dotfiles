@@ -23,6 +23,10 @@ elif [ "${TERM}" = "xterm-256color" ]; then
     bindkey '\e[F' end-of-line  # End
 fi
 
+######### Set PATH #########
+path=("${HOME}/bin" $path)
+export PATH
+
 ######### Git Colour Prompt #########
 function display_git_branch  {
   git branch --no-color 2> /dev/null | grep '*' | sed -e 's/* \(.*\)/[\1]/'
