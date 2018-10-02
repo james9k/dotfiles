@@ -1,0 +1,37 @@
+# enable color support of ls and also add handy aliases
+if [ -x /usr/bin/dircolors ]; then
+    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+    alias ls='ls --color=auto'
+elif [ `uname` = "Darwin" ] ; then
+    # From grep(1)
+    #--colour=[when, --color=[when]]
+    export CLICOLOR=1
+fi
+
+# grep alias for color
+alias grep='grep --color=auto'
+alias rgrep='rgrep --color=auto'
+alias fgrep='fgrep --color=auto'
+alias egrep='egrep --color=auto'
+alias zgrep='zgrep --color=auto'
+
+# some more ls aliases
+alias ll='ls -l'
+alias lla='ls -lA'
+alias l='ls -CF'
+alias la='ls -CFA'
+
+# less typing aliases
+alias h='history 0'
+
+# ifconfig is deprecated
+alias ifconfig='ip address show'
+
+alias rm='rm -v'
+alias cp='cp -v'
+alias mv='mv -v'
+
+# For local aliases you don't want checked in
+if [ -f ~/.zsh_aliases.local ]; then
+    . ~/.zsh_aliases.local
+fi
