@@ -62,6 +62,11 @@ fi
 if type kubectl > /dev/null; then
     source <(kubectl completion zsh)
 fi
+#
+# minikube
+if type minikube > /dev/null; then
+    source <(minikube completion zsh)
+fi
 
 # Azure cli autocomplete
 AZURE_COMPLETION_PATH="/home/james/lib/azure-cli/az.completion"
