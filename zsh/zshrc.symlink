@@ -70,7 +70,7 @@ fi
 
 # Azure cli autocomplete
 AZURE_COMPLETION_PATH="/home/james/lib/azure-cli/az.completion"
-if [ -f ${AZURE_COMPLETION_PATH} ]; then
+if [ -e ${AZURE_COMPLETION_PATH} ]; then
     source ${AZURE_COMPLETION_PATH}
 fi
 
