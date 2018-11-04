@@ -150,7 +150,7 @@ then
 fi
 
 # Azure cli autocomplete
-AZURE_COMPLETION_PATH="/home/james/lib/azure-cli/az.completion"
+AZURE_COMPLETION_PATH="${HOME}/lib/azure-cli/az.completion"
 if [ -f ${AZURE_COMPLETION_PATH} ]; then
     source ${AZURE_COMPLETION_PATH}
 fi
@@ -164,6 +164,6 @@ fi
 complete -C /usr/bin/aws_completer aws
 complete -C /usr/bin/vault vault
 
-export PATH=$PATH:/home/james/bin
+export PATH=$PATH:${HOME}/bin
 
-source '/home/james/lib/azure-cli/az.completion'
+source "${HOME}/lib/azure-cli/az.completion"
