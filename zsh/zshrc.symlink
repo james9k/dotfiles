@@ -12,7 +12,7 @@ unsetopt beep
 bindkey -e
 # End of lines configured by zsh-newuser-install
 # The following lines were added by compinstall
-zstyle :compinstall filename '/home/james/.zshrc'
+zstyle :compinstall filename "${HOME}/.zshrc"
 
 autoload -Uz compinit
 compinit
@@ -69,7 +69,7 @@ if type minikube > /dev/null; then
 fi
 
 # Azure cli autocomplete
-AZURE_COMPLETION_PATH="/home/james/lib/azure-cli/az.completion"
+AZURE_COMPLETION_PATH="${HOME}/lib/azure-cli/az.completion"
 if [ -e ${AZURE_COMPLETION_PATH} ]; then
     source ${AZURE_COMPLETION_PATH}
 fi
