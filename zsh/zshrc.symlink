@@ -62,10 +62,15 @@ fi
 if type kubectl > /dev/null; then
     source <(kubectl completion zsh)
 fi
-#
+
 # minikube
 if type minikube > /dev/null; then
     source <(minikube completion zsh)
+fi
+
+# KOPS
+if type kops > /dev/null; then
+    source <(kops completion zsh)
 fi
 
 # Azure cli autocomplete
