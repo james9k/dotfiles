@@ -23,9 +23,9 @@ alias la='ls -CFA'
 
 # some more exa aliases
 alias el='exa -l'
-alias ela='exa -lA'
-alias e='exa -CF'
-alias ea='exa -CFA'
+alias ela='exa -la'
+alias e='exa'
+alias ea='exa -a'
 
 # less typing aliases
 alias h='history 0'
