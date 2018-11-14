@@ -21,6 +21,12 @@ alias lla='ls -lA'
 alias l='ls -CF'
 alias la='ls -CFA'
 
+# some more exa aliases
+alias el='exa -l'
+alias ela='exa -lA'
+alias e='exa -CF'
+alias ea='exa -CFA'
+
 # less typing aliases
 alias h='history 0'
 
