@@ -8,6 +8,9 @@ elif [ `uname` = "Darwin" ] ; then
     export CLICOLOR=1
 fi
 
+# less typing aliases
+alias h='history 0'
+
 # grep alias for color
 alias grep='grep --color=auto'
 alias rgrep='rgrep --color=auto'
@@ -15,27 +18,35 @@ alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
 alias zgrep='zgrep --color=auto'
 
+# ls replacement
+if type exa > /dev/null; then
+    alias ls='exa'
+    alias el='exa -l'
+    alias ela='exa -la'
+    alias e='exa'
+    alias ea='exa -a'
+fi
+
 # some more ls aliases
 alias ll='ls -l'
 alias lla='ls -lA'
 alias l='ls -CF'
 alias la='ls -CFA'
 
-# some more exa aliases
-alias el='exa -l'
-alias ela='exa -la'
-alias e='exa'
-alias ea='exa -a'
-
-# less typing aliases
-alias h='history 0'
+alias rm='rm -v'
+alias cp='cp -v'
+alias mv='mv -v'
 
 # ifconfig is deprecated
 alias ifconfig='ip address show'
 
-alias rm='rm -v'
-alias cp='cp -v'
-alias mv='mv -v'
+# Kubernetes
+if type minikube > /dev/null; then
+    alias mk='minikube'
+fi
+if type kubectl > /dev/null; then
+    alias kc='kubectl'
+fi
 
 # For local aliases you don't want checked in
 if [ -f ~/.zsh_aliases.local ]; then
