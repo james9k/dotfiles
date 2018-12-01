@@ -26,3 +26,6 @@
 [submodule "vim/vim.symlink/bundle/Jenkinsfile-vim-syntax"]
 	path = vim/vim.symlink/bundle/Jenkinsfile-vim-syntax
 	url = https://github.com/martinda/Jenkinsfile-vim-syntax.git
+[submodule "vim/vim.symlink/bundle/groovyindent-unix"]
+	path = vim/vim.symlink/bundle/groovyindent-unix
+	url = https://github.com/vim-scripts/groovyindent-unix.git
