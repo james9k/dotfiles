@@ -58,3 +58,6 @@ colorscheme solarized
 "Jedi
 let g:jedi#use_tabs_not_buffers = 1
 let g:jedi#force_py_version = 3
+
+" TabNine autocompletion
+set rtp+=~/.vim/bundle/tabnine-vim
