@@ -29,7 +29,7 @@ elif [ "${TERM}" = "xterm-256color" ]; then
 fi
 
 ######### Set PATH #########
-path=("${HOME}/bin" $path)
+path=("${HOME}/bin" ${HOME}/.cargo/bin $path)
 export PATH
 
 ######### Git Colour Prompt #########
