@@ -167,3 +167,5 @@ complete -C /usr/bin/vault vault
 export PATH=$PATH:${HOME}/bin
 
 source "${HOME}/lib/azure-cli/az.completion"
+
+complete -C /usr/bin/terraform terraform

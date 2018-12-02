@@ -17,6 +17,7 @@ zstyle :compinstall filename "${HOME}/.zshrc"
 autoload -Uz compinit
 compinit
 # End of lines added by compinstall
+autoload -U +X bashcompinit && bashcompinit
 
 ######### Key Bindings #########
 bindkey '\e[3~' delete-char  # delete
@@ -47,31 +48,19 @@ fi
 ######### Command completion #########
 # git tab completion handled by autoload of compinit
 
-# Vault
-if type vault > /dev/null; then
-    autoload -U +X bashcompinit && bashcompinit
-    complete -o nospace -C /usr/bin/vault vault
-fi
-
 # AWS
 if [ -e /usr/bin/aws_zsh_completer.sh ]; then
     source /usr/bin/aws_zsh_completer.sh
 fi
 
-# kubectl
-if type kubectl > /dev/null; then
-    source <(kubectl completion zsh)
-fi
+# Kubernetes
+type kubectl > /dev/null && source <(kubectl completion zsh)
+type minikube > /dev/null && source <(minikube completion zsh)
+type kops > /dev/null && source <(kops completion zsh)
 
-# minikube
-if type minikube > /dev/null; then
-    source <(minikube completion zsh)
-fi
-
-# KOPS
-if type kops > /dev/null; then
-    source <(kops completion zsh)
-fi
+# Hashicorp
+type terraform > /dev/null && complete -o nospace -C /usr/bin/terraform terraform
+type vault > /dev/null && complete -o nospace -C /usr/bin/vault vault
 
 # Azure cli autocomplete
 AZURE_COMPLETION_PATH="${HOME}/lib/azure-cli/az.completion"
@@ -92,3 +81,4 @@ if [ "$(uname)" = "Linux" ]; then
         echo "keychain is not installed."
     fi
 fi
+

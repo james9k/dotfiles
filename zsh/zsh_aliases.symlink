@@ -29,9 +29,9 @@ fi
 
 # some more ls aliases
 alias ll='ls -l'
-alias lla='ls -lA'
-alias l='ls -CF'
-alias la='ls -CFA'
+alias lla='ls -la'
+alias l='ls'
+alias la='ls -a'
 
 alias rm='rm -v'
 alias cp='cp -v'
@@ -40,13 +40,14 @@ alias mv='mv -v'
 # ifconfig is deprecated
 alias ifconfig='ip address show'
 
-# Kubernetes
-if type minikube > /dev/null; then
-    alias mk='minikube'
-fi
-if type kubectl > /dev/null; then
-    alias kc='kubectl'
-fi
+# Some short cuts
+type kubectl > /dev/null && alias kc='kubectl'
+type minikube > /dev/null && alias mk='minikube'
+type terraform > /dev/null && alias tf='terraform'
+
+# Use newer versions
+type bat > /dev/null && alias cat='bat --plain'
+type ag > /dev/null && alias ack='ag'
 
 # For local aliases you don't want checked in
 if [ -f ~/.zsh_aliases.local ]; then
