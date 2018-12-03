@@ -19,7 +19,7 @@ compinit
 # End of lines added by compinstall
 autoload -U +X bashcompinit && bashcompinit
 
-######### Key Bindings #########
+# Key Bindings
 bindkey '\e[3~' delete-char  # delete
 if [ "${TERM}" = "linux" ]; then
     bindkey '\e[1~' beginning-of-line  # Home
@@ -29,23 +29,23 @@ elif [ "${TERM}" = "xterm-256color" ]; then
     bindkey '\e[F' end-of-line  # End
 fi
 
-######### Set PATH #########
+# Set PATH
 path=("${HOME}/bin" ${HOME}/.cargo/bin $path)
 export PATH
 
-######### Git Colour Prompt #########
+# Git Colour Prompt
 function display_git_branch  {
   git branch --no-color 2> /dev/null | grep '*' | sed -e 's/* \(.*\)/[\1]/'
 }
 PROMPT='%F{green}%m%f:%F{blue}%~%f:%F{yellow}$(display_git_branch)%f%# '
 setopt promptsubst
 
-######### Aliases #########
+# Aliases
 if [ -f ~/.zsh_aliases ]; then
     source ~/.zsh_aliases
 fi
 
-######### Command completion #########
+# Command completion
 # git tab completion handled by autoload of compinit
 
 # AWS
@@ -68,12 +68,12 @@ if [ -e ${AZURE_COMPLETION_PATH} ]; then
     source ${AZURE_COMPLETION_PATH}
 fi
 
-######### Python Virtualenv #########
+# Python Virtualenv
 if [ -e /usr/bin/virtualenvwrapper.sh ]; then
     source /usr/bin/virtualenvwrapper.sh
 fi
 
-######### SSH Agent #########
+# SSH Agent
 if [ "$(uname)" = "Linux" ]; then
     if [ -f /usr/bin/keychain ]; then
         eval $(keychain --eval --quiet id_rsa)
@@ -82,3 +82,11 @@ if [ "$(uname)" = "Linux" ]; then
     fi
 fi
 
+# Prevent ranger inception
+ranger() {
+    if [ -z "$RANGER_LEVEL" ]; then
+        /usr/bin/ranger "$@"
+    else
+        exit
+    fi
+}
