@@ -49,6 +49,22 @@ type terraform > /dev/null && alias tf='terraform'
 type bat > /dev/null && alias cat='bat --plain'
 type ag > /dev/null && alias ack='ag'
 
+# Git
+alias g='git'
+alias ga='git add'
+alias gcm='git commit -m'
+alias gco='git checkout'
+alias gd='git diff'
+alias gf='git fetch'
+alias gfo='git fetch origin'
+alias gl='git log'
+alias glp='git log -p'
+alias gpom='git pull origin master'
+alias gpush='git push'
+alias grpo='git remote prune origin'
+alias gst='git status'
+alias gsuir='git status'
+
 # For local aliases you don't want checked in
 if [ -f ~/.zsh_aliases.local ]; then
     . ~/.zsh_aliases.local

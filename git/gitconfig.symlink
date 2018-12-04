@@ -4,13 +4,13 @@
 [push]
     default = simple
 
-[alias]
-    fo = fetch origin
-    co = checkout
-    com = checkout master
-    st = status
-    br = branch -a
-    pom = pull origin master
-    rpo = remote prune origin
+#[alias]
+#    fo = fetch origin
+#    co = checkout
+#    com = checkout master
+#    st = status
+#    br = branch -a
+#    pom = pull origin master
+#    rpo = remote prune origin
 [core]
     editor = vim
