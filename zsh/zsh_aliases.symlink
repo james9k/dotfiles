@@ -71,5 +71,5 @@ alias gsuir='git submodule update --init --recursive'
 
 # For local aliases you don't want checked in
 if [ -f ~/.zsh_aliases.local ]; then
-    . ~/.zsh_aliases.local
+    source ~/.zsh_aliases.local
 fi
