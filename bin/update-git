@@ -1,21 +1,16 @@
 #!/bin/bash
 
-
 git_commands () {
     git checkout master
     git pull origin master
-    git submodule init
-    git submodule update --recursive
+    git submodule update --init --recursive
 }
 
-cd ~/.dotfiles
-pwd
+pushd ~/.dotfiles
 git_commands
 
-cd ~/.dotfiles/vim/vim.symlink/bundle
-pwd
-
-for bundle in "MatchTag" "salt-vim" "syntastic" "vim-sensible" "vim-surround" "vim-terraform"
+pushd ~/.dotfiles/vim/vim.symlink/bundle
+for bundle in "groovyindent-unix" "Jenkinsfile-vim-syntax" "MatchTag" "nerdtree" "salt-vim" "syntastic" "tabnine-vim" "vim-colors-solarized" "vim-sensible" "vim-surround" "vim-terraform"
 do
     echo ""
     cd ${bundle}
@@ -23,4 +18,3 @@ do
     git_commands
     cd ..
 done
-
