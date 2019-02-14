@@ -21,8 +21,8 @@ alias zgrep='zgrep --color=auto'
 # ls replacement
 if type exa > /dev/null; then
     alias ls='exa'
-    alias el='exa -l'
-    alias ela='exa -la'
+    alias el='exa -lg'
+    alias ela='exa -lga'
     alias e='exa'
     alias ea='exa -a'
 fi
