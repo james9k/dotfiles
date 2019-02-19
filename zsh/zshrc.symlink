@@ -27,7 +27,16 @@ zstyle ':vcs_info:*' check-for-changes true
 zstyle ':vcs_info:*' unstagedstr '!'
 zstyle ':vcs_info:*' stagedstr '+'
 zstyle ':vcs_info:git*' formats "%{${fg[cyan]}%}[%{${fg[blue]}%}%b%{${fg[yellow]}%}%m%u%c%{${fg[cyan]}%}]%{$reset_color%}"
-zstyle ':prompt:grml:left:setup' items rc change-root host path vcs percent
+zstyle ':prompt:grml:*:items:host' pre '%F{green}'
+zstyle ':prompt:grml:*:items:host' post '%f'
+zstyle ':prompt:grml:*:items:path' pre '%F{blue}'
+zstyle ':prompt:grml:*:items:path' post '%f'
+zstyle ':prompt:grml:left:setup' items rc change-root host path virtual-env vcs percent
+
+function virtual_env_prompt () {
+    REPLY=${VIRTUAL_ENV+(${VIRTUAL_ENV:t}) }
+}
+grml_theme_add_token virtual-env -f virtual_env_prompt '%F{magenta}' '%f'
 
 # Key Bindings
 bindkey '\e[3~' delete-char  # delete
