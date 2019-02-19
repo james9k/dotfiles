@@ -13,12 +13,21 @@ unsetopt beep
 bindkey -e
 # End of lines configured by zsh-newuser-install
 # The following lines were added by compinstall
-zstyle :compinstall filename "${HOME}/.zshrc"
+#zstyle :compinstall filename "${HOME}/.zshrc"
 
 autoload -Uz compinit
 compinit
 # End of lines added by compinstall
 autoload -U +X bashcompinit && bashcompinit
+
+# Config GRML Zsh
+autoload -U colors && colors
+zstyle ':vcs_info:*' enable git
+zstyle ':vcs_info:*' check-for-changes true
+zstyle ':vcs_info:*' unstagedstr '!'
+zstyle ':vcs_info:*' stagedstr '+'
+zstyle ':vcs_info:git*' formats "%{${fg[cyan]}%}[%{${fg[blue]}%}%b%{${fg[yellow]}%}%m%u%c%{${fg[cyan]}%}]%{$reset_color%}"
+zstyle ':prompt:grml:left:setup' items rc change-root host path vcs percent
 
 # Key Bindings
 bindkey '\e[3~' delete-char  # delete
@@ -38,7 +47,8 @@ export PATH
 function display_git_branch  {
   git branch --no-color 2> /dev/null | grep '*' | sed -e 's/* \(.*\)/[\1]/'
 }
-PROMPT='%F{green}%m%f:%F{blue}%~%f:%F{yellow}$(display_git_branch)%f%# '
+
+PS1='%F{green}%m%f:%F{blue}%~%f:%F{yellow}$(display_git_branch)%f%# '
 setopt promptsubst
 
 # Aliases
