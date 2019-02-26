@@ -1,0 +1,117 @@
+# Lines configured by zsh-newuser-install
+HISTFILE=~/.histfile
+HISTSIZE=13000
+SAVEHIST=10000
+setopt appendhistory
+setopt SHARE_HISTORY
+setopt EXTENDED_HISTORY
+setopt HIST_IGNORE_SPACE
+setopt HIST_EXPIRE_DUPS_FIRST
+setopt HIST_IGNORE_ALL_DUPS
+setopt HIST_IGNORE_DUPS
+unsetopt beep
+bindkey -e
+# End of lines configured by zsh-newuser-install
+# The following lines were added by compinstall
+#zstyle :compinstall filename "${HOME}/.zshrc"
+
+autoload -Uz compinit
+compinit
+# End of lines added by compinstall
+autoload -U +X bashcompinit && bashcompinit
+
+# Config GRML Zsh
+autoload -U colors && colors
+zstyle ':vcs_info:*' enable git
+zstyle ':vcs_info:*' check-for-changes true
+zstyle ':vcs_info:*' unstagedstr '!'
+zstyle ':vcs_info:*' stagedstr '+'
+zstyle ':vcs_info:git*' formats "%{${fg[cyan]}%}[%{${fg[yellow]}%}%b%{${fg[yellow]}%}%m%u%c%{${fg[cyan]}%}]%{$reset_color%}"
+zstyle ':prompt:grml:*:items:host' pre '%F{green}'
+zstyle ':prompt:grml:*:items:host' post '%f'
+zstyle ':prompt:grml:*:items:path' pre '%F{blue}'
+zstyle ':prompt:grml:*:items:path' post '%f'
+zstyle ':prompt:grml:left:setup' items rc change-root host path virtual-env vcs percent
+
+function virtual_env_prompt () {
+    REPLY=${VIRTUAL_ENV+(${VIRTUAL_ENV:t}) }
+}
+
+grml_theme_has_token virtual-env || grml_theme_add_token virtual-env -f virtual_env_prompt '%F{magenta}' '%f'
+
+# Key Bindings
+bindkey '\e[3~' delete-char  # delete
+if [ "${TERM}" = "linux" ]; then
+    bindkey '\e[1~' beginning-of-line  # Home
+    bindkey '\e[4~' end-of-line  # End
+elif [ "${TERM}" = "xterm-256color" ]; then
+    bindkey '\e[H' beginning-of-line  # Home
+    bindkey '\e[F' end-of-line  # End
+fi
+
+# Set PATH
+path=("${HOME}/bin" ${HOME}/.cargo/bin $path)
+export PATH
+
+# Aliases
+if [ -f ~/.zsh_aliases ]; then
+    source ~/.zsh_aliases
+fi
+
+# Command completion
+# git tab completion handled by autoload of compinit
+
+# AWS
+if [ -e /usr/bin/aws_zsh_completer.sh ]; then
+    source /usr/bin/aws_zsh_completer.sh
+fi
+
+# Kubernetes
+type kubectl > /dev/null && source <(kubectl completion zsh)
+type minikube > /dev/null && source <(minikube completion zsh)
+type kops > /dev/null && source <(kops completion zsh)
+
+# Hashicorp
+type terraform > /dev/null && complete -o nospace -C /usr/bin/terraform terraform
+type vault > /dev/null && complete -o nospace -C /usr/bin/vault vault
+
+# Azure cli autocomplete
+AZURE_COMPLETION_PATH="${HOME}/lib/azure-cli/az.completion"
+if [ -e ${AZURE_COMPLETION_PATH} ]; then
+    source ${AZURE_COMPLETION_PATH}
+fi
+
+# Python Virtualenv
+if [ -e /usr/bin/virtualenvwrapper.sh ]; then
+    source /usr/bin/virtualenvwrapper.sh
+fi
+
+# SSH Agent
+if [ "$(uname)" = "Linux" ]; then
+    if [ -f /usr/bin/keychain ]; then
+        eval $(keychain --eval --quiet id_rsa)
+    else
+        echo "keychain is not installed."
+    fi
+fi
+
+# Prevent ranger inception
+ranger() {
+    if [ -z "$RANGER_LEVEL" ]; then
+        /usr/bin/ranger "$@"
+    else
+        exit
+    fi
+}
+
+# Peco command history search
+if type peco > /dev/null; then
+  function peco_select_history() {
+    BUFFER=$(fc -l -n 1 | peco --layout=bottom-up --query "$LBUFFER")
+    CURSOR=$#BUFFER # move cursor
+    zle -R -c       # refresh
+  }
+
+  zle -N peco_select_history
+  bindkey '^R' peco_select_history
+fi
