@@ -1,2 +1,2 @@
 typeset -U path
-path=(${HOME}/bin $path[@])
+path=(${HOME}/bin ${HOME}/.dotfiles/bin $path[@])

@@ -49,9 +49,9 @@ elif [ "${TERM}" = "xterm-256color" ]; then
     bindkey '\e[F' end-of-line  # End
 fi
 
-# Set PATH
-path=("${HOME}/bin" "${HOME}/.dotfiles/bin" "${HOME}/.krew/bin" "${HOME}/.cargo/bin" $path)
-export PATH
+# Set PATH: See ~/.zshenv
+#path=("${HOME}/bin" ${HOME}/.cargo/bin $path)
+#export PATH
 
 # Aliases
 if [ -f ~/.zsh_aliases ]; then
