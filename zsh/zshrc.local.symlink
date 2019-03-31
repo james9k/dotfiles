@@ -89,7 +89,7 @@ fi
 # SSH Agent
 if [ "$(uname)" = "Linux" ]; then
     if [ -f /usr/bin/keychain ]; then
-        eval $(keychain --eval --quiet id_rsa)
+        eval $(keychain --eval --quick --quiet id_rsa)
     else
         echo "keychain is not installed."
     fi
