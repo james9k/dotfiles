@@ -1,137 +1,127 @@
 #!/usr/bin/env bash
-#
+# vim: set ts=4 sw=4 sts=4 et:
 # bootstrap installs things.
+set -u
 
-cd "$(dirname "$0")/.."
+cd "$(dirname "$0")/.." || exit 1
 DOTFILES_ROOT=$(pwd)
 
 echo "DOTFILES_ROOT ${DOTFILES_ROOT}"
 
-set -e
-
-# Keep bash functions here and allow them to be reused
-. ${DOTFILES_ROOT}/bash/functions.bash
+# Source reusable bash functions
+source "${DOTFILES_ROOT}"/bash/functions.bash
 
 echo ''
 
-function link_file {
-  local src=$1 dst=$2
+function link_file() {
+    local src=$1 dst=$2
 
-  local overwrite= backup= skip=
-  local action=
+    local overwrite= backup= skip=
+    local action=
 
-  if [ -f "$dst" -o -d "$dst" -o -L "$dst" ]
-  then
+    if [ -f "$dst" -o -d "$dst" -o -L "$dst" ]; then
+        if [ "$overwrite_all" == "false" ] && [ "$backup_all" == "false" ] && [ "$skip_all" == "false" ]; then
+            local currentSrc="$(readlink $dst)"
 
-    if [ "$overwrite_all" == "false" ] && [ "$backup_all" == "false" ] && [ "$skip_all" == "false" ]
-    then
+            if [ "$currentSrc" == "$src" ]; then
+                skip=true;
+            else
+                user "File already exists: $dst ($(basename "$src")), what do you want to do?\n\
+                    [s]kip, [S]kip all, [o]verwrite, [O]verwrite all, [b]ackup, [B]ackup all?"
+                read -n 1 action
+                case "${action}" in
+                    o )
+                        overwrite=true
+                        ;;
+                    O )
+                        overwrite_all=true
+                        ;;
+                    b )
+                        backup=true
+                        ;;
+                    B )
+                        backup_all=true
+                        ;;
+                    s )
+                        skip=true
+                        ;;
+                    S )
+                        skip_all=true
+                        ;;
+                    * )
+                        ;;
+                esac
 
-      local currentSrc="$(readlink $dst)"
+            fi
+        fi
 
-      if [ "$currentSrc" == "$src" ]
-      then
+        overwrite=${overwrite:-$overwrite_all}
+        backup=${backup:-$backup_all}
+        skip=${skip:-$skip_all}
 
-        skip=true;
+        if [ "$overwrite" == "true" ]; then
+            rm -rf "$dst"
+            success "removed $dst"
+        fi
 
-      else
+        if [ "$backup" == "true" ]; then
+            mv "$dst" "${dst}.backup"
+            success "moved $dst to ${dst}.backup"
+        fi
 
-        user "File already exists: $dst ($(basename "$src")), what do you want to do?\n\
-        [s]kip, [S]kip all, [o]verwrite, [O]verwrite all, [b]ackup, [B]ackup all?"
-        read -n 1 action
-
-        case "$action" in
-          o )
-            overwrite=true;;
-          O )
-            overwrite_all=true;;
-          b )
-            backup=true;;
-          B )
-            backup_all=true;;
-          s )
-            skip=true;;
-          S )
-            skip_all=true;;
-          * )
-            ;;
-        esac
-
-      fi
-
+        if [ "$skip" == "true" ]; then
+            success "skipped $src"
+        fi
     fi
 
-    overwrite=${overwrite:-$overwrite_all}
-    backup=${backup:-$backup_all}
-    skip=${skip:-$skip_all}
-
-    if [ "$overwrite" == "true" ]
-    then
-      rm -rf "$dst"
-      success "removed $dst"
+    if [ "$skip" != "true" ]; then  # "false" or empty
+        ln -s "$1" "$2"
+        success "linked $1 to $2"
     fi
 
-    if [ "$backup" == "true" ]
-    then
-      mv "$dst" "${dst}.backup"
-      success "moved $dst to ${dst}.backup"
-    fi
-
-    if [ "$skip" == "true" ]
-    then
-      success "skipped $src"
-    fi
-  fi
-
-  if [ "$skip" != "true" ]  # "false" or empty
-  then
-    ln -s "$1" "$2"
-    success "linked $1 to $2"
-  fi
-
-  # Indicate the the boostrap script has been run 
-  touch ${DOTFILES_ROOT}/.initialized
+    # Indicate the the boostrap script has been run
+    touch "${DOTFILES_ROOT}/.initialized"
 }
 
-function install_dotfiles {
-  info 'installing dotfiles'
+function install_dotfiles() {
+    info 'installing dotfiles'
 
-  local overwrite_all=false skip_all=false
+    local overwrite_all=false skip_all=false
 
-  if [ -f ${DOTFILES_ROOT}/.initialized ]
-  then
-      local backup_all=false
-  else
-      # Backup all on the first run.
-      local backup_all=true
-  fi
+    if [ -f "${DOTFILES_ROOT}/.initialized" ]
+    then
+        local backup_all=false
+    else
+        # Backup all on the first run.
+        local backup_all=true
+    fi
 
-  for src in $(find -H "$DOTFILES_ROOT" -maxdepth 2 -name '*.symlink')
-  do
-    dst="$HOME/.$(basename "${src%.*}")"
-    link_file "$src" "$dst"
-  done
+    for src in $(find -H "$DOTFILES_ROOT" -maxdepth 2 -name '*.symlink')
+    do
+        dst="$HOME/.$(basename "${src%.*}")"
+        link_file "$src" "$dst"
+    done
 }
 
 create_tmp_dirs() {
-for tmpdir in ~/tmp ~/tmpvim
+    for tmpdir in ~/tmp ~/tmpvim
     do
-        if [ ! -d ${tmpdir} ]
-        then
+        if [ ! -d ${tmpdir} ]; then
             info "Creating ${tmpdir}"
             mkdir ${tmpdir}
             success "Created ${tmpdir}"
         fi
-done
+    done
 }
 
 function mac_install_homebrew {
-   /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)" 
+    /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 }
 
 function mac_brew_install_stuff {
     brew update
 
-    for app in ack tree findutils p7zip awscli bash-completion
+    for app in "ack" "tree" "findutils" "p7zip" "awscli" "bash-completion"
     do
         brew install ${app}
     done
@@ -139,29 +129,44 @@ function mac_brew_install_stuff {
 
 function mac_brew_cask_install_stuff {
     brew update
+    brew tap caskroom/fonts
 
-    for app in password-gorilla
+    for app in "keepassxc" "font-hack" "font-source-code-pro"
     do
         brew cask install ${app}
     done
 }
 
-function mac_brew_cask_install_fonts {
-    brew tap caskroom/fonts
-    brew cask install font-hack
-    brew cask install font-source-code-pro
-}
+###############################################################################
+
+create_tmp_dirs
 
 install_dotfiles
-create_tmp_dirs
-if [ $(uname) == "Darwin" ]; then
+
+if [ "$(uname)" == "Darwin" ]; then
+    info "Mac detected"
     mac_install_homebrew
     mac_brew_install_stuff
     mac_brew_cask_install_stuff
-    mac_brew_cask_install_fonts
+
+elif [ "$(uname)" == "Linux" ]; then
+    info "Linux detected"
+
+    if [ -f "/etc/arch-release" ]; then
+        PROFILE="sway" archlinux/install_packages.bash
+        success "Arch Linux packages installed."
+    fi
+
+    printf "\n"
+    printf "Install Vim 8 packages natively\n"
+    script/vim_packages.bash
+
+    printf "\nInstall XDG config and data files\n"
+    script/xdg_config.bash
+    script/xdg_local.bash
 fi
 
-cd ${DOTFILES_ROOT} && bin/update-git 
+#cd ${DOTFILES_ROOT} && bin/update-git
 
-echo ''
-echo '  All installed!'
+print "\n\n"
+success "All installed!"

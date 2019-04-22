@@ -9,8 +9,23 @@ git_commands () {
 pushd ~/.dotfiles
 git_commands
 
+REPOS=$(cat <<EOF
+groovyindent-unix
+Jenkinsfile-vim-syntax
+MatchTag
+nerdtree
+salt-vim
+syntastic
+tabnine-vim
+vim-colors-solarized
+vim-sensible
+vim-surround
+vim-terraform
+EOF
+)
+
 pushd ~/.dotfiles/vim/vim.symlink/bundle
-for bundle in "groovyindent-unix" "Jenkinsfile-vim-syntax" "MatchTag" "nerdtree" "salt-vim" "syntastic" "tabnine-vim" "vim-colors-solarized" "vim-sensible" "vim-surround" "vim-terraform"
+for bundle in ${REPOS}
 do
     echo ""
     cd ${bundle}
