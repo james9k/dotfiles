@@ -6,7 +6,7 @@ XDG_CONFIG_HOME="${XDG_CONFIG_HOME:-${HOME}/.config}"
 set -u
 
 # Ensure script is run from root dotfile directory 
-pushd "$(dirname "$0")/.." || exit 1
+cd "$(dirname "$0")/.." || exit 1
 DOTFILES_ROOT=$(pwd)
 
 # Source reusable bash functions

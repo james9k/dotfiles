@@ -7,7 +7,7 @@ GITHUB_DIR="${HOME}/github"
 set -u
 
 # Ensure script is run from root dotfile directory 
-pushd "$(dirname "$0")/.." || exit 1
+cd "$(dirname "$0")/.." || exit 1
 DOTFILES_ROOT=$(pwd)
 
 # Source reusable bash functions
@@ -34,14 +34,14 @@ function clone_git_repo() {
 
 
     if [ -d "${GITHUB_DIR}/${REPO_NAME}" ]; then
-        pushd "${GITHUB_DIR}/${REPO_NAME}" || exit 1
+        pushd "${GITHUB_DIR}/${REPO_NAME}" > /dev/null || exit 1
         git pull origin master
         success "Pulled latest for ${REPO_NAME}"
-        popd || exit 1
+        popd > /dev/null || exit 1
     else
-        pushd "${GITHUB_DIR}" || exit 1
+        pushd "${GITHUB_DIR}" > /dev/null || exit 1
         git clone "${REPO_URL}"
-        popd || exit 1
+        popd > /dev/null || exit 1
         success "Cloned ${REPO_NAME}"
     fi
 }
