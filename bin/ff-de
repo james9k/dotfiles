@@ -1,0 +1,3 @@
+#!/bin/sh
+
+exec /usr/lib/firefox-developer-edition/firefox -P "jp-de" "$@"
