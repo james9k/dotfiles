@@ -15,20 +15,24 @@ function on_error() {
 }
 
 
-info () {
+function info() {
   printf "  [ %b..%b ] %s\n" "${BLUE}" "${NC}" "${1}"
 }
 
-user () {
+function warn() {
   printf "\r  [ %b?%b ] %s\n" "${YELLOW}" "${NC}" "${1}"
 }
 
-success () {
+function user() {
+  printf "\r  [ %b?%b ] %s\n" "${YELLOW}" "${NC}" "${1}"
+}
+
+function success() {
   printf "\r  [ %bOK%b ] %s\n" "${GREEN}" "${NC}" "${1} ✓"
   #printf "\r\033[2K  [ \033[00;32mOK\033[0m ] $1\n"
 }
 
-fail () {
+function fail() {
   printf "\r  [ %bFAIL%b ] %s\n" "${RED}" "${NC}" "${1}"
   #printf "\r\033[2K  [\033[0;31mFAIL\033[0m] $1\n"
   echo ''
