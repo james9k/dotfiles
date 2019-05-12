@@ -24,10 +24,11 @@ if type exa > /dev/null; then
     alias ela='exa -lga'
     alias e='exa'
     alias ea='exa -a'
-    alias ll='el'
-    alias lla='ela'
+
+    alias ll='exa -lg'
+    alias lla='exa -lga'
     alias l='exa'
-    alias la='ea'
+    alias la='exa -a'
 else
     # regular ls
     alias ll='ls -l'
