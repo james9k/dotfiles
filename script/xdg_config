@@ -1,0 +1,47 @@
+#!/bin/bash
+# vim: set ts=4 sw=4 sts=4 et:
+DEBUG="${DEBUG:-false}"
+XDG_CONFIG_HOME="${XDG_CONFIG_HOME:-${HOME}/.config}"
+
+set -u
+if [ "${DEBUG}" == "true" ]; then set -x; fi
+
+TODAY=$(date --iso-860)
+
+# Ensure script is run from root dotfile directory 
+cd "$(dirname "$0")/.." || exit 1
+DOTFILES_ROOT=$(pwd)
+
+# Source reusable bash functions
+source "${DOTFILES_ROOT}"/bash/functions.bash
+
+function symlink() {
+    local SOURCE="${1}"
+    local TARGET="${2}"
+    ln -s "${SOURCE}" "${TARGET}"
+    success "Linked ${SOURCE} to ${TARGET}"
+}
+
+for dotfile_config_dir in xdg_dirs/config/*
+do
+    config_name=$(basename "${dotfile_config_dir}")
+    xdg_config_path="${XDG_CONFIG_HOME}/${config_name}"
+    
+
+    if [ -h "${xdg_config_path}" ]; then
+        warn "${xdg_config_path} is already symlinked"
+
+    elif [ -d "${xdg_config_path}" ]; then
+        mv "${xdg_config_path}" "${xdg_config_path}.orig-${TODAY}" 
+        info "Move original directory ${config_name} => ${config_name}.orig-${TODAY}"
+        symlink "${DOTFILES_ROOT}/${dotfile_config_dir}" "${xdg_config_path}"
+
+    elif [ -e "xdg_config_path" ]; then
+        warn "${xdg_config_path} already exists in some form."
+
+    else
+        symlink "${DOTFILES_ROOT}/${dotfile_config_dir}" "${xdg_config_path}"
+    fi
+
+    printf "\n"
+done

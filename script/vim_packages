@@ -5,7 +5,7 @@ set -u
 VIM_DIR="${HOME}/.vim"
 GITHUB_DIR="${HOME}/github"
 
-# Ensure script is run from root dotfile directory 
+# Ensure script is run from root dotfile directory
 cd "$(dirname "$0")/.." || exit 1
 DOTFILES_ROOT=$(pwd)
 
@@ -45,7 +45,7 @@ function link_vim_ft_plugin() {
 
     clone_git_repo "${GIT_USER}" "${REPO_NAME}"
 
-    if [ ! -h "${START_DIR}/${REPO_NAME}" ]; then 
+    if [ ! -h "${START_DIR}/${REPO_NAME}" ]; then
         ln -s "${GITHUB_DIR}/${REPO_NAME}" "${START_DIR}/${REPO_NAME}"
         success "Linked ${GITHUB_DIR}/${REPO_NAME} to ${START_DIR}/${REPO_NAME}"
     else
