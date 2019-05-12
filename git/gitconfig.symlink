@@ -13,4 +13,4 @@
 #    pom = pull origin master
 #    rpo = remote prune origin
 [core]
-    editor = vim
+    editor = nvim
