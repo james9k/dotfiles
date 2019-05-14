@@ -10,6 +10,11 @@ set -u
 cd "$(dirname "$0")/.." || exit 1
 DOTFILES_ROOT=$(pwd)
 
+if [ ! -d "${XDG_DATA_HOME}" ]; then
+    mkdir "${XDG_DATA_HOME}"
+    success "Created directory ${XDG_DATA_HOME}"
+fi
+
 # Source reusable bash functions
 source "${DOTFILES_ROOT}"/bash/functions.bash
 

@@ -12,6 +12,11 @@ TODAY=$(date --iso-860)
 cd "$(dirname "$0")/.." || exit 1
 DOTFILES_ROOT=$(pwd)
 
+if [ ! -d "${XDG_CONFIG_HOME}" ]; then
+    mkdir "${XDG_CONFIG_HOME}"
+    success "Created directory ${XDG_CONFIG_HOME}"
+fi
+
 # Source reusable bash functions
 source "${DOTFILES_ROOT}"/bash/functions.bash
 

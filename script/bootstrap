@@ -114,27 +114,6 @@ create_my_dirs() {
     done
 }
 
-function mac_install_homebrew {
-    if type brew > /dev/null; then
-        echo "Homebrew already installed"
-    else
-        /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-    fi
-}
-
-function mac_brew_install_stuff {
-    brew update
-
-    brew install ack awscli bash-completion findutils fzf neovim p7zip the_silver_searcher tree wget zsh zsh-completions
-}
-
-function mac_brew_cask_install_stuff {
-    brew update
-    brew tap homebrew/cask-fonts
-
-    brew cask install font-hack font-source-code-pro keepassxc vimr
-}
-
 ###############################################################################
 
 create_my_dirs
@@ -143,10 +122,9 @@ install_dotfiles
 
 if [ "$(uname)" == "Darwin" ]; then
     info "Mac detected"
-    mac_install_homebrew
-    mac_brew_install_stuff
-    mac_brew_cask_install_stuff
+    osx/homebrew
     osx/grml_zsh
+    osx/nvim
 
 elif [ "$(uname)" == "Linux" ]; then
     info "Linux detected"
@@ -155,15 +133,15 @@ elif [ "$(uname)" == "Linux" ]; then
         PROFILE="" archlinux/install_packages.bash
         success "Arch Linux packages installed."
     fi
-
-    printf "\n"
-    printf "Install Vim 8 packages natively\n"
-    script/vim_packages
-
-    printf "\nInstall XDG config and data files\n"
-    script/xdg_config
-    script/xdg_local
 fi
+
+printf "\n"
+printf "Install Vim 8 packages natively\n"
+script/vim_packages
+
+printf "\nInstall XDG config and data files\n"
+script/xdg_config
+script/xdg_local
 
 #cd ${DOTFILES_ROOT} && bin/update-git
 
