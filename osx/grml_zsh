@@ -1,0 +1,7 @@
+#!/bin/bash
+
+if type wget > /dev/null; then
+    wget -O ~/.zshrc https://raw.githubusercontent.com/grml/grml-etc-core/master/etc/zsh/zshrc
+else
+    printf "\nwget doesn't seem to be install. Maybe try\nbrew install wget\n"
+fi
