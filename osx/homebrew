@@ -1,0 +1,80 @@
+#!/bin/bash
+# vim: set ts=4 sw=4 sts=4 et:
+set -u
+
+cd "$(dirname "$0")/.." || exit 1
+DOTFILES_ROOT=$(pwd)
+
+# Source reusable bash functions
+source "${DOTFILES_ROOT}"/bash/functions.bash
+
+BREW_PKGS=$(cat <<EOF
+ack
+awscli
+bat
+bash-completion
+exa
+fd
+findutils
+fzf
+htop
+jq
+neovim
+nmap
+p7zip
+python2
+python3
+ranger
+ripgrep
+the_silver_searcher
+terraform
+tig
+tree
+wget
+zsh
+zsh-completions
+EOF
+)
+
+CASK_PKGS=$(cat <<EOF
+font-hack
+font-source-code-pro
+keepassxc
+speedcrunch
+vimr
+EOF
+)
+
+function mac_install_homebrew {
+    if type brew > /dev/null; then
+        warn "Homebrew already installed"
+    else
+        /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+        success "Homebrew installed."
+    fi
+}
+
+function mac_brew_install_stuff {
+    brew update
+
+    # Expand pkg list to space sperated string
+    brew install $(for pkg in ${BREW_PKGS}; do printf "%s " "${pkg}"; done)
+
+    success "Homebrew packages installed."
+}
+
+function mac_brew_cask_install_stuff {
+    brew update
+    brew tap homebrew/cask-fonts
+
+    # Expand pkg list to space sperated string
+    brew cask install $(for pkg in ${CASK_PKGS}; do printf "%s " "${pkg}"; done)
+
+    success "Homebrew Cask packages installed."
+}
+
+###############################################################################
+
+mac_install_homebrew
+mac_brew_install_stuff
+mac_brew_cask_install_stuff
