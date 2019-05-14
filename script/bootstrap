@@ -115,26 +115,24 @@ create_my_dirs() {
 }
 
 function mac_install_homebrew {
-    /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+    if type brew > /dev/null; then
+        echo "Homebrew already installed"
+    else
+        /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+    fi
 }
 
 function mac_brew_install_stuff {
     brew update
 
-    for app in "ack" "tree" "findutils" "p7zip" "awscli" "bash-completion"
-    do
-        brew install ${app}
-    done
+    brew install ack awscli bash-completion findutils fzf neovim p7zip the_silver_searcher tree wget zsh zsh-completions
 }
 
 function mac_brew_cask_install_stuff {
     brew update
-    brew tap caskroom/fonts
+    brew tap homebrew/cask-fonts
 
-    for app in "keepassxc" "font-hack" "font-source-code-pro"
-    do
-        brew cask install ${app}
-    done
+    brew cask install font-hack font-source-code-pro keepassxc vimr
 }
 
 ###############################################################################
@@ -148,6 +146,7 @@ if [ "$(uname)" == "Darwin" ]; then
     mac_install_homebrew
     mac_brew_install_stuff
     mac_brew_cask_install_stuff
+    osx/grml_zsh
 
 elif [ "$(uname)" == "Linux" ]; then
     info "Linux detected"
