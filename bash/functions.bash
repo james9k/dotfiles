@@ -10,8 +10,9 @@ NC='\033[m'
 trap on_error ERR
 
 function on_error() {
-    printf "%bERROR%b: Last command(%s): %s" "${RED}" "${NC}" "$?" "${BASH_COMMAND}\n"
-    exit 1
+    EXIT_STATUS="$?"
+    printf "%bERROR%b: Last command(%s): %s" "${RED}" "${NC}" "${EXIT_STATUS}" "${BASH_COMMAND}\n"
+    exit "${EXIT_STATUS}"
 }
 
 
