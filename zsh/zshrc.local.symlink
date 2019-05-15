@@ -1,5 +1,5 @@
 # Turn on profiling
-zmodload zsh/zprof
+#zmodload zsh/zprof
 
 HISTFILE=~/.histfile
 HISTSIZE=10000
@@ -121,4 +121,4 @@ fi
 export EDITOR="nvim"
 
 # Turn off profiling
-zprof
+#zprof

@@ -95,10 +95,11 @@ font:
     #   - (Linux) monospace
     #   - (Windows) Consolas
     #family: monospace
-    family: Hack
+    #family: Hack
+    family: 'DejaVu Sans Mono'
 
     # The `style` can be specified to pick a specific face.
-    style: Regular
+    style: Book
 
   # Bold font face
   bold:
@@ -107,7 +108,8 @@ font:
     # If the bold family is not specified, it will fall back to the
     # value specified for the normal font.
     #family: monospace
-    family: Hack
+    #family: Hack
+    family: 'DejaVu Sans Mono'
 
     # The `style` can be specified to pick a specific face.
     style: Bold
@@ -119,10 +121,11 @@ font:
     # If the italic family is not specified, it will fall back to the
     # value specified for the normal font.
     #family: monospace
-    family: Hack
+    #family: Hack
+    family: 'DejaVu Sans Mono'
 
     # The `style` can be specified to pick a specific face.
-    style: Italic
+    style: Oblique
 
   # Point size
   size: 10.0

@@ -1,7 +1,7 @@
 " Set a decent font
 if has("gui_macvim")
     " OSX
-    set guifont=Source\ Code\ Pro:h12,Hack:h13,Menlo:h13
+    set guifont=Menlo:h13,Source\ Code\ Pro:h12,Hack:h13
 elseif has("gui_gtk2") || has("gui_gtk3")
     " Set Copy,Cut and Paste shortcut keys
     " paste will first go into visual mode
@@ -13,14 +13,13 @@ elseif has("gui_gtk2") || has("gui_gtk3")
     let scp=system('fc-list | grep -c Source\ Code\ Pro')
     let hack=system('fc-list | grep -c Hack')
     let incon=system('fc-list | grep -c Inconsolata')
-    if ( scp > 0 )
+    let dsm=system('fc-list | grep -c DejaVu\ Sans\ Mono')
+    if ( dsm > 0 )
+        set guifont=DejaVu\ Sans\ Mono\ 11
+    elseif ( scp > 0 )
         set guifont=Source\ Code\ Pro\ 11
     elseif ( hack > 0 )
         set guifont=Hack\ 11
-    elseif ( incon > 0 )
-        set guifont=Inconsolata\ Medium\ 11
-    else
-        set guifont=DejaVu\ Sans\ Mono\ 11
     endif
 
 endif
