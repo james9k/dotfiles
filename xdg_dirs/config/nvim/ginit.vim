@@ -1,6 +1,6 @@
 "set guifont=Source\ Code\ Pro:h11
-set guifont=DejaVu\ Sans\ Mono:h11
-"set guifont=Fira\ Mono:h11
+"set guifont=DejaVu\ Sans\ Mono:h11
+set guifont=Fira\ Code:h11
 set mouse=nv
 
 " Set Copy,Cut and Paste shortcut keys

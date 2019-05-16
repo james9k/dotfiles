@@ -38,7 +38,7 @@ EOF
 )
 DATABASE="dbeaver"
 EDITOR="gvim neovim neovim-qt python-neovim vim-jedi"
-FONTS="adobe-source-code-pro-fonts ttf-bitstream-vera ttf-dejavu ttf-freefont ttf-hack ttf-liberation"
+FONTS="adobe-source-code-pro-fonts ttf-bitstream-vera ttf-dejavu ttf-fira-code ttf-freefont ttf-hack ttf-liberation"
 GNOME="gdm gnome gnome-shell gnome-terminal gnome-system-monitor gnome-tweaks"
 GUI_APPS="clementine speedcrunch"
 I3="i3-wm i3lock i3status gsimplecal dmenu"
