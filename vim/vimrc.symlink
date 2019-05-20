@@ -1,42 +1,41 @@
-"Pathogen
-"execute pathogen#infect()
-
 syntax enable
-"syntax on
 
-filetype plugin indent on
+"filetype plugin indent on
 
-" Fonts are set in gvimrc
-
-set ignorecase      " Do case insensitive matching
 set number          " Show line numbers
 set hlsearch        " Highlight all search matches
 set colorcolumn=80  " Show coloured line at column 80
-" set showmatch       " Show matching brackets.
-set incsearch       " Will start highlighting matching parts immediately
+set ignorecase      " Do case insensitive matching
 set nowrap          " Keep lines long
+set incsearch       " Will start highlighting matching parts immediately
+" set showmatch       " Show matching brackets.
 
 " Put backup and swap files in one place
 set backupdir=~/tmpvim
 set directory=~/tmpvim
 
-" Set tab at 4
-set tabstop=8
-set expandtab
-set shiftwidth=4
-set softtabstop=4
+set splitright  " Open splits to the right
+set noequalalways  " Split windows relative to current split
 
-" Split windows relative to current split
-set noequalalways
+" Set tab at 4
+"set tabstop=8
+"set expandtab
+"set shiftwidth=4
+"set softtabstop=4
+
 " Navigate between splits with keyboard shortcuts
 " https://realpython.com/blog/python/vim-and-python-a-match-made-in-heaven/
 nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
+packadd! palenight.vim
+colorscheme palenight
 
-" Open splits to the right
-set splitright
+set background=dark
+
+autocmd FileType html,htmldjango,json,yaml setlocal shiftwidth=2 softtabstop=2 expandtab
+autocmd FileType conf,python,sh,zsh setlocal shiftwidth=4 softtabstop=4 expandtab
 
 " Syntastic - Recommended settings
 " set statusline+=%#warningmsg#
@@ -48,16 +47,3 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 let g:syntastic_loc_list_height = 3
-
-" Vim Solarized Colours
-packadd vim-colors-solarized
-"let g:solarized_termcolors=256
-colorscheme solarized
-set background=dark
-
-"Jedi
-let g:jedi#use_tabs_not_buffers = 1
-let g:jedi#force_py_version = 3
-
-" TabNine autocompletion
-"set rtp+=~/.vim/bundle/tabnine-vim

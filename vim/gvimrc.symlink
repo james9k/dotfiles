@@ -1,8 +1,8 @@
-" Set a decent font
-if has("gui_macvim")
+" Set Fonts
+if has("mac")
     " OSX
-    set guifont=Menlo:h13,Source\ Code\ Pro:h12,Hack:h13
-elseif has("gui_gtk2") || has("gui_gtk3")
+    set guifont=Fira\ Code:h13,Menlo:h13
+elseif has("unix")
     " Set Copy,Cut and Paste shortcut keys
     " paste will first go into visual mode
     vmap <C-c> "+yi
@@ -10,21 +10,17 @@ elseif has("gui_gtk2") || has("gui_gtk3")
     vmap <C-v> c<ESC>"+p
     imap <C-v> <C-r><C-o>+
     " Try to set preferred fonts
-    let scp=system('fc-list | grep -c Source\ Code\ Pro')
-    let hack=system('fc-list | grep -c Hack')
-    let incon=system('fc-list | grep -c Inconsolata')
+    let firac=system('fc-list | grep -c Fira\ Code')
     let dsm=system('fc-list | grep -c DejaVu\ Sans\ Mono')
-    if ( dsm > 0 )
+    let incon=system('fc-list | grep -c Inconsolata')
+    if ( firac > 0 )
+        set guifont=Fira\ Code\ 11
+    elseif ( dsm > 0 )
         set guifont=DejaVu\ Sans\ Mono\ 11
-    elseif ( scp > 0 )
-        set guifont=Source\ Code\ Pro\ 11
-    elseif ( hack > 0 )
-        set guifont=Hack\ 11
+    elseif ( incon > 0 )
+        set guifont=Inconsolata 11
     endif
 
 endif
 
-set lines=40 columns=86
-
-set background=dark
-colorscheme solarized
+set lines=50 columns=90
