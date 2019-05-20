@@ -66,6 +66,8 @@ fi
 # AWS
 if [ -e /usr/bin/aws_zsh_completer.sh ]; then
     source /usr/bin/aws_zsh_completer.sh
+elif [ -e "/usr/local/share/zsh/site-functions/aws_zsh_completer.sh" ]; then
+    source /usr/local/share/zsh/site-functions/aws_zsh_completer.sh
 fi
 
 # Kubernetes
