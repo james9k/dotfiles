@@ -1,4 +1,6 @@
-set rtp^=/usr/share/vim/vimfiles/
+if has("unix")
+  set rtp^=/usr/share/vim/vimfiles/
+endif
 
 syntax enable
 
