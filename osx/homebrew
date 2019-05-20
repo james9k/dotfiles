@@ -26,11 +26,13 @@ python2
 python3
 ranger
 ripgrep
+shellcheck
 the_silver_searcher
 terraform
 tig
 tree
 wget
+ykman
 zsh
 zsh-completions
 EOF
