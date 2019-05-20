@@ -11,8 +11,9 @@ source "${DOTFILES_ROOT}"/bash/functions.bash
 BREW_PKGS=$(cat <<EOF
 ack
 awscli
-bat
+bash
 bash-completion
+bat
 exa
 fd
 findutils
