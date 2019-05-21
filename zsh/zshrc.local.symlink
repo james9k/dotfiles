@@ -72,11 +72,11 @@ fi
 
 # Kubernetes
 #type kubectl > /dev/null && source <(kubectl completion zsh)
-type minikube > /dev/null && source "${HOME}/.dotfiles/completion/minikube-zsh"
+whence minikube > /dev/null && source "${HOME}/.dotfiles/completion/minikube-zsh"
 #type kops > /dev/null && source <(kops completion zsh)
 
 # Hashicorp
-type terraform > /dev/null && complete -o nospace -C /usr/bin/terraform terraform
+whence terraform > /dev/null && complete -o nospace -C $(whence terraform) terraform
 #type vault > /dev/null && complete -o nospace -C /usr/bin/vault vault
 
 # Python
