@@ -16,12 +16,14 @@ HISTCONTROL=ignorespace:erasedups
 shopt -s histappend
 
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
-HISTSIZE=2000
-HISTFILESIZE=2000
+HISTSIZE=9000
+HISTFILESIZE=9000
 
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
 shopt -s checkwinsize
+
+export PATH=$PATH:${HOME}/bin:${HOME}/.dotfiles/bin
 
 # If set, the pattern "**" used in a pathname expansion context will
 # match all files and zero or more directories and subdirectories.
@@ -136,23 +138,12 @@ if [ "$(uname)" == "Linux" ]; then
 fi
 
 ########### Do Mac stuff ###########
-if [ $(uname) == "Darwin" ]
-then
-    # For "awscli" installed by brew
-    complete -C aws_completer aws
-
+if [ $(uname) == "Darwin" ]; then
     # Virtualenv
     export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python3
-    if [ -e /usr/local/bin/virtualenvwrapper.sh ]
-    then
-        . /usr/local/bin/virtualenvwrapper.sh
+    if [ -e /usr/local/bin/virtualenvwrapper.sh ]; then
+        source /usr/local/bin/virtualenvwrapper.sh
     fi
-fi
-
-# Azure cli autocomplete
-AZURE_COMPLETION_PATH="${HOME}/lib/azure-cli/az.completion"
-if [ -f ${AZURE_COMPLETION_PATH} ]; then
-    source ${AZURE_COMPLETION_PATH}
 fi
 
 # Start Gnome with Wayland manually as gdm has been giving trouble
@@ -161,11 +152,8 @@ fi
 #fi
 
 # Command completion
-complete -C /usr/bin/aws_completer aws
-complete -C /usr/bin/vault vault
+# AWS
+type aws_completer > /dev/null && complete -C "$(type -p aws_completer)" aws
 
-export PATH=$PATH:${HOME}/bin
-
-source "${HOME}/lib/azure-cli/az.completion"
-
-complete -C /usr/bin/terraform terraform
+# Hashicorp
+type terraform > /dev/null && complete -C "$(type -p terraform)" terraform
