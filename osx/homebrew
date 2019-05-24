@@ -17,6 +17,7 @@ bat
 exa
 fd
 findutils
+flake8
 fzf
 htop
 jq
