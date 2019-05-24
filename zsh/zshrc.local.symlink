@@ -86,41 +86,34 @@ elif [ -e /usr/bin/virtualenvwrapper.sh ]; then
     source /usr/bin/virtualenvwrapper.sh
 fi
 
-# SSH Agent
 if [ "$(uname)" = "Linux" ]; then
+    # SSH Agent
     type keychain > /dev/null && eval $(keychain --eval --quick --quiet id_rsa)
+
+    if [ -f "/usr/share/fzf/key-bindings.zsh" ]; then
+        source /usr/share/fzf/key-bindings.zsh  # Arch Linux
+    fi
+
+    RANGER_BIN="/usr/bin/ranger"
+
+
+elif [ "$(uname)" = "Darwin" ]; then
+    export FZF_DEFAULT_COMMAND='fd --type f --color=never'
+    export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+    source $(brew --prefix)/opt/fzf/shell/key-bindings.zsh
+
+    RANGER_BIN="$(brew --prefix)/bin/ranger"
 fi
 
-# Prevent ranger inception
 ranger() {
+    # Prevent ranger inception
+
     if [ -z "$RANGER_LEVEL" ]; then
-        /usr/bin/ranger "$@"
+        "${RANGER_BIN}" "$@"
     else
         exit
     fi
 }
-
-# fzf command history search
-#if type fzf > /dev/null; then
-#  function fzf_select_history() {
-#    #BUFFER=$(fc -l -n 1 | fzf "$LBUFFER")
-#    BUFFER=$(fc -l -n 1 | fzf)
-#    CURSOR=$#BUFFER # move cursor
-#    zle -R -c       # refresh
-#  }
-#
-#  zle -N fzf_select_history
-#  bindkey '^R' fzf_select_history
-#fi
-
-if [ "$(uname)" = "Darwin" ]; then
-    export FZF_DEFAULT_COMMAND='fd --type f --color=never'
-    export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-    source $(brew --prefix)/opt/fzf/shell/key-bindings.zsh
-elif [ -f "/usr/share/fzf/key-bindings.zsh" ]; then
-    # Arch Linux
-    source /usr/share/fzf/key-bindings.zsh
-fi
 
 export EDITOR="nvim"
 
