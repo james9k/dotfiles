@@ -79,10 +79,11 @@ link_vim_ft_plugin "hashivim" "vim-terraform"
 link_vim_ft_plugin "martinda" "Jenkinsfile-vim-syntax"
 link_vim_ft_plugin "saltstack" "salt-vim"
 link_vim_ft_plugin "scrooloose" "nerdtree"
-link_vim_ft_plugin "scrooloose" "syntastic"
+#link_vim_ft_plugin "scrooloose" "syntastic"
 link_vim_ft_plugin "tpope" "vim-sensible"
 link_vim_ft_plugin "tpope" "vim-surround"
 link_vim_ft_plugin "vim-scripts" "groovyindent-unix"
+link_vim_ft_plugin "w0rp" "ale"
 link_vim_ft_plugin "zxqfl" "tabnine-vim"
 
 # Colour Schemes
