@@ -54,59 +54,40 @@ function clone_git_repo() {
 function link_neovim_github_plugin() {
     # $XDG_DATA_HOME/nvim/site/pack/altercation/start
     APP="nvim"
-    GIT_USER="${1}"
-    REPO_NAME="${2}"
+    STARTOPT="${1}"
+    GIT_USER="${2}"
+    REPO_NAME="${3}"
 
-    APP_START_DIR="${XDG_DATA_HOME}/${APP}/site/pack/github/start"
+    PLUGIN_PARENT_DIR="${XDG_DATA_HOME}/${APP}/site/pack/github/${STARTOPT}"
 
-    create_directory "${APP_START_DIR}"
-
-    clone_git_repo "${GIT_USER}" "${REPO_NAME}"
-
-    if [ ! -h "${APP_START_DIR}/${REPO_NAME}" ]; then 
-        ln -s "${GITHUB_DIR}/${REPO_NAME}" "${APP_START_DIR}/${REPO_NAME}"
-        success "Linked ${GITHUB_DIR}/${REPO_NAME} to ${APP_START_DIR}/${REPO_NAME}"
-    else
-        user "${APP_START_DIR}/${REPO_NAME} already symlinked"
-    fi
-    printf "\n"
-}
-
-function link_neovim_colour_scheme() {
-    APP="nvim"
-    GIT_USER="${1}"
-    REPO_NAME="${2}"
-
-    COLOUR_SCHEME_DIR="${XDG_DATA_HOME}/${APP}/site/pack/colours/opt"
-
-    create_directory "${COLOUR_SCHEME_DIR}"
+    create_directory "${PLUGIN_PARENT_DIR}"
 
     clone_git_repo "${GIT_USER}" "${REPO_NAME}"
 
-    if [ ! -h "${COLOUR_SCHEME_DIR}/${REPO_NAME}" ]; then 
-        ln -s "${GITHUB_DIR}/${REPO_NAME}" "${COLOUR_SCHEME_DIR}/${REPO_NAME}"
-        success "Linked ${GITHUB_DIR}/${REPO_NAME} to ${COLOUR_SCHEME_DIR}/${REPO_NAME}"
+    if [ ! -h "${PLUGIN_PARENT_DIR}/${REPO_NAME}" ]; then 
+        ln -s "${GITHUB_DIR}/${REPO_NAME}" "${PLUGIN_PARENT_DIR}/${REPO_NAME}"
+        success "Linked ${GITHUB_DIR}/${REPO_NAME} to ${PLUGIN_PARENT_DIR}/${REPO_NAME}"
     else
-        user "${COLOUR_SCHEME_DIR}/${REPO_NAME} already symlinked"
+        user "${PLUGIN_PARENT_DIR}/${REPO_NAME} already symlinked"
     fi
     printf "\n"
 }
 
 # File type plugins
-link_neovim_github_plugin "gregsexton" "MatchTag"
-link_neovim_github_plugin "hashivim" "vim-terraform"
-link_neovim_github_plugin "martinda" "Jenkinsfile-vim-syntax"
-link_neovim_github_plugin "saltstack" "salt-vim"
-link_neovim_github_plugin "scrooloose" "nerdtree"
-#link_neovim_github_plugin "scrooloose" "syntastic"
-link_neovim_github_plugin "tpope" "vim-sensible"
-link_neovim_github_plugin "tpope" "vim-surround"
-link_neovim_github_plugin "vim-scripts" "groovyindent-unix"
-link_neovim_github_plugin "w0rp" "ale"
-link_neovim_github_plugin "zxqfl" "tabnine-vim"
+link_neovim_github_plugin "start" "gregsexton" "MatchTag"
+link_neovim_github_plugin "start" "hashivim" "vim-terraform"
+link_neovim_github_plugin "start" "martinda" "Jenkinsfile-vim-syntax"
+link_neovim_github_plugin "start" "saltstack" "salt-vim"
+link_neovim_github_plugin "start" "scrooloose" "nerdtree"
+#link_neovim_github_plugin "start" "scrooloose" "syntastic"
+link_neovim_github_plugin "start" "tpope" "vim-sensible"
+link_neovim_github_plugin "start" "tpope" "vim-surround"
+link_neovim_github_plugin "start" "vim-scripts" "groovyindent-unix"
+link_neovim_github_plugin "start" "w0rp" "ale"
+link_neovim_github_plugin "start" "zxqfl" "tabnine-vim"
 
 # Colour Schemes
-link_neovim_colour_scheme "joshdick" "onedark.vim"
-link_neovim_colour_scheme "drewtempelmeyer" "palenight.vim"
+link_neovim_github_plugin "opt" "joshdick" "onedark.vim"
+link_neovim_github_plugin "opt" "drewtempelmeyer" "palenight.vim"
 
 printf "\n"

@@ -36,59 +36,41 @@ function clone_git_repo() {
 
 function link_vim_github_plugin() {
     # Link FileType plugin to load on start
-    GIT_USER="${1}"
-    REPO_NAME="${2}"
+    STARTOPT="${1}"
+    GIT_USER="${2}"
+    REPO_NAME="${3}"
 
-    START_DIR="${VIM_DIR}/pack/github/start"
+    PLUGIN_PARENT_DIR="${VIM_DIR}/pack/github/${STARTOPT}"
 
-    create_directory "${START_DIR}"
-
-    clone_git_repo "${GIT_USER}" "${REPO_NAME}"
-
-    if [ ! -h "${START_DIR}/${REPO_NAME}" ]; then
-        ln -s "${GITHUB_DIR}/${REPO_NAME}" "${START_DIR}/${REPO_NAME}"
-        success "Linked ${GITHUB_DIR}/${REPO_NAME} to ${START_DIR}/${REPO_NAME}"
-    else
-        user "${START_DIR}/${REPO_NAME} already symlinked"
-    fi
-    printf "\n"
-}
-
-function link_vim_colour_scheme() {
-    GIT_USER="${1}"
-    REPO_NAME="${2}"
-
-    OPT_DIR="${VIM_DIR}/pack/colours/opt"
-
-    create_directory "${OPT_DIR}"
+    create_directory "${PLUGIN_PARENT_DIR}"
 
     clone_git_repo "${GIT_USER}" "${REPO_NAME}"
 
-    if [ ! -h "${OPT_DIR}/${REPO_NAME}" ]; then 
-        ln -s "${GITHUB_DIR}/${REPO_NAME}" "${OPT_DIR}/${REPO_NAME}"
-        success "Linked ${GITHUB_DIR}/${REPO_NAME} to ${OPT_DIR}/${REPO_NAME}"
+    if [ ! -h "${PLUGIN_PARENT_DIR}/${REPO_NAME}" ]; then
+        ln -s "${GITHUB_DIR}/${REPO_NAME}" "${PLUGIN_PARENT_DIR}/${REPO_NAME}"
+        success "Linked ${GITHUB_DIR}/${REPO_NAME} to ${PLUGIN_PARENT_DIR}/${REPO_NAME}"
     else
-        user "${OPT_DIR}/${REPO_NAME} already symlinked"
+        user "${PLUGIN_PARENT_DIR}/${REPO_NAME} already symlinked"
     fi
     printf "\n"
 }
 
 # File type plugins
-link_vim_github_plugin "gregsexton" "MatchTag"
-link_vim_github_plugin "hashivim" "vim-terraform"
-link_vim_github_plugin "martinda" "Jenkinsfile-vim-syntax"
-link_vim_github_plugin "saltstack" "salt-vim"
-link_vim_github_plugin "scrooloose" "nerdtree"
-#link_vim_github_plugin "scrooloose" "syntastic"
-link_vim_github_plugin "tpope" "vim-sensible"
-link_vim_github_plugin "tpope" "vim-surround"
-link_vim_github_plugin "vim-scripts" "groovyindent-unix"
-link_vim_github_plugin "w0rp" "ale"
-link_vim_github_plugin "zxqfl" "tabnine-vim"
+link_vim_github_plugin "start" "gregsexton" "MatchTag"
+link_vim_github_plugin "start" "hashivim" "vim-terraform"
+link_vim_github_plugin "start" "martinda" "Jenkinsfile-vim-syntax"
+link_vim_github_plugin "start" "saltstack" "salt-vim"
+link_vim_github_plugin "start" "scrooloose" "nerdtree"
+#link_vim_github_plugin "start" "scrooloose" "syntastic"
+link_vim_github_plugin "start" "tpope" "vim-sensible"
+link_vim_github_plugin "start" "tpope" "vim-surround"
+link_vim_github_plugin "start" "vim-scripts" "groovyindent-unix"
+link_vim_github_plugin "start" "w0rp" "ale"
+link_vim_github_plugin "start" "zxqfl" "tabnine-vim"
 
 # Colour Schemes
-link_vim_colour_scheme "altercation" "vim-colors-solarized"
-link_vim_colour_scheme "joshdick" "onedark.vim"
-link_vim_colour_scheme "drewtempelmeyer" "palenight.vim"
+link_vim_github_plugin "opt" "altercation" "vim-colors-solarized"
+link_vim_github_plugin "opt" "joshdick" "onedark.vim"
+link_vim_github_plugin "opt" "drewtempelmeyer" "palenight.vim"
 
 printf "\n"
