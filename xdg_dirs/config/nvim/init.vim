@@ -30,3 +30,7 @@ set background=dark
 
 autocmd FileType html,htmldjango,json,yaml setlocal shiftwidth=2 softtabstop=2 expandtab
 autocmd FileType conf,python,sh,zsh setlocal shiftwidth=4 softtabstop=4 expandtab
+
+" Ale
+packloadall
+silent! helptags ALL
