@@ -1,0 +1,40 @@
+#!/usr/bin/env bash
+# vim: set ts=4 sw=4 sts=4 et:
+# Run this script as root
+set -u
+
+cd "$(dirname "$0")/.." || exit 1
+DOTFILES_ROOT=$(pwd)
+# Source reusable bash functions
+source "${DOTFILES_ROOT}"/bash/functions.bash
+
+CLI_UTILS=$(cat <<EOF
+git
+htop
+nmap
+tree
+wget
+EOF
+)
+EDITOR="vim-enhanced"
+PYTHON=$(cat <<EOF
+python
+python-virtualenv
+EOF
+)
+SHELL_PKGS="bash-completion zsh"
+
+function install_pkgs() {
+    echo "********************************************************************"
+    echo "$1: "
+    echo "********************************************************************"
+    sudo yum install --assumeyes ${2}
+}
+
+sudo yum check-update --assumeyes
+
+# Default stuff to install
+install_pkgs "Shell" "${SHELL_PKGS}"
+install_pkgs "Editor" "${EDITOR}"
+install_pkgs "Python" "$(for pkg in ${PYTHON}; do printf "%s " "${pkg}"; done)"
+install_pkgs "CLI Utils" "$(for pkg in ${CLI_UTILS}; do printf "%s " "${pkg}"; done)"

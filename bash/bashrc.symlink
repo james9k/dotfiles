@@ -23,7 +23,7 @@ HISTFILESIZE=9000
 # update the values of LINES and COLUMNS.
 shopt -s checkwinsize
 
-export PATH=$PATH:${HOME}/bin:${HOME}/.dotfiles/bin
+#export PATH=$PATH:${HOME}/bin:${HOME}/.dotfiles/bin
 
 # If set, the pattern "**" used in a pathname expansion context will
 # match all files and zero or more directories and subdirectories.
@@ -36,31 +36,26 @@ export PATH=$PATH:${HOME}/bin:${HOME}/.dotfiles/bin
 # set a fancy prompt (non-color, unless we know we "want" color)
 case "$TERM" in
     rxvt-unicode-256color) color_prompt=yes;;
-    xterm) color_prompt=yes;;
-    xterm-color) color_prompt=yes;;
-    xterm-256color) color_prompt=yes;;
-    screen-256color) color_prompt=yes;;
+    xterm)
+        color_prompt=yes
+        ;;
+    xterm-color)
+        color_prompt=yes
+        ;;
+    xterm-256color)
+        color_prompt=yes
+        ;;
+    screen-256color)
+        color_prompt=yes
+        ;;
     linux)
         color_prompt=yes
         setterm --blank 0 --powerdown 0 --powersave off
         ;;
+    *)
+        color_prompt=""
+        ;;
 esac
-
-# uncomment for a colored prompt, if the terminal has the capability; turned
-# off by default to not distract the user: the focus in a terminal window
-# should be on the output of commands, not on the prompt
-#force_color_prompt=yes
-
-if [ -n "$force_color_prompt" ]; then
-    if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
-	# We have color support; assume it's compliant with Ecma-48
-	# (ISO/IEC-6429). (Lack of such support is extremely rare, and such
-	# a case would tend to support setf rather than setaf.)
-	color_prompt=yes
-    else
-	color_prompt=
-    fi
-fi
 
 ######## Git Colour Prompt ######## 
 function parse_git_branch  {
@@ -93,15 +88,15 @@ if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
 fi
 
-# enable programmable completion features (you don't need to enable
-# this, if it's already enabled in /etc/bash.bashrc and /etc/profile
-# sources /etc/bash.bashrc).
-if ! shopt -oq posix; then
-  if [ -f /usr/share/bash-completion/bash_completion ]; then
-    . /usr/share/bash-completion/bash_completion
-  elif [ -f /etc/bash_completion ]; then
-    . /etc/bash_completion
-  fi
+# Base completions
+if [ ! -v "${BASH_COMPLETION_COMPAT_DIR}" ]; then
+    if [ -f "/usr/local/etc/profile.d/bash_completion.sh" ]; then
+        . /usr/local/etc/profile.d/bash_completion.sh  # homebrew
+    elif [ -f /usr/share/bash-completion/bash_completion ]; then
+        . /usr/share/bash-completion/bash_completion
+    elif [ -f /etc/bash_completion ]; then
+        . /etc/bash_completion
+    fi
 fi
 
 # Vagrant
@@ -112,48 +107,41 @@ fi
 #set -o vi
 set -o emacs
 
-export EDITOR=$(which vim)
+export EDITOR="$(type -p vim)"
 
 
 ######## Python Virtual Env Wrapper ######## 
-if [ -e /usr/bin/virtualenvwrapper.sh ]; then
+if [ -e /usr/bin/virtualenvwrapper_lazy.sh ]; then
+    source /usr/bin/virtualenvwrapper_lazy.sh
+
+elif [ -e /usr/bin/virtualenvwrapper.sh ]; then
     source /usr/bin/virtualenvwrapper.sh
 fi
 
-
 ######## Git Auto Complete ######## 
-source ~/.git-completion.bash
+#source ~/.git-completion.bash
 
 ######## Sytemd ######## 
 # I want to control my own output
-export SYSTEMD_PAGER=""
+#export SYSTEMD_PAGER=""
 
 ######### SSH Agent #########
-if [ "$(uname)" == "Linux" ]; then
-    if [ -f /usr/bin/keychain ]; then
-        eval $(keychain --eval --quiet id_rsa)
-    else
-        echo "keychain is not installed."
-    fi
+if [ "$(uname)" = "Linux" ]; then
+    type keychain > /dev/null 2>&1 && eval $(keychain --eval --quick --quiet id_rsa)
 fi
 
 ########### Do Mac stuff ###########
-if [ $(uname) == "Darwin" ]; then
-    # Virtualenv
-    export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python3
-    if [ -e /usr/local/bin/virtualenvwrapper.sh ]; then
-        source /usr/local/bin/virtualenvwrapper.sh
-    fi
-fi
-
-# Start Gnome with Wayland manually as gdm has been giving trouble
-#if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]] && [[ -z $XDG_SESSION_TYPE ]]; then
-#  XDG_SESSION_TYPE=wayland exec dbus-run-session gnome-session
+#if [ "$(uname)" = "Darwin" ]; then
+#    # Virtualenv
+#    export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python3
+#    if [ -e /usr/local/bin/virtualenvwrapper.sh ]; then
+#        source /usr/local/bin/virtualenvwrapper.sh
+#    fi
 #fi
 
+###############################################################################
 # Command completion
 # AWS
-type aws_completer > /dev/null && complete -C "$(type -p aws_completer)" aws
-
+type aws_completer > /dev/null 2>&1 && complete -C "$(type -p aws_completer)" aws
 # Hashicorp
-type terraform > /dev/null && complete -C "$(type -p terraform)" terraform
+type terraform > /dev/null 2>&1 && complete -C "$(type -p terraform)" terraform
