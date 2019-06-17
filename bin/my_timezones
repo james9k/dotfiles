@@ -1,0 +1,9 @@
+#!/bin/bash
+
+
+printf "Melbourne: %s\n" "$(TZ="Australia/Melbourne" date)"
+printf "AEST:      %s\n" "$(TZ="Australia/Brisbane" date)"
+
+printf "Cyprus:    %s\n" "$(TZ="Europe/Nicosia" date)"
+
+printf "UTF:       %s\n" "$(TZ=UTF date)"
