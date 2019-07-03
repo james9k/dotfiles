@@ -1,7 +1,7 @@
 " Set Fonts
 if has("mac")
     " OSX
-    set guifont=Fira\ Code:h13,Menlo:h13
+    set guifont=Fira\ Code:h12,Menlo:h13
 elseif has("unix")
     " Set Copy,Cut and Paste shortcut keys
     " paste will first go into visual mode

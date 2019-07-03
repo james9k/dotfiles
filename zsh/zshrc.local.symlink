@@ -103,6 +103,11 @@ elif [ "$(uname)" = "Darwin" ]; then
     source $(brew --prefix)/opt/fzf/shell/key-bindings.zsh
 
     RANGER_BIN="$(brew --prefix)/bin/ranger"
+
+    export VIRTUALENVWRAPPER_PYTHON="/usr/local/bin/python3"
+    if [ -x /usr/local/bin/virtualenvwrapper_lazy.sh ]; then
+        source /usr/local/bin/virtualenvwrapper_lazy.sh
+    fi
 fi
 
 ranger() {

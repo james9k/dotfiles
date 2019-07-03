@@ -6,6 +6,7 @@ elif [ `uname` = "Darwin" ] ; then
     # From grep(1)
     #--colour=[when, --color=[when]]
     export CLICOLOR=1
+    alias watch='watch --color'
 fi
 
 # less typing aliases

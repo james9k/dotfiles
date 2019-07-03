@@ -1,2 +1,6 @@
 typeset -U path
 path=(${HOME}/bin ${HOME}/.dotfiles/bin $path[@])
+
+if [ "$(uname)" = "Darwin" ] ; then
+    path=(${HOME}/Library/Python/3.7/bin $path[@])
+fi
