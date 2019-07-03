@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+
+# Commands found in Amazon docs
+# https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html#verify-key-pair-fingerprints
+
+if [ $# -lt 1 ]; then
+    printf "\nUsage: ec2_key_pair_fingerprints <path to private key>\n\n"
+    exit 1
+fi
+
+PRIVATE_KEY="${1}"
+
+echo "Fingerprints:"
+echo "-------------"
+printf "\nKey pair generated in AWS\n"
+openssl pkcs8 -in "${PRIVATE_KEY}" -inform PEM -outform DER -topk8 -nocrypt | openssl sha1 -c
+
+printf "\nUser created key pair uploaded to AWS\n"
+openssl rsa -in "${PRIVATE_KEY}" -pubout -outform DER | openssl md5 -c
+
+printf "\nUser created key pair with OpenSSH >= 7.8\n"
+ssh -V
+ssh-keygen -ef "${PRIVATE_KEY}" -m PEM | openssl rsa -RSAPublicKey_in -outform DER | openssl md5 -c
