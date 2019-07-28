@@ -72,7 +72,7 @@ fi
 
 # Kubernetes
 #type kubectl > /dev/null && source <(kubectl completion zsh)
-whence minikube > /dev/null && source "${HOME}/.dotfiles/completion/minikube-zsh"
+#whence minikube > /dev/null && source "${HOME}/.dotfiles/completion/minikube-zsh"
 #type kops > /dev/null && source <(kops completion zsh)
 
 # Hashicorp
