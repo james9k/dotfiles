@@ -112,7 +112,8 @@ fi
 #set -o vi
 set -o emacs
 
-export EDITOR=$(which vim)
+EDITOR=$(type -p vim)
+export EDITOR
 
 
 ######## Python Virtual Env Wrapper ######## 
@@ -138,7 +139,7 @@ if [ "$(uname)" == "Linux" ]; then
 fi
 
 ########### Do Mac stuff ###########
-if [ $(uname) == "Darwin" ]; then
+if [ "$(uname)" == "Darwin" ]; then
     # Virtualenv
     export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python3
     if [ -e /usr/local/bin/virtualenvwrapper.sh ]; then
@@ -153,7 +154,7 @@ fi
 
 # Command completion
 # AWS
-type aws_completer > /dev/null && complete -C "$(type -p aws_completer)" aws
+type aws_completer > /dev/null 2>&1  && complete -C "$(type -p aws_completer)" aws
 
 # Hashicorp
-type terraform > /dev/null && complete -C "$(type -p terraform)" terraform
+type terraform > /dev/null 2>&1 && complete -C "$(type -p terraform)" terraform
