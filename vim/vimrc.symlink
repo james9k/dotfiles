@@ -34,7 +34,7 @@ colorscheme palenight
 
 set background=dark
 
-autocmd FileType html,htmldjango,json,yaml setlocal shiftwidth=2 softtabstop=2 expandtab
+autocmd FileType html,htmldjango,json,sql,yaml setlocal shiftwidth=2 softtabstop=2 expandtab
 autocmd FileType conf,python,sh,zsh setlocal shiftwidth=4 softtabstop=4 expandtab
 
 " Syntastic - Recommended settings

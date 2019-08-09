@@ -2,6 +2,8 @@
 if has("mac")
     " OSX
     set guifont=Fira\ Code:h12,Menlo:h13
+    set vb t_vb=
+
 elseif has("unix")
     " Set Copy,Cut and Paste shortcut keys
     " paste will first go into visual mode
