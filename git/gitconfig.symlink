@@ -1,6 +1,12 @@
-[user]
-    name = jamesp9
-    email = james@exitstatus0.net
+[includeIf "gitdir:~/.dotfiles/"]
+  path = ~/.gitconfig-home-github
+[includeIf "gitdir:~/github/"]
+  path = ~/.gitconfig-home-github
+[includeIf "gitdir:~/bitbucket/"]
+  path = ~/.gitconfig-home-bitbucket
+[includeIf "gitdir:~/isignthis/bitbucket/"]
+  path = ~/.gitconfig-work-bitbucket
+
 [push]
     default = simple
 
