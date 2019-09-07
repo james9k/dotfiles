@@ -140,7 +140,7 @@ font:
     style: Oblique
 
   # Point size
-  size: 10.0
+  size: 11.0
 
   # Offset is the extra space around each character. `offset.y` can be thought of
   # as modifying the line spacing, and `offset.x` as modifying the letter spacing.
@@ -513,8 +513,8 @@ debug:
 #   - AppKeypad
 key_bindings:
   # (Windows/Linux only)
-  #- { key: V,        mods: Control|Shift, action: Paste            }
-  #- { key: C,        mods: Control|Shift, action: Copy             }
+  - { key: V,        mods: Control|Shift, action: Paste            }
+  - { key: C,        mods: Control|Shift, action: Copy             }
   #- { key: Insert,   mods: Shift,         action: PasteSelection   }
   #- { key: Key0,     mods: Control,       action: ResetFontSize    }
   #- { key: Equals,   mods: Control,       action: IncreaseFontSize }
