@@ -59,6 +59,7 @@ function link_vim_github_plugin() {
 link_vim_github_plugin "start" "gregsexton" "MatchTag"
 link_vim_github_plugin "start" "hashivim" "vim-terraform"
 link_vim_github_plugin "start" "martinda" "Jenkinsfile-vim-syntax"
+link_vim_github_plugin "start" "pearofducks" "ansible-vim"
 link_vim_github_plugin "start" "saltstack" "salt-vim"
 link_vim_github_plugin "start" "scrooloose" "nerdtree"
 #link_vim_github_plugin "start" "scrooloose" "syntastic"

@@ -17,11 +17,6 @@ set directory=~/tmpvim
 set splitright  " Open splits to the right
 set noequalalways  " Split windows relative to current split
 
-" Set tab at 4
-"set tabstop=8
-"set expandtab
-"set shiftwidth=4
-"set softtabstop=4
 
 " Navigate between splits with keyboard shortcuts
 " https://realpython.com/blog/python/vim-and-python-a-match-made-in-heaven/
@@ -29,25 +24,15 @@ nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
+
 packadd! palenight.vim
 colorscheme palenight
 
 set background=dark
 
 autocmd FileType html,htmldjango,json,sql,yaml setlocal shiftwidth=2 softtabstop=2 expandtab
-autocmd FileType conf,python,sh,zsh setlocal shiftwidth=4 softtabstop=4 expandtab
-
-" Syntastic - Recommended settings
-" set statusline+=%#warningmsg#
-" set statusline+=%{SyntasticStatuslineFlag()}
-" set statusline+=%*
-
-" let g:syntastic_always_populate_loc_list = 1
-" let g:syntastic_auto_loc_list = 1
-" let g:syntastic_check_on_open = 1
-" let g:syntastic_check_on_wq = 0
-" let g:syntastic_loc_list_height = 3
+autocmd FileType conf,nginx,python,sh,sshconfig,zsh setlocal shiftwidth=4 softtabstop=4 expandtab
 
 " Ale
 packloadall
-silent! helptags All
+silent! helptags ALL

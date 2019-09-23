@@ -28,8 +28,8 @@ colorscheme palenight
 
 set background=dark
 
-autocmd FileType html,htmldjango,json,yaml setlocal shiftwidth=2 softtabstop=2 expandtab
-autocmd FileType conf,python,sh,sshconfig,zsh setlocal shiftwidth=4 softtabstop=4 expandtab
+autocmd FileType html,htmldjango,json,sql,yaml setlocal shiftwidth=2 softtabstop=2 expandtab
+autocmd FileType conf,nginx,python,sh,sshconfig,zsh setlocal shiftwidth=4 softtabstop=4 expandtab
 
 " Ale
 packloadall
