@@ -88,7 +88,11 @@ fi
 
 if [ "$(uname)" = "Linux" ]; then
     # SSH Agent
-    type keychain > /dev/null && eval $(keychain --eval --quick --quiet id_rsa)
+    if [ -z "${SSH_TTY}" ]; then
+        printf "\nThis is an SSH session, not unlocking keychain\n"
+    else
+        type keychain > /dev/null && eval $(keychain --eval --quick --quiet id_rsa)
+    fi
 
     if [ -f "/usr/share/fzf/key-bindings.zsh" ]; then
         source /usr/share/fzf/key-bindings.zsh  # Arch Linux
