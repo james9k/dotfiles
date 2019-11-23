@@ -13,9 +13,6 @@ set incsearch       " Start highlighting matching parts immediately
 
 set termguicolors
 
-" Open splits to the right
-set splitright
-
 " Navigate between splits with keyboard shortcuts
 " https://realpython.com/blog/python/vim-and-python-a-match-made-in-heaven/
 nnoremap <C-J> <C-W><C-J>
