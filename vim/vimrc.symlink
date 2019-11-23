@@ -14,9 +14,9 @@ set incsearch       " Will start highlighting matching parts immediately
 set backupdir=~/tmpvim
 set directory=~/tmpvim
 
-set splitright  " Open splits to the right
-set noequalalways  " Split windows relative to current split
-
+" Commented as NerdTree behaviour seems to have changed
+"set splitright  " Open splits to the right
+"set noequalalways  " Split windows relative to current split
 
 " Navigate between splits with keyboard shortcuts
 " https://realpython.com/blog/python/vim-and-python-a-match-made-in-heaven/
@@ -30,7 +30,7 @@ colorscheme palenight
 
 set background=dark
 
-autocmd FileType html,htmldjango,json,sql,yaml setlocal shiftwidth=2 softtabstop=2 expandtab
+autocmd FileType html,htmldjango,json,sql,yaml,xml setlocal shiftwidth=2 softtabstop=2 expandtab
 autocmd FileType conf,nginx,python,sh,sshconfig,zsh setlocal shiftwidth=4 softtabstop=4 expandtab
 
 " Ale
