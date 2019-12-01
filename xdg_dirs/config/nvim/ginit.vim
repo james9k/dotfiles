@@ -1,8 +1,8 @@
 if has("mac")
   set guifont=Fira\ Code:h11
 elseif has("unix")
-  set guifont=DejaVu\ Sans\ Mono:h11
-  set guifont=Fira\ Code:h11
+  set guifont=DejaVu\ Sans\ Mono:h10
+  set guifont=Fira\ Code:h10
   "set guifont=Fira\ Mono:h11
 endif
 

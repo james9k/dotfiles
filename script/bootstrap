@@ -130,7 +130,11 @@ elif [ "$(uname)" == "Linux" ]; then
     info "Linux detected"
 
     if [ -f "/etc/arch-release" ]; then
-        PROFILE="" archlinux/install_packages.bash
+        if [ -f ~/.config/dotfiles/profile ]; then
+            export DOTFILE_PROFILE="$(cat ~/.config/dotfiles/profile)"
+        fi
+
+        archlinux/install_packages.bash
         success "Arch Linux packages installed."
     fi
 fi

@@ -1,64 +1,83 @@
 #!/bin/bash
 # vim: set ts=4 sw=4 sts=4 et:
 # Run this script as root
-set -u
 
-# Other profile options: gnome headless i3 kde sway
-: "${PROFILE}"
+# See case statement for profile options
+DOTFILE_PROFILE="${DOTFILE_PROFILE:-default}"
+
+set -u
 
 cd "$(dirname "$0")/.." || exit 1
 DOTFILES_ROOT=$(pwd)
 # Source reusable bash functions
 source "${DOTFILES_ROOT}"/bash/functions.bash
 
-CLI_UTILS=$(cat <<EOF
+MY_DEFAULTS=$(cat <<MDEOF
 aws-cli
 bat
+bash-completion
 bind-tools
 exa
 fzf
 git
 gnu-netcat
+grml-zsh-config
 htop
 jq
-keychain
-kubectl
+neovim
 net-tools
 nmap
 pkgfile
 ranger
 ripgrep
+shellcheck
 sipcalc
 terraform
 the_silver_searcher
 tig
 tree
 wget
-EOF
+zsh
+zsh-completions
+MDEOF
 )
-DATABASE="dbeaver"
-EDITOR="gvim neovim neovim-qt python-neovim vim-jedi"
-FONTS="adobe-source-code-pro-fonts ttf-bitstream-vera ttf-dejavu ttf-fira-code ttf-freefont ttf-hack ttf-liberation"
-GNOME="gdm gnome gnome-shell gnome-terminal gnome-system-monitor gnome-tweaks"
-GUI_APPS="clementine speedcrunch"
-I3="i3-wm i3lock i3status gsimplecal dmenu"
-KDE="kmix plasma-desktop plasma-nm powerdevil sddm"
-LAPTOP="acpilight tlp"
-PYTHON=$(cat <<EOF
-pycharm-community-edition
+WORKSTATION=$(cat <<WSEOF
+adobe-source-code-pro-fonts
+alacritty
+alacritty-terminfo
+clementine
+dbeaver
 flake8
+gvim
 ipython
+neovim-qt
+pycharm-community-edition
 python
 python-docs
 python-ipdb
 python-jedi
+python-neovim
 python-pipenv
 python-virtualenv
 python-virtualenvwrapper
-EOF
+speedcrunch
+terminator
+termite
+termite-terminfo
+ttf-bitstream-vera
+ttf-dejavu
+ttf-fira-code
+ttf-freefont
+ttf-hack
+ttf-liberation"
+vim-jedi
+WSEOF
 )
-SHELL_PKGS="bash-completion grml-zsh-config zsh zsh-completions shellcheck"
-TERMINAL="alacritty alacritty-terminfo terminator termite termite-terminfo"
+GNOME="gdm gnome gnome-shell gnome-terminal gnome-system-monitor gnome-tweaks"
+I3="i3-wm i3lock i3status gsimplecal dmenu"
+KDE="kmix plasma-desktop plasma-nm powerdevil sddm"
+LAPTOP="acpilight tlp"
+SERVER="vim"
 SWAY="bemenu grim i3status sway swayidle swaylock waybar wl-clipboard wlroots"
 XORG="xorg-server"
 
@@ -71,46 +90,36 @@ function install_pkgs() {
 
 sudo pacman --noconfirm -Sy
 
-case "${PROFILE}" in
+case "${DOTFILE_PROFILE}" in
     gnome)
+        install_pkgs "WORKSTATION" "${WORKSTATION}"
         install_pkgs "GNOME" "${GNOME}"
-        install_pkgs "FONTS" "${FONTS}"
-        install_pkgs "Terminal""${TERMINAL}"
-        install_pkgs "Database""${DATABASE}"
-        install_pkgs "GUI Apps" "${GUI_APPS}"
+        install_pkgs "XORG" "${XORG}"
         ;;
-    headless)
-        printf "\n"
+    server)
+        install_pkgs "SERVER" "${SERVER}"
         ;;
     i3)
+        install_pkgs "WORKSTATION" "${WORKSTATION}"
         install_pkgs "I3" "${I3}"
         install_pkgs "XORG" "${XORG}"
-        install_pkgs "FONTS" "${FONTS}"
-        install_pkgs "Terminal" "${TERMINAL}"
-        install_pkgs "Database" "${DATABASE}"
-        install_pkgs "GUI Apps" "${GUI_APPS}"
         ;;
     kde)
+        install_pkgs "WORKSTATION" "${WORKSTATION}"
         install_pkgs "KDE" "${KDE}"
-        install_pkgs "FONTS" "${FONTS}"
-        install_pkgs "Terminal" "${TERMINAL}"
-        install_pkgs "Database" "${DATABASE}"
-        install_pkgs "GUI Apps" "${GUI_APPS}"
+        install_pkgs "XORG" "${XORG}"
         ;;
     sway)
+        install_pkgs "WORKSTATION" "${WORKSTATION}"
         install_pkgs "Sway" "${SWAY}"
-        install_pkgs "FONTS" "${FONTS}"
-        install_pkgs "Terminal" "${TERMINAL}"
-        install_pkgs "Database" "${DATABASE}"
-        install_pkgs "GUI Apps" "${GUI_APPS}"
         ;;
     laptop)
         install_pkgs "Laptop" "${LAPTOP}"
         ;;
+    *)
+        printf "Profile not specified, going with defaults.\n"
+        ;;
 esac
 
 # Default stuff to install
-install_pkgs "Shell" "${SHELL_PKGS}"
-install_pkgs "Editor" "${EDITOR}"
-install_pkgs "Python" "$(for pkg in ${PYTHON}; do printf "%s " "${pkg}"; done)"
-install_pkgs "CLI Utils" "$(for pkg in ${CLI_UTILS}; do printf "%s " "${pkg}"; done)"
+install_pkgs "My default pkgs" "$(for pkg in ${MY_DEFAULTS}; do printf "%s " "${pkg}"; done)"

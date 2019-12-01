@@ -5,6 +5,7 @@
   "ignore_all_lsp": false,
   "creation_time": "2019-08-31T07:55:23.060837973Z",
   "semantic_status": {
+    "python": "Enabled",
     "unknown": "Enabled"
   },
   "disable_auto_update": false,

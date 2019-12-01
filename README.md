@@ -9,6 +9,11 @@ Run this:
 ```sh
 git clone https://github.com/jamesp9/dotfiles.git ~/.dotfiles
 cd ~/.dotfiles
+```
+Optionally before running the bootstrap script. Create
+`~/.config/dotifles/profiles` and put something `server` in to do an
+installation that will run on a headless server for example.
+```sh
 script/bootstrap
 ```
 
