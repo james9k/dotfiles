@@ -6,6 +6,8 @@
   path = ~/.gitconfig-home-bitbucket
 [includeIf "gitdir:~/isignthis/bitbucket/"]
   path = ~/.gitconfig-work-bitbucket
+[includeIf "gitdir:~/tmp/terraform-v2/"]
+  path = ~/.gitconfig-work-bitbucket
 
 [push]
     default = simple

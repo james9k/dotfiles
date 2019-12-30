@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+DATE="$(date "+%Y-%m-%d")"
+NOTEDIR="${HOME}/notepad"
+FILENAME="${NOTEDIR}/${DATE}.txt"
+
+if [ ! -d "${NOTEDIR}" ]; then
+    mkdir "${NOTEDIR}" 
+fi
+
+touch "${FILENAME}"
+
+if [ "$(uname)" = "Darwin" ]; then
+    mvim "${FILENAME}"
+else
+    gvim "${FILENAME}"
+fi
