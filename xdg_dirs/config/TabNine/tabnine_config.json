@@ -1,17 +1,20 @@
 {
-  "version": "1.0.10",
+  "version": "2.2.1",
   "hide_promotional_message": false,
   "beta_enabled": "No",
   "ignore_all_lsp": false,
-  "creation_time": "2019-08-31T07:55:23.060837973Z",
+  "creation_time": "2020-01-10T22:43:50.863346281Z",
   "semantic_status": {
-    "python": "Enabled",
-    "unknown": "Enabled"
+    "toml": "Enabled",
+    "javascript": "Enabled",
+    "unknown": "Enabled",
+    "python": "Enabled"
   },
   "disable_auto_update": false,
   "user_understands_that_enabling_tabnine_cloud_sends_code_to_tabnine_servers": false,
   "hosted_deep_completions_enabled": "Disabled",
   "tabnine_cloud_host": null,
+  "tabnine_cloud_certificate_domain": null,
   "tabnine_cloud_port": null,
   "cloud_whitelist": [],
   "api_key": null,
