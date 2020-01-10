@@ -5,10 +5,10 @@
   "ignore_all_lsp": false,
   "creation_time": "2020-01-10T22:43:50.863346281Z",
   "semantic_status": {
-    "toml": "Enabled",
+    "python": "Enabled",
     "javascript": "Enabled",
-    "unknown": "Enabled",
-    "python": "Enabled"
+    "toml": "Enabled",
+    "unknown": "Enabled"
   },
   "disable_auto_update": false,
   "user_understands_that_enabling_tabnine_cloud_sends_code_to_tabnine_servers": false,
