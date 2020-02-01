@@ -17,6 +17,7 @@ aws-cli
 bat
 bash-completion
 bind-tools
+broot
 exa
 fzf
 git
@@ -32,7 +33,6 @@ ranger
 ripgrep
 shellcheck
 sipcalc
-terraform
 the_silver_searcher
 tig
 tree
@@ -64,6 +64,7 @@ speedcrunch
 terminator
 termite
 termite-terminfo
+terraform
 ttf-bitstream-vera
 ttf-dejavu
 ttf-fira-code
