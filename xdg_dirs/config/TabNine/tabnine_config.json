@@ -1,14 +1,13 @@
 {
-  "version": "2.2.1",
+  "version": "2.5.1",
   "hide_promotional_message": false,
   "beta_enabled": "No",
   "ignore_all_lsp": false,
-  "creation_time": "2020-01-10T22:43:50.863346281Z",
+  "creation_time": "2020-03-20T03:42:46.638265755Z",
   "semantic_status": {
-    "python": "Enabled",
-    "javascript": "Enabled",
     "toml": "Enabled",
-    "unknown": "Enabled"
+    "unknown": "Enabled",
+    "python": "Enabled"
   },
   "disable_auto_update": false,
   "user_understands_that_enabling_tabnine_cloud_sends_code_to_tabnine_servers": false,

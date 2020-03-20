@@ -99,6 +99,10 @@ if [ "$(uname)" = "Linux" ]; then
         source /usr/share/fzf/key-bindings.zsh  # Arch Linux
     fi
 
+    if [ -f ~/.config/broot/launcher/bash/br ]; then
+        source ~/.config/broot/launcher/bash/br
+    fi
+
     RANGER_BIN="/usr/bin/ranger"
 
 
@@ -112,6 +116,10 @@ elif [ "$(uname)" = "Darwin" ]; then
     export VIRTUALENVWRAPPER_PYTHON="/usr/local/bin/python3"
     if [ -x /usr/local/bin/virtualenvwrapper_lazy.sh ]; then
         source /usr/local/bin/virtualenvwrapper_lazy.sh
+    fi
+
+    if [ -f ~/Library/Preferences/org.dystroy.broot/launcher/bash/br ]; then
+        source ~/Library/Preferences/org.dystroy.broot/launcher/bash/br
     fi
 fi
 
