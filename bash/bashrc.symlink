@@ -107,7 +107,6 @@ fi
 # Vagrant
 # export VAGRANT_VMWARE_FUSION_APP="/Applications/VMware Fusion 6.app"
 
-
 ######## Editing Preferences ######## 
 #set -o vi
 set -o emacs
@@ -115,12 +114,10 @@ set -o emacs
 EDITOR=$(type -p vim)
 export EDITOR
 
-
 ######## Python Virtual Env Wrapper ######## 
 if [ -e /usr/bin/virtualenvwrapper.sh ]; then
     source /usr/bin/virtualenvwrapper.sh
 fi
-
 
 ######## Git Auto Complete ######## 
 source ~/.git-completion.bash
@@ -158,3 +155,7 @@ type aws_completer > /dev/null 2>&1  && complete -C "$(type -p aws_completer)" a
 
 # Hashicorp
 type terraform > /dev/null 2>&1 && complete -C "$(type -p terraform)" terraform
+
+if [ -f ~/.config/broot/launcher/bash/br ]; then
+    source ~/.config/broot/launcher/bash/br
+fi
