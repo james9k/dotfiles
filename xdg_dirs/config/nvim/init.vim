@@ -31,3 +31,4 @@ autocmd FileType conf,nginx,python,sh,sshconfig,zsh setlocal shiftwidth=4 softta
 " Ale
 packloadall
 silent! helptags ALL
+set title
