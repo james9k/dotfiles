@@ -28,3 +28,4 @@ elseif has("unix")
 endif
 
 set lines=50 columns=90
+set title

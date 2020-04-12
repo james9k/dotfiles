@@ -66,7 +66,7 @@ link_vim_github_plugin "start" "scrooloose" "nerdtree"
 link_vim_github_plugin "start" "tpope" "vim-sensible"
 link_vim_github_plugin "start" "tpope" "vim-surround"
 link_vim_github_plugin "start" "vim-scripts" "groovyindent-unix"
-link_vim_github_plugin "start" "w0rp" "ale"
+link_vim_github_plugin "start" "dense-analysis" "ale"
 link_vim_github_plugin "start" "zxqfl" "tabnine-vim"
 
 # Colour Schemes
