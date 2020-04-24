@@ -21,3 +21,6 @@ openssl rsa -in "${PRIVATE_KEY}" -pubout -outform DER | openssl md5 -c
 printf "\nUser created key pair with OpenSSH >= 7.8\n"
 ssh -V
 ssh-keygen -ef "${PRIVATE_KEY}" -m PEM | openssl rsa -RSAPublicKey_in -outform DER | openssl md5 -c
+
+printf "\nMD5 fingerprint hash\n"
+ssh-keygen -lE md5 -f "${PRIVATE_KEY}"
