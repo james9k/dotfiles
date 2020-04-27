@@ -86,6 +86,7 @@ link_neovim_github_plugin "start" "tpope" "vim-surround"
 link_neovim_github_plugin "start" "vim-scripts" "groovyindent-unix"
 link_neovim_github_plugin "start" "dense-analysis" "ale"
 link_neovim_github_plugin "start" "zxqfl" "tabnine-vim"
+link_neovim_github_plugin "start" "vim-airline" "vim-airline"
 
 # Colour Schemes
 link_neovim_github_plugin "opt" "joshdick" "onedark.vim"
