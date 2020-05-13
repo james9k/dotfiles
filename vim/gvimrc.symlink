@@ -18,11 +18,11 @@ elseif has("unix")
     let dsm=system('fc-list | grep -c DejaVu\ Sans\ Mono')
     let incon=system('fc-list | grep -c Inconsolata')
     if ( firac > 0 )
-        set guifont=Fira\ Code\ 11
+        set guifont=Fira\ Code\ 10
     elseif ( dsm > 0 )
-        set guifont=DejaVu\ Sans\ Mono\ 11
+        set guifont=DejaVu\ Sans\ Mono\ 10
     elseif ( incon > 0 )
-        set guifont=Inconsolata 11
+        set guifont=Inconsolata 10
     endif
 
 endif

@@ -1,0 +1,26 @@
+[global_config]
+  suppress_multiple_term_dialog = True
+[keybindings]
+[profiles]
+  [[default]]
+    cursor_color = "#aaaaaa"
+  [[jp]]
+    background_color = "#282828"
+    background_darkness = 0.95
+    background_type = transparent
+    cursor_color = "#aaaaaa"
+    font = DejaVu Sans Mono 10
+    foreground_color = "#ebdbb2"
+    scrollback_lines = 10000
+    use_system_font = False
+    copy_on_selection = True
+[layouts]
+  [[default]]
+    [[[window0]]]
+      type = Window
+      parent = ""
+    [[[child1]]]
+      type = Terminal
+      parent = window0
+      profile = default
+[plugins]
