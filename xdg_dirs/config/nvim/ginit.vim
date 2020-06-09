@@ -1,9 +1,9 @@
-if has("mac")
+if has("unix")
+  set guifont=Fira\ Mono:h10
+  "set guifont=Fira\ Code:h10
+  "set guifont=DejaVu\ Sans\ Mono:h10
+elseif has("mac")
   set guifont=Fira\ Code:h11
-elseif has("unix")
-  set guifont=DejaVu\ Sans\ Mono:h10
-  set guifont=Fira\ Code:h10
-  "set guifont=Fira\ Mono:h11
 endif
 
 set mouse=nv
