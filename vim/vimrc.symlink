@@ -15,7 +15,7 @@ set backupdir=~/tmpvim
 set directory=~/tmpvim
 
 " Commented as NerdTree behaviour seems to have changed
-"set splitright  " Open splits to the right
+set splitright  " Open splits to the right
 "set noequalalways  " Split windows relative to current split
 
 " Navigate between splits with keyboard shortcuts
