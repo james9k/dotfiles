@@ -16,31 +16,29 @@ function on_error() {
 }
 
 
-function info() {
+info() {
   printf "  [ %b..%b ] %s\n" "${BLUE}" "${NC}" "${1}"
 }
 
-function warn() {
+warn() {
   printf "\r  [ %b?%b ] %s\n" "${YELLOW}" "${NC}" "${1}"
 }
 
-function user() {
+user() {
   printf "\r  [ %b?%b ] %s\n" "${YELLOW}" "${NC}" "${1}"
 }
 
-function success() {
+success() {
   printf "\r  [ %bOK%b ] %s\n" "${GREEN}" "${NC}" "${1} ✓"
-  #printf "\r\033[2K  [ \033[00;32mOK\033[0m ] $1\n"
 }
 
-function fail() {
+fail() {
   printf "\r  [ %bFAIL%b ] %s\n" "${RED}" "${NC}" "${1}"
-  #printf "\r\033[2K  [\033[0;31mFAIL\033[0m] $1\n"
   echo ''
   exit
 }
 
-function create_directory() {
+create_directory() {
     ABS_PATH="${1}"
 
     if [ -e "${ABS_PATH}" ]; then

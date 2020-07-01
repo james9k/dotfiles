@@ -6,72 +6,75 @@ VIM_DIR="${HOME}/.vim"
 GITHUB_DIR="${HOME}/github"
 
 # Ensure script is run from root dotfile directory
-cd "$(dirname "$0")/.." || exit 1
-DOTFILES_ROOT=$(pwd)
+cd "$(dirname "${0}")/.." || exit 1
+DOTFILES_ROOT="$(pwd)"
 
 # Source reusable bash functions
+printf "DOTFILES_ROOT: %s\n" "${DOTFILES_ROOT}"
+printf "Trying to source: %s\n" "${DOTFILES_ROOT}/bash/functions.bash"
 source "${DOTFILES_ROOT}"/bash/functions.bash
 
 printf "VIM_DIR: %s\n" "${VIM_DIR}"
 printf "DOTFILES_ROOT: %s\n" "${DOTFILES_ROOT}"
 
-function clone_git_repo() {
-    GIT_USER="${1}"
-    REPO_NAME="${2}"
-    REPO_URL="https://github.com/${GIT_USER}/${REPO_NAME}.git"
+clone_git_repo() {
+    GIT_URL="${1}"
+    REPO_DIR="${2}"
+    REPO_DIR_NAME="$(basename "${REPO_DIR}")"
 
-
-    if [ -d "${GITHUB_DIR}/${REPO_NAME}" ]; then
-        pushd "${GITHUB_DIR}/${REPO_NAME}" > /dev/null || exit 1
+    if [ -d "${REPO_DIR}" ]; then
+        pushd "${REPO_DIR}" > /dev/null || exit 1
         git pull origin master
-        success "Pulled latest for ${REPO_NAME}"
+        success "Pulled latest for ${GIT_URL}"
         popd > /dev/null || exit 1
     else
         pushd "${GITHUB_DIR}" > /dev/null || exit 1
-        git clone "${REPO_URL}"
+        git clone "${GIT_URL}" "${REPO_DIR}"
         popd > /dev/null || exit 1
-        success "Cloned ${REPO_NAME}"
+        success "Cloned ${REPO_DIR_NAME}"
     fi
 }
 
-function link_vim_github_plugin() {
+link_vim_github_plugin() {
     # Link FileType plugin to load on start
-    STARTOPT="${1}"
-    GIT_USER="${2}"
-    REPO_NAME="${3}"
-
-    PLUGIN_PARENT_DIR="${VIM_DIR}/pack/github/${STARTOPT}"
+    OPT_OR_START="${1}"
+    GIT_URL="${2}"
+    ABSOLUTE_REPO_DIR="${3}"
+    REPO_DIR="$(basename "${ABSOLUTE_REPO_DIR}")"
+    PLUGIN_PARENT_DIR="${VIM_DIR}/pack/github/${OPT_OR_START}"
+    PLUGIN_PATH="${PLUGIN_PARENT_DIR}/${REPO_DIR}"
 
     create_directory "${PLUGIN_PARENT_DIR}"
 
-    clone_git_repo "${GIT_USER}" "${REPO_NAME}"
+    clone_git_repo "${GIT_URL}" "${ABSOLUTE_REPO_DIR}"
 
-    if [ ! -h "${PLUGIN_PARENT_DIR}/${REPO_NAME}" ]; then
-        ln -s "${GITHUB_DIR}/${REPO_NAME}" "${PLUGIN_PARENT_DIR}/${REPO_NAME}"
-        success "Linked ${GITHUB_DIR}/${REPO_NAME} to ${PLUGIN_PARENT_DIR}/${REPO_NAME}"
+    if [ ! -h "${PLUGIN_PATH}" ]; then
+        ln -s "${ABSOLUTE_REPO_DIR}" "${PLUGIN_PATH}"
+        success "Linked ${ABSOLUTE_REPO_DIR} to ${PLUGIN_PATH}"
     else
-        user "${PLUGIN_PARENT_DIR}/${REPO_NAME} already symlinked"
+        user "${PLUGIN_PATH} already symlinked"
     fi
     printf "\n"
 }
 
 # File type plugins
-link_vim_github_plugin "start" "gregsexton" "MatchTag"
-link_vim_github_plugin "start" "hashivim" "vim-terraform"
-link_vim_github_plugin "start" "martinda" "Jenkinsfile-vim-syntax"
-link_vim_github_plugin "start" "pearofducks" "ansible-vim"
-link_vim_github_plugin "start" "saltstack" "salt-vim"
-link_vim_github_plugin "start" "scrooloose" "nerdtree"
-#link_vim_github_plugin "start" "scrooloose" "syntastic"
-link_vim_github_plugin "start" "tpope" "vim-sensible"
-link_vim_github_plugin "start" "tpope" "vim-surround"
-link_vim_github_plugin "start" "vim-scripts" "groovyindent-unix"
-link_vim_github_plugin "start" "dense-analysis" "ale"
-link_vim_github_plugin "start" "zxqfl" "tabnine-vim"
-
+link_vim_github_plugin opt 'https://github.com/gregsexton/MatchTag.git' "${GITHUB_DIR}/MatchTag"
+link_vim_github_plugin opt 'https://github.com/hashivim/vim-terraform.git' "${GITHUB_DIR}/vim-terraform"
+link_vim_github_plugin opt 'https://github.com/martinda/Jenkinsfile-vim-syntax.git' "${GITHUB_DIR}/Jenkinsfile-vim-syntax"
+link_vim_github_plugin opt 'https://github.com/pearofducks/ansible-vim.git' "${GITHUB_DIR}/ansible-vim"
+link_vim_github_plugin opt 'https://github.com/saltstack/salt-vim.git' "${GITHUB_DIR}/salt-vim"
+link_vim_github_plugin opt 'https://github.com/scrooloose/nerdtree.git' "${GITHUB_DIR}/nerdtree"
+#link_vim_github_plugin opt 'https://github.com/scrooloose/syntastic.git' "${GITHUB_DIR}/syntastic"
+link_vim_github_plugin opt 'https://github.com/tpope/vim-sensible.git' "${GITHUB_DIR}/vim-sensible"
+link_vim_github_plugin opt 'https://github.com/tpope/vim-surround.git' "${GITHUB_DIR}/vim-surround"
+link_vim_github_plugin opt 'https://github.com/vim-scripts/groovyindent-unix.git' "${GITHUB_DIR}/groovyindent-unix"
+link_vim_github_plugin opt 'https://github.com/dense-analysis/ale.git' "${GITHUB_DIR}/ale"
+link_vim_github_plugin opt 'https://github.com/zxqfl/tabnine-vim.git' "${GITHUB_DIR}/tabnine-vim"
+#
 # Colour Schemes
-link_vim_github_plugin "opt" "altercation" "vim-colors-solarized"
-link_vim_github_plugin "opt" "joshdick" "onedark.vim"
-link_vim_github_plugin "opt" "drewtempelmeyer" "palenight.vim"
+link_vim_github_plugin opt 'https://github.com/altercation/vim-colors-solarized.git' "${GITHUB_DIR}/vim-colors-solarized"
+link_vim_github_plugin opt 'https://github.com/joshdick/onedark.vim.git' "${GITHUB_DIR}/onedark.vim"
+link_vim_github_plugin opt 'https://github.com/drewtempelmeyer/palenight.vim.git' "${GITHUB_DIR}/palenight.vim"
+link_vim_github_plugin opt 'https://github.com/dracula/vim.git' "${GITHUB_DIR}/dracula"
 
 printf "\n"
