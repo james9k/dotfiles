@@ -10,3 +10,6 @@ atom.symlink/themes
 
 git/gitconfig.symlink
 .initialized
+
+#TabNine
+last_heartbeat

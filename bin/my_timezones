@@ -5,7 +5,4 @@ NC='\033[m'
 
 printf "%bMelbourne%b: %s\n" "${BOLD}" "${NC}" "$(TZ="Australia/Melbourne" date)"
 printf "%bAEST%b:      %s\n" "${BOLD}" "${NC}" "$(TZ="Australia/Brisbane" date)"
-printf "%bPerth%b:     %s\n" "${BOLD}" "${NC}" "$(TZ="Australia/Perth" date)"
-printf "%bCyprus%b:    %s\n" "${BOLD}" "${NC}" "$(TZ="Europe/Nicosia" date)"
-printf "%bLondon%b:    %s\n" "${BOLD}" "${NC}" "$(TZ="Europe/London" date)"
 printf "%bUTC%b:       %s\n" "${BOLD}" "${NC}" "$(TZ=UTC date)"

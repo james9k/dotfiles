@@ -1,9 +1,9 @@
 {
-  "version": "2.8.3",
+  "version": "2.9.2",
   "hide_promotional_message": false,
   "beta_enabled": "No",
   "ignore_all_lsp": false,
-  "creation_time": "2020-06-03T11:26:04.135882085Z",
+  "creation_time": "2020-08-02T00:57:26.483120611Z",
   "semantic_status": {
     "python": "Enabled"
   },
@@ -23,5 +23,8 @@
   "hide_deep_information_message": false,
   "enable_power_saving_mode": false,
   "rate_limit_interval_seconds": null,
-  "rate_limit_amount": null
+  "rate_limit_amount": null,
+  "generation": 11,
+  "local_model_size": null,
+  "local_indexing": null
 }
