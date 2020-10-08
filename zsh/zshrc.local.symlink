@@ -135,5 +135,12 @@ ranger() {
 
 export EDITOR="nvim"
 
+# Termite for ctrl-shift-t
+if [[ $TERM == xterm-termite ]]; then
+  . /etc/profile.d/vte.sh
+  __vte_osc7
+fi
+
+
 # Turn off profiling
 #zprof
