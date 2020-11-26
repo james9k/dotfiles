@@ -133,7 +133,7 @@ ranger() {
     fi
 }
 
-export EDITOR="nvim"
+export EDITOR="vim"
 
 # Termite for ctrl-shift-t
 if [[ $TERM == xterm-termite ]]; then
