@@ -1,10 +1,3 @@
-[language.rust]
-command = "rls"
-install = [
-  ["rustup", "update"],
-  ["rustup", "component", "add", "rls", "rust-analysis", "rust-src"],
-]
-
 [language.python]
 command = "pyls"
 install = [["pip", "install", "python-language-server"]]
