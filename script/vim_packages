@@ -69,8 +69,9 @@ link_vim_github_plugin opt 'https://github.com/tpope/vim-sensible.git' "${GITHUB
 link_vim_github_plugin opt 'https://github.com/tpope/vim-surround.git' "${GITHUB_DIR}/vim-surround"
 link_vim_github_plugin opt 'https://github.com/vim-scripts/groovyindent-unix.git' "${GITHUB_DIR}/groovyindent-unix"
 link_vim_github_plugin opt 'https://github.com/dense-analysis/ale.git' "${GITHUB_DIR}/ale"
-link_vim_github_plugin opt 'https://github.com/zxqfl/tabnine-vim.git' "${GITHUB_DIR}/tabnine-vim"
-#
+link_vim_github_plugin opt 'https://github.com/codota/tabnine-vim.git' "${GITHUB_DIR}/tabnine-vim"
+# git clone --depth 1 https://github.com/codota/tabnine-vim
+
 # Colour Schemes
 link_vim_github_plugin opt 'https://github.com/altercation/vim-colors-solarized.git' "${GITHUB_DIR}/vim-colors-solarized"
 link_vim_github_plugin opt 'https://github.com/joshdick/onedark.vim.git' "${GITHUB_DIR}/onedark.vim"
