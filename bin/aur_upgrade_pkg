@@ -15,6 +15,7 @@ if [ -z "${PKG_NAME}" ]; then
 fi
 
 printf "Working directory: %s\n" "${AUR_DIR}"
+mkdir -p "${AUR_DIR}"
 cd "${AUR_DIR}" || exit 1
 
 rm -rv "${PKG_NAME}"*
