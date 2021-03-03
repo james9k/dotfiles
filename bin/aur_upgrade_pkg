@@ -1,0 +1,38 @@
+#!/bin/bash
+
+PKG_NAME="${1}"
+AUR_DIR="${HOME}/aur"
+
+usage() {
+    printf "\nUsage: %s PKG_NAME\n" "$(basename $0)"
+    printf "\nExample:\n %s slack-desktop\n" "$(basename $0)"
+}
+
+if [ -z "${PKG_NAME}" ]; then
+    printf "\nPKG_NAME is required\n"
+    usage
+    exit 1
+fi
+
+printf "Working directory: %s\n" "${AUR_DIR}"
+cd "${AUR_DIR}" || exit 1
+
+rm -rv "${PKG_NAME}"*
+
+wget "https://aur.archlinux.org/cgit/aur.git/snapshot/${PKG_NAME}.tar.gz"
+
+if [ -f "${PKG_NAME}.tar.gz" ]; then
+    tar xvf "${PKG_NAME}.tar.gz"
+    cd "${PKG_NAME}" || exit 1
+
+    makepkg
+
+    ZST_FILE="$(ls ./"${PKG_NAME}"*.zst)"
+    if [ -z "${ZST_FILE}" ]; then
+        printf "\nNo .zst file found !\n"
+        exit 1
+    else
+        sudo pacman -U --noconfirm "${ZST_FILE}"
+    fi
+
+fi
