@@ -68,7 +68,7 @@ link_vim_github_plugin start 'https://github.com/preservim/nerdtree.git' "${GITH
 link_vim_github_plugin opt 'https://github.com/tpope/vim-sensible.git' "${GITHUB_DIR}/vim-sensible"
 link_vim_github_plugin opt 'https://github.com/tpope/vim-surround.git' "${GITHUB_DIR}/vim-surround"
 link_vim_github_plugin opt 'https://github.com/dense-analysis/ale.git' "${GITHUB_DIR}/ale"
-#link_vim_github_plugin opt 'https://github.com/codota/tabnine-vim.git' "${GITHUB_DIR}/tabnine-vim"
+link_vim_github_plugin start 'https://github.com/codota/tabnine-vim.git' "${GITHUB_DIR}/tabnine-vim"
 # git clone --depth 1 https://github.com/codota/tabnine-vim
 
 # Colour Schemes
