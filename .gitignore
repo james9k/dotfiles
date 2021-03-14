@@ -13,3 +13,11 @@ git/gitconfig.symlink
 
 #TabNine
 last_heartbeat
+TabNineExample.toml
+**/TabNine/tabnine_config.json
+**/TabNine/3*/
+**/TabNine/defaults/
+**/TabNine/local.settings
+**/TabNine/metrics.db
+**/TabNine/monitoring/
+
