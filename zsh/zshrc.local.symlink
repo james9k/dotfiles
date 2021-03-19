@@ -63,13 +63,6 @@ fi
 # Command completion
 # git tab completion handled by autoload of compinit
 
-# AWS
-if [ -e /usr/bin/aws_zsh_completer.sh ]; then
-    source /usr/bin/aws_zsh_completer.sh
-elif [ -e "/usr/local/share/zsh/site-functions/aws_zsh_completer.sh" ]; then
-    source /usr/local/share/zsh/site-functions/aws_zsh_completer.sh
-fi
-
 # Kubernetes
 #type kubectl > /dev/null && source <(kubectl completion zsh)
 #whence minikube > /dev/null && source "${HOME}/.dotfiles/completion/minikube-zsh"
@@ -133,14 +126,18 @@ ranger() {
     fi
 }
 
-export EDITOR="vim"
-
 # Termite for ctrl-shift-t
 if [[ $TERM == xterm-termite ]]; then
   . /etc/profile.d/vte.sh
   __vte_osc7
 fi
 
+# AWS CLI v2 command completion
+if [ -e ~/bin/aws_completer ]; then
+    complete -C ~/bin/aws_completer aws
+fi
+
+export EDITOR="vim"
 
 # Turn off profiling
 #zprof
