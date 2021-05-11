@@ -18,6 +18,7 @@ TabNineExample.toml
 **/TabNine/3*/
 **/TabNine/defaults/
 **/TabNine/local.settings
+**/TabNine/cloud.settings
 **/TabNine/metrics.db
 **/TabNine/monitoring/
-
+**/TabNine/com.tabnine.data
