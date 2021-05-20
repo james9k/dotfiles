@@ -12,6 +12,7 @@
     palette = "#262626:#e356a7:#42e66c:#e4f34a:#9b6bdf:#e64747:#75d7ec:#efa554:#7a7a7a:#ff79c6:#50fa7b:#f1fa8c:#bd93f9:#ff5555:#8be9fd:#ffb86c"
     use_system_font = False
     background_image = None
+    show_titlebar = False
     scrollback_lines = 10000
   [[jp]]
     background_color = "#282a36"
@@ -20,7 +21,15 @@
     palette = "#262626:#e356a7:#42e66c:#e4f34a:#9b6bdf:#e64747:#75d7ec:#efa554:#7a7a7a:#ff79c6:#50fa7b:#f1fa8c:#bd93f9:#ff5555:#8be9fd:#ffb86c"
     use_system_font = False
     background_image = None
-    scrollback_lines = 100000
+    show_titlebar = False
+    scrollback_lines = 10000
+  [[jp_prod]]
+    background_color = "#290000"
+    font = DejaVu Sans Mono 10
+    foreground_color = "#f8f8f2"
+    palette = "#262626:#e356a7:#42e66c:#e4f34a:#9b6bdf:#e64747:#75d7ec:#efa554:#7a7a7a:#ff79c6:#50fa7b:#f1fa8c:#bd93f9:#ff5555:#8be9fd:#ffb86c"
+    use_system_font = False
+    background_image = None
     show_titlebar = False
     scrollback_lines = 10000
   [[dracula]]
@@ -30,7 +39,7 @@
     foreground_color = "#f8f8f2"
     palette = "#262626:#e356a7:#42e66c:#e4f34a:#9b6bdf:#e64747:#75d7ec:#efa554:#7a7a7a:#ff79c6:#50fa7b:#f1fa8c:#bd93f9:#ff5555:#8be9fd:#ffb86c"
     use_system_font = False
-    background_image = None
+    show_titlebar = False
     scrollback_lines = 10000
 [layouts]
   [[default]]
