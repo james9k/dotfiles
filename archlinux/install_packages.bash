@@ -13,7 +13,6 @@ DOTFILES_ROOT=$(pwd)
 source "${DOTFILES_ROOT}"/bash/functions.bash
 
 MY_DEFAULTS=$(cat <<MDEOF
-aws-cli
 bat
 bash-completion
 bind-tools
