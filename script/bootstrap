@@ -23,10 +23,10 @@ function link_file() {
         if [ "$overwrite_all" == "false" ] && [ "$backup_all" == "false" ] && [ "$skip_all" == "false" ]; then
             local currentSrc="$(readlink ${dst})"
 
-            if [ "$currentSrc" == "$src" ]; then
+            if [ "$currentSrc" == "${src}" ]; then
                 skip=true;
             else
-                user "File already exists: $dst ($(basename "$src")), what do you want to do?\n\
+                user "File already exists: ${dst} ($(basename "${src}")), what do you want to do?\n\
                     [s]kip, [S]kip all, [o]verwrite, [O]verwrite all, [b]ackup, [B]ackup all?"
                 read -n 1 action
                 case "${action}" in
@@ -59,18 +59,18 @@ function link_file() {
         backup=${backup:-$backup_all}
         skip=${skip:-$skip_all}
 
-        if [ "$overwrite" == "true" ]; then
-            rm -rf "$dst"
-            success "removed $dst"
+        if [ "${overwrite}" == "true" ]; then
+            rm -rf "${dst}"
+            success "removed ${dst}"
         fi
 
         if [ "$backup" == "true" ]; then
-            mv "$dst" "${dst}.backup"
-            success "moved $dst to ${dst}.backup"
+            mv "${dst}" "${dst}.backup"
+            success "moved ${dst} to ${dst}.backup"
         fi
 
-        if [ "$skip" == "true" ]; then
-            success "skipped $src"
+        if [ "${skip}" == "true" ]; then
+            success "skipped ${src}"
         fi
     fi
 
@@ -96,10 +96,10 @@ function install_dotfiles() {
         local backup_all=true
     fi
 
-    for src in $(find -H "$DOTFILES_ROOT" -maxdepth 2 -name '*.symlink')
+    for src in $(find -H "${DOTFILES_ROOT}" -maxdepth 2 -name '*.symlink')
     do
-        dst="$HOME/.$(basename "${src%.*}")"
-        link_file "$src" "$dst"
+        dst="${HOME}/.$(basename "${src%.*}")"
+        link_file "${src}" "${dst}"
     done
 }
 
@@ -112,6 +112,14 @@ create_my_dirs() {
             success "Created ${tmpdir}"
         fi
     done
+}
+
+copy_extra_gitconfigs() {
+    cp --no-clobber ~/.dotfiles/git/gitconfig-work-bitbucket ~/.gitconfig-work-bitbucket
+    cp --no-clobber ~/.dotfiles/git/gitconfig-work-github ~/.gitconfig-work-github
+    cp --no-clobber ~/.dotfiles/git/gitconfig-work-gitlab ~/.gitconfig-work-gitlab
+
+    info "You will need to manually update ~/.gitconfig-work-* files"
 }
 
 ###############################################################################
@@ -131,7 +139,8 @@ elif [ "$(uname)" == "Linux" ]; then
 
     if [ -f "/etc/arch-release" ]; then
         if [ -f ~/.config/dotfiles/profile ]; then
-            export DOTFILE_PROFILE="$(cat ~/.config/dotfiles/profile)"
+            DOTFILE_PROFILE="$(cat ~/.config/dotfiles/profile)"
+            export DOTFILE_PROFILE
         fi
 
         archlinux/install_packages.bash
@@ -148,6 +157,8 @@ script/xdg_config
 script/xdg_local
 
 #cd ${DOTFILES_ROOT} && bin/update-git
+
+copy_extra_gitconfigs
 
 printf "\n\n"
 success "All installed!"

@@ -1,5 +1,5 @@
 typeset -U path
-path=(${HOME}/bin ${HOME}/.dotfiles/bin ${HOME}/.cargo/bin $path[@])
+path=(${HOME}/bin ${HOME}/.dotfiles/bin ${HOME}/.cargo/bin ${HOME}/.local/bin $path[@])
 
 if [ "$(uname)" = "Darwin" ] ; then
     path=(${HOME}/Library/Python/3.7/bin $path[@])

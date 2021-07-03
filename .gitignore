@@ -22,3 +22,6 @@ TabNineExample.toml
 **/TabNine/metrics.db
 **/TabNine/monitoring/
 **/TabNine/com.tabnine.data
+**/TabNine/*user*
+**/TabNine/*.bak
+**/TabNine/*token

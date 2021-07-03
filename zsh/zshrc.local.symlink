@@ -100,13 +100,17 @@ if [ "$(uname)" = "Linux" ]; then
 
 
 elif [ "$(uname)" = "Darwin" ]; then
-    export FZF_DEFAULT_COMMAND='fd --type f --color=never'
-    export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+    FZF_DEFAULT_COMMAND='fd --type f --color=never'
+    export FZF_DEFAULT_COMMAND
+
+    FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+    export FZF_CTRL_T_COMMAND
     source $(brew --prefix)/opt/fzf/shell/key-bindings.zsh
 
     RANGER_BIN="$(brew --prefix)/bin/ranger"
 
-    export VIRTUALENVWRAPPER_PYTHON="/usr/local/bin/python3"
+    VIRTUALENVWRAPPER_PYTHON="/usr/local/bin/python3"
+    export VIRTUALENVWRAPPER_PYTHON
     if [ -x /usr/local/bin/virtualenvwrapper_lazy.sh ]; then
         source /usr/local/bin/virtualenvwrapper_lazy.sh
     fi
@@ -137,7 +141,12 @@ if [ -e ~/bin/aws_completer ]; then
     complete -C ~/bin/aws_completer aws
 fi
 
-export EDITOR="vim"
+EDITOR="vim"
+export EDITOR
+
+# NPM
+npm_config_prefix="${HOME}/.local"
+export npm_config_prefix
 
 # Turn off profiling
 #zprof

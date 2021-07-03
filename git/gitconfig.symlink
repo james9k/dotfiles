@@ -1,14 +1,14 @@
 [includeIf "gitdir:~/.dotfiles/"]
-  path = ~/.gitconfig-home-github
+  path = ~/.gitconfig-my-github
 
 [includeIf "gitdir:~/bitbucket/"]
-  path = ~/.gitconfig-home-bitbucket
+  path = ~/.gitconfig-my-bitbucket
 
 [includeIf "gitdir:~/github/"]
-  path = ~/.gitconfig-home-github
+  path = ~/.gitconfig-my-github
 
 [includeIf "gitdir:~/gitlab/"]
-  path = ~/.gitconfig-home-gitlab
+  path = ~/.gitconfig-my-gitlab
 
 [includeIf "gitdir:~/work/bitbucket/"]
   path = ~/.gitconfig-work-bitbucket
@@ -20,7 +20,8 @@
   path = ~/.gitconfig-work-gitlab
 
 [pull]
-    ff = only
+  rebase = false
+  #ff = only
 
 [push]
     default = simple

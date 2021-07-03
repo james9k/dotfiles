@@ -63,12 +63,12 @@ link_vim_github_plugin opt 'https://github.com/hashivim/vim-terraform.git' "${GI
 link_vim_github_plugin opt 'https://github.com/martinda/Jenkinsfile-vim-syntax.git' "${GITHUB_DIR}/Jenkinsfile-vim-syntax"
 link_vim_github_plugin opt 'https://github.com/pearofducks/ansible-vim.git' "${GITHUB_DIR}/ansible-vim"
 #link_vim_github_plugin opt 'https://github.com/saltstack/salt-vim.git' "${GITHUB_DIR}/salt-vim"
-link_vim_github_plugin start 'https://github.com/preservim/nerdtree.git' "${GITHUB_DIR}/nerdtree"
+link_vim_github_plugin "start" 'https://github.com/preservim/nerdtree.git' "${GITHUB_DIR}/nerdtree"
 #link_vim_github_plugin opt 'https://github.com/scrooloose/syntastic.git' "${GITHUB_DIR}/syntastic"
 link_vim_github_plugin opt 'https://github.com/tpope/vim-sensible.git' "${GITHUB_DIR}/vim-sensible"
 link_vim_github_plugin opt 'https://github.com/tpope/vim-surround.git' "${GITHUB_DIR}/vim-surround"
-link_vim_github_plugin opt 'https://github.com/dense-analysis/ale.git' "${GITHUB_DIR}/ale"
-link_vim_github_plugin start 'https://github.com/codota/tabnine-vim.git' "${GITHUB_DIR}/tabnine-vim"
+link_vim_github_plugin "start" 'https://github.com/dense-analysis/ale.git' "${GITHUB_DIR}/ale"
+link_vim_github_plugin "start" 'https://github.com/codota/tabnine-vim.git' "${GITHUB_DIR}/tabnine-vim"
 # git clone --depth 1 https://github.com/codota/tabnine-vim
 
 # Colour Schemes
