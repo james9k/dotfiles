@@ -25,3 +25,5 @@ TabNineExample.toml
 **/TabNine/*user*
 **/TabNine/*.bak
 **/TabNine/*token
+
+**/*.bak
