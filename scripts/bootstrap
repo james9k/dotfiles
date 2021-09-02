@@ -151,11 +151,11 @@ fi
 
 printf "\n"
 printf "Install Vim 8 packages natively\n"
-script/vim_packages
+scripts/vim_packages
 
 printf "\nInstall XDG config and data files\n"
-script/xdg_config
-script/xdg_local
+scripts/xdg_config
+scripts/xdg_local
 
 #cd ${DOTFILES_ROOT} && bin/update-git
 
