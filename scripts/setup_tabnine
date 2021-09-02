@@ -3,6 +3,8 @@
 # See setup instructions here:
 # https://github.com/tabnine/YouCompleteMe
 
+sudo pacman --noconfirm -S cmake go jdk-openjdk jre-openjdk-headless nodejs-lts-fermium npm
+
 if [ ! -d ~/github/YouCompleteMe ]; then
     cd ~/github || exit 1
     git clone https://github.com/tabnine/YouCompleteMe.git
