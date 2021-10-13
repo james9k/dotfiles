@@ -43,14 +43,11 @@ MDEOF
 WORKSTATION=$(cat <<WSEOF
 adobe-source-code-pro-fonts
 alacritty
-alacritty-terminfo
 clementine
 dbeaver
 flake8
 gvim
 ipython
-neovim-qt
-pycharm-community-edition
 python
 python-docs
 python-ipdb
@@ -61,8 +58,6 @@ python-virtualenv
 python-virtualenvwrapper
 speedcrunch
 terminator
-termite
-termite-terminfo
 terraform
 ttf-bitstream-vera
 ttf-dejavu
@@ -71,6 +66,7 @@ ttf-freefont
 ttf-hack
 ttf-liberation"
 vim-jedi
+xfce4-terminal
 WSEOF
 )
 GNOME="gdm gnome gnome-shell gnome-terminal gnome-system-monitor gnome-tweaks"

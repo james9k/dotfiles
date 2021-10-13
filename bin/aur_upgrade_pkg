@@ -4,8 +4,8 @@ PKG_NAME="${1}"
 AUR_DIR="${HOME}/aur"
 
 usage() {
-    printf "\nUsage: %s PKG_NAME\n" "$(basename $0)"
-    printf "\nExample:\n %s slack-desktop\n" "$(basename $0)"
+    printf "\nUsage: %s PKG_NAME\n" "$(basename $"0")"
+    printf "\nExample:\n %s slack-desktop\n" "$(basename $"0")"
 }
 
 if [ -z "${PKG_NAME}" ]; then
