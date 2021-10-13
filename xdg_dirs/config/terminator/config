@@ -3,45 +3,51 @@
   title_hide_sizetext = True
   inactive_color_offset = 0.61
   suppress_multiple_term_dialog = True
+  title_use_system_font = False
+  title_font = Monospace 11
 [keybindings]
 [profiles]
   [[default]]
-    background_color = "#282a36"
-    font = DejaVu Sans Mono 10
-    foreground_color = "#f8f8f2"
-    show_titlebar = False
-    scrollback_lines = 10000
-    palette = "#262626:#e356a7:#42e66c:#e4f34a:#9b6bdf:#e64747:#75d7ec:#efa554:#7a7a7a:#ff79c6:#50fa7b:#f1fa8c:#bd93f9:#ff5555:#8be9fd:#ffb86c"
-    use_system_font = False
-    background_image = None
-  [[jp]]
-    background_color = "#282a36"
+    background_color = "#282828"
     cursor_color = "#f8f8f2"
-    font = DejaVu Sans Mono 10
-    foreground_color = "#f8f8f2"
+    font = Monospace 11
+    foreground_color = "#ebdbb2"
     show_titlebar = False
+    scroll_on_output = True
     scrollback_lines = 100000
     palette = "#262626:#e356a7:#42e66c:#e4f34a:#9b6bdf:#e64747:#75d7ec:#efa554:#7a7a7a:#ff79c6:#50fa7b:#f1fa8c:#bd93f9:#ff5555:#8be9fd:#ffb86c"
     use_system_font = False
+    copy_on_selection = True
     background_image = None
-  [[jp_prod]]
-    background_color = "#290000"
-    font = DejaVu Sans Mono 10
+  [[jp]]
+    background_color = "#282a36"
+    background_darkness = 0.9
+    background_type = transparent
+    cursor_color = "#f8f8f2"
+    font = Monospace 11
     foreground_color = "#f8f8f2"
     show_titlebar = False
-    scrollback_lines = 10000
+    scroll_on_output = True
+    scrollback_lines = 100000
     palette = "#262626:#e356a7:#42e66c:#e4f34a:#9b6bdf:#e64747:#75d7ec:#efa554:#7a7a7a:#ff79c6:#50fa7b:#f1fa8c:#bd93f9:#ff5555:#8be9fd:#ffb86c"
     use_system_font = False
     background_image = None
   [[dracula]]
     background_color = "#282a36"
-    font = Anonymous Pro 12
+    background_darkness = 0.9
+    background_type = transparent
+    cursor_color = "#f8f8f2"
+    font = Monospace 11
     foreground_color = "#f8f8f2"
     show_titlebar = False
-    scrollback_lines = 10000
+    scroll_on_output = True
+    scrollback_lines = 100000
     palette = "#262626:#e356a7:#42e66c:#e4f34a:#9b6bdf:#e64747:#75d7ec:#efa554:#7a7a7a:#ff79c6:#50fa7b:#f1fa8c:#bd93f9:#ff5555:#8be9fd:#ffb86c"
     use_system_font = False
     background_image = None
+  [[jp_prod]]
+    cursor_color = "#aaaaaa"
+    scrollback_lines = 100000
 [layouts]
   [[default]]
     [[[window0]]]
@@ -50,5 +56,5 @@
     [[[child1]]]
       type = Terminal
       parent = window0
-      profile = jp
+      profile = dracula
 [plugins]

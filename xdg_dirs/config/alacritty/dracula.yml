@@ -23,7 +23,7 @@ colors:
     background: None
   selection:
     text: CellForeground
-    background: '0x44475a'
+    background: '0x56596a'
   normal:
     black:   '0x000000'
     red:     '0xff5555'

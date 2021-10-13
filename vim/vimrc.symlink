@@ -33,7 +33,7 @@ colorscheme dracula
 
 set background=dark
 
-autocmd FileType apache,conf,html,htmldjango,json,nftables,sql,yaml,xhtml,xml setlocal shiftwidth=2 softtabstop=2 expandtab
+autocmd FileType apache,conf,html,htmldjango,json,nftables,sql,terraform,yaml,xhtml,xml setlocal shiftwidth=2 softtabstop=2 expandtab
 autocmd FileType javascript,nginx,python,sh,sshconfig,zsh setlocal shiftwidth=4 softtabstop=4 expandtab
 
 " Ale
