@@ -1,13 +1,12 @@
 #!/usr/bin/env bash
 
 DATE="$(date "+%Y-%m-%d")"
-NOTEDIR="${HOME}/notepad"
+YEAR="$(date "+%Y")"
+MONTH="$(date "+%m")"
+NOTEDIR="${HOME}/notepad/${YEAR}/${MONTH}"
 FILENAME="${NOTEDIR}/${DATE}.txt"
 
-if [ ! -d "${NOTEDIR}" ]; then
-    mkdir "${NOTEDIR}" 
-fi
-
+mkdir -p "${NOTEDIR}"
 touch "${FILENAME}"
 
 if [ "$(uname)" = "Darwin" ]; then
