@@ -1,0 +1,15 @@
+#!/bin/bash
+
+ZIP_FILE="aws-sam-cli-linux-x86_64.zip"
+
+sam --version
+
+cd /tmp || exit 1
+
+wget https://github.com/aws/aws-sam-cli/releases/latest/download/"${ZIP_FILE}"
+sha256sum "${ZIP_FILE}"
+unzip -o "${ZIP_FILE}" -d sam-installation
+
+./sam-installation/install --bin-dir "${HOME}/bin" --install-dir "${HOME}/aws-sam-cli" --update
+
+sam --version

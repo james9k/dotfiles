@@ -18,7 +18,7 @@ printf "Working directory: %s\n" "${AUR_DIR}"
 mkdir -p "${AUR_DIR}"
 cd "${AUR_DIR}" || exit 1
 
-rm -rv "${PKG_NAME}"*
+rm -rvf "${PKG_NAME}"*
 
 wget "https://aur.archlinux.org/cgit/aur.git/snapshot/${PKG_NAME}.tar.gz"
 
