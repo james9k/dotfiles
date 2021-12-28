@@ -12,11 +12,11 @@ if has("unix")
     let incon=system('fc-list | grep -c Inconsolata')
 
     if ( dejavu > 0 )
-        set guifont=DejaVu\ Sans\ Mono\ 10
+        set guifont=DejaVu\ Sans\ Mono\ 11
     elseif ( firacode > 0 )
-        set guifont=Fira\ Code\ 10
+        set guifont=Fira\ Code\ 11
     elseif ( incon > 0 )
-        set guifont=Inconsolata 10
+        set guifont=Inconsolata 11
     endif
 
 elseif has("mac")

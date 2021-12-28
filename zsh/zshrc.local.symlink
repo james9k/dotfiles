@@ -4,6 +4,7 @@
 HISTFILE=~/.histfile
 HISTSIZE=10000
 SAVEHIST=9000
+GRML_NO_APT_ALIASES=1
 setopt APPEND_HISTORY
 # 2019-04-27 - disabled in attempt to keep history sequence in tact
 #setopt SHARE_HISTORY
