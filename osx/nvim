@@ -8,10 +8,5 @@ DOTFILES_ROOT=$(pwd)
 # Source reusable bash functions
 source "${DOTFILES_ROOT}"/bash/functions.bash
 
-
-# Install pynvim to avoid error:
-#   YouCompleteMe unavailable: requires Vim compiled with Python (2.7.1+ or 3.4+) support.
-# and allow TabNine to work
-
 pip install --user pynvim
 pip3 install --user pynvim
