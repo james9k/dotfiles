@@ -69,6 +69,7 @@ alias gf='git fetch'
 alias gfo='git fetch origin'
 alias gl='git log'
 alias glp='git log -p'
+alias glg='git log --graph --oneline'
 alias gpom='git pull origin master'
 alias gpull='git pull'
 alias gpush='git push'
@@ -78,6 +79,10 @@ alias grm='git rebase master'
 alias grpo='git remote prune origin'
 alias gst='git status'
 alias gsuir='git submodule update --init --recursive'
+
+# iproute2
+alias ip='ip -c'
+alias bridge='bridge -c'
 
 # For local aliases you don't want checked in
 if [ -f ~/.zsh_aliases.local ]; then
