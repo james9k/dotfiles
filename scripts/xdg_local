@@ -73,6 +73,21 @@ function link_neovim_github_plugin() {
     printf "\n"
 }
 
+link_xfce4_terminal_colorscheme() {
+    #/home/james/.dotfiles/xdg_dirs/local/share/xfce4/terminal/colorschems/Dracula.theme
+    REPO_PATH="${DOTFILES_ROOT}/xdg_dirs/local/share/xfce4/terminal/colorschems"
+    DATA_PATH="${XDG_DATA_HOME}/xfce4/terminal/colorschems"
+    FILENAME="Dracula.theme"
+    mkdir -p "${DATA_PATH}"
+    if [ ! -h "${DATA_PATH}/${FILENAME}" ]; then
+        ln -s "${REPO_PATH}/${FILENAME}" "${DATA_PATH}/${FILENAME}"
+        success "Linked ${REPO_PATH}/${FILENAME} to ${DATA_PATH}/${FILENAME}"
+    else
+        user "${DATA_PATH}/${FILENAME} already symlinked"
+    fi
+
+}
+
 # File type plugins
 link_neovim_github_plugin "start" "gregsexton" "MatchTag"
 link_neovim_github_plugin "start" "hashivim" "vim-terraform"
@@ -88,5 +103,7 @@ link_neovim_github_plugin "start" "vim-airline" "vim-airline"
 link_neovim_github_plugin "opt" "joshdick" "onedark.vim"
 link_neovim_github_plugin "opt" "drewtempelmeyer" "palenight.vim"
 link_neovim_github_plugin "opt" "dracula" "dracula"
+
+link_xfce4_terminal_colorscheme
 
 printf "\n"
