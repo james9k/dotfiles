@@ -1,4 +1,4 @@
 #!/bin/bash
 
 #python -c "import sys; print(len(sys.argv[1]))" "${1}"
-python -c "print(len(str(\"${1}\")))"
+python -c "print(len(str(\'${1}\')))"
