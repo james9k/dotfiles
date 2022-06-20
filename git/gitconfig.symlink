@@ -10,6 +10,9 @@
 [includeIf "gitdir:~/gitlab/"]
   path = ~/.gitconfig-my-gitlab
 
+[includeIf "gitdir:~/gitea/"]
+  path = ~/.gitconfig-my-gitea
+
 [includeIf "gitdir:~/work/bitbucket/"]
   path = ~/.gitconfig-work-bitbucket
 
@@ -18,6 +21,9 @@
 
 [includeIf "gitdir:~/work/gitlab/"]
   path = ~/.gitconfig-work-gitlab
+
+#[merge]
+#    ff = no
 
 [pull]
   rebase = false

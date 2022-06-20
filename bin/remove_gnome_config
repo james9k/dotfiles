@@ -1,0 +1,13 @@
+#!/bin/bash
+
+rm -rvf \
+    ~/.cache \
+    ~/.gtkrc-2.0 \
+    ~/.config/dconf \
+    ~/.config/gconf \
+    ~/.config/evolution \
+    ~/.config/gnome-boxes \
+    ~/.config/gnome-session \
+    ~/.config/gtk-3.0 \
+    ~/.config/gtk-4.0 \
+    ~/.config/ibus \

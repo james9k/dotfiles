@@ -19,6 +19,10 @@ alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
 alias zgrep='zgrep --color=auto'
 
+if type bat > /dev/null; then
+    alias bat='bat -pp'
+fi
+
 # ls replacement
 if type exa > /dev/null; then
     alias el='exa -lg'
