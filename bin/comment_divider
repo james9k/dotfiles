@@ -1,3 +1,4 @@
 #!/bin/bash
 
-python -c "print('${1}' * 80)"
+CHARACTER="${1-#}" # Use # if no character is provided
+python -c "print(80 * '{}'.format(\"${CHARACTER}\"))"

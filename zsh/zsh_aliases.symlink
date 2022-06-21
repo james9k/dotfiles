@@ -57,6 +57,7 @@ type terraform > /dev/null && alias tf='terraform'
 
 # Use newer versions
 type ag > /dev/null && alias ack='ag'
+alias ag='ag -u'
 
 # Git
 alias g='git'
