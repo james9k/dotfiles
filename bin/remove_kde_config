@@ -1,4 +1,33 @@
 #!/bin/bash
 
 rm -rvf \
-    ~/.cache
+    ~/.cache \
+    ~/.gtkrc-2.0 \
+    ~/.local/share/baloo \
+    ~/.local/share/flatpak \
+    ~/.local/share/kactivitymanagerd \
+    ~/.local/share/klipper \
+    ~/.local/share/krunnerstaterc \
+    ~/.local/share/kwalletd \
+    ~/.local/share/sddm \
+    ~/.local/share/user-places.xbel* \
+    ~/.config/Trolltech.conf \
+    ~/.config/akregatorrc \
+    ~/.config/baloofilerc \
+    ~/.config/dconf \
+    ~/.config/evolution \
+    ~/.config/falkon \
+    ~/.config/goa* \
+    ~/.config/gtk* \
+    ~/.config/ibus \
+    ~/.config/k*rc \
+    ~/.config/kde* \
+    ~/.config/kdedefaults \
+    ~/.config/kdeglobals \
+    ~/.config/libaccounts-glib \
+    ~/.config/okular* \
+    ~/.config/plasma* \
+    ~/.config/powermanagementprofilesrc \
+    ~/.config/pulse \
+    ~/.config/user-dirs.* \
+    ~/.config/xsettingsd
