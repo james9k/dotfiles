@@ -1,21 +1,27 @@
 #!/bin/bash
 
+    #~/.cache \
 rm -rvf \
-    ~/.cache \
     ~/.gtkrc-2.0 \
     ~/.local/share/baloo \
+    ~/.local/share/dolphin \
     ~/.local/share/flatpak \
     ~/.local/share/kactivitymanagerd \
+    ~/.local/share/kcookiejar \
+    ~/.local/share/kded5 \
     ~/.local/share/klipper \
     ~/.local/share/krunnerstaterc \
+    ~/.local/share/kscreen \
     ~/.local/share/kwalletd \
+    ~/.local/share/kxmlgui5 \
+    ~/.local/share/okular \
+    ~/.local/share/plasma_icons \
     ~/.local/share/sddm \
     ~/.local/share/user-places.xbel* \
     ~/.config/Trolltech.conf \
     ~/.config/akregatorrc \
     ~/.config/baloofilerc \
     ~/.config/dconf \
-    ~/.config/evolution \
     ~/.config/falkon \
     ~/.config/goa* \
     ~/.config/gtk* \
