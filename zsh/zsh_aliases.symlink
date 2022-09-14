@@ -23,25 +23,10 @@ if type bat > /dev/null; then
     alias bat='bat -pp'
 fi
 
-# ls replacement
-if type exa > /dev/null; then
-    alias el='exa -lg'
-    alias ela='exa -lga'
-    alias e='exa'
-    alias ea='exa -a'
-
-    alias ll='exa -lg'
-    alias lla='exa -lga'
-    alias l='exa'
-    alias la='exa -a'
-else
-    # regular ls
-    alias ll='ls -l'
-    alias lla='ls -la'
-    alias l='ls'
-    alias la='ls -a'
-fi
-
+alias ll='ls -l'
+alias lla='ls -la'
+alias l='ls'
+alias la='ls -a'
 
 alias rm='rm -v'
 alias cp='cp -v'

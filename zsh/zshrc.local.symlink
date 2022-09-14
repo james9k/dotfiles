@@ -148,5 +148,17 @@ export EDITOR
 npm_config_prefix="${HOME}/.local"
 export npm_config_prefix
 
+# Wayland
+if [ "$XDG_SESSION_TYPE" = "wayland" ]; then
+    MOZ_ENABLE_WAYLAND=1
+    export MOZ_ENABLE_WAYLAND
+fi
+
+
+# Put work only stuff in here
+if [ -e ~/.zshrc.local.work ]; then
+    xsource ~/.zshrc.local.work
+fi
+
 # Turn off profiling
 #zprof
