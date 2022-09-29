@@ -19,6 +19,11 @@ bindkey -e
 # The following lines were added by compinstall
 #zstyle :compinstall filename "${HOME}/.zshrc"
 
+# Local zsh completions
+if [ -d ~/.zsh_aliases ]; then
+    fpath=(~/.local/share/zsh/site-functions $fpath)
+fi
+
 # Command completion
 autoload -Uz compinit
 compinit
