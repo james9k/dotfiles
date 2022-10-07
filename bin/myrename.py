@@ -23,7 +23,7 @@ def myrename(src_filename):
             filename = filename.replace(character, '.')
 
     # replace with '-' (hyphen)
-    annoying_strings = ['.-.', '.-', '.-', '._.']
+    annoying_strings = ['.-.', '.-', '-.', '._.']
     for string in annoying_strings:
         if string in filename:
             filename = filename.replace(string, '-')
