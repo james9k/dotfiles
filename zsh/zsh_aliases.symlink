@@ -40,10 +40,6 @@ type kubectl > /dev/null && alias kc='kubectl'
 type minikube > /dev/null && alias mk='minikube'
 type terraform > /dev/null && alias tf='terraform'
 
-# Use newer versions
-type ag > /dev/null && alias ack='ag'
-alias ag='ag -u'
-
 # Git
 alias g='git'
 alias ga='git add'
