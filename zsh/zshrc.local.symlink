@@ -25,10 +25,13 @@ if [ -d ~/.zsh_aliases ]; then
 fi
 
 # Command completion
-autoload -Uz compinit
+# https://stackoverflow.com/questions/67136714/how-to-properly-call-compinit-and-bashcompinit-in-zsh
+#autoload -Uz compinit
+autoload -Uz compinit bashcompinit
 compinit
+bashcompinit
 
-autoload -U +X bashcompinit && bashcompinit
+#autoload -U +X bashcompinit && bashcompinit
 
 # Config GRML Zsh
 autoload -U colors && colors
@@ -75,7 +78,7 @@ fi
 
 # Hashicorp
 whence terraform > /dev/null && complete -o nospace -C $(whence terraform) terraform
-#type vault > /dev/null && complete -o nospace -C /usr/bin/vault vault
+#type vault > /dev/null && complete -o nospace -C $(whence vault) vault
 
 # Python
 if [ -e /usr/bin/virtualenvwrapper_lazy.sh ]; then
@@ -142,9 +145,7 @@ if [[ $TERM == xterm-termite ]]; then
 fi
 
 # AWS CLI v2 command completion
-if [ -e ~/bin/aws_completer ]; then
-    complete -C ~/bin/aws_completer aws
-fi
+whence aws_completer > /dev/null && complete -C $(whence aws_completer) aws
 
 EDITOR="nvim"
 export EDITOR
