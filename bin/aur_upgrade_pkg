@@ -1,6 +1,5 @@
 #!/bin/bash
 
-PKG_NAME="${1}"
 AUR_DIR="${HOME}/aur"
 
 usage() {
@@ -8,32 +7,36 @@ usage() {
     printf "\nExample:\n %s slack-desktop\n" "$(basename $"0")"
 }
 
-if [ -z "${PKG_NAME}" ]; then
-    printf "\nPKG_NAME is required\n"
-    usage
-    exit 1
-fi
-
-printf "Working directory: %s\n" "${AUR_DIR}"
-mkdir -p "${AUR_DIR}"
-cd "${AUR_DIR}" || exit 1
-
-rm -rvf "${PKG_NAME}"*
-
-wget "https://aur.archlinux.org/cgit/aur.git/snapshot/${PKG_NAME}.tar.gz"
-
-if [ -f "${PKG_NAME}.tar.gz" ]; then
-    tar xvf "${PKG_NAME}.tar.gz"
-    cd "${PKG_NAME}" || exit 1
-
-    makepkg
-
-    ZST_FILE="$(ls ./"${PKG_NAME}"*.zst)"
-    if [ -z "${ZST_FILE}" ]; then
-        printf "\nNo .zst file found !\n"
+# Now allow one or more pkgs to be provided as arguments
+for PKG_NAME in "$@"; do
+    echo "################################################################################"
+    if [ -z "${PKG_NAME}" ]; then
+        printf "\nPKG_NAME is required\n"
+        usage
         exit 1
-    else
-        sudo pacman -U --noconfirm "${ZST_FILE}"
     fi
 
-fi
+    printf "Working directory: %s\n" "${AUR_DIR}"
+    mkdir -p "${AUR_DIR}"
+    cd "${AUR_DIR}" || exit 1
+
+    rm -rf "${PKG_NAME}"*
+
+    wget "https://aur.archlinux.org/cgit/aur.git/snapshot/${PKG_NAME}.tar.gz"
+
+    if [ -f "${PKG_NAME}.tar.gz" ]; then
+        tar xvf "${PKG_NAME}.tar.gz"
+        cd "${PKG_NAME}" || exit 1
+
+        makepkg
+
+        ZST_FILE="$(ls ./"${PKG_NAME}"*.zst)"
+        if [ -z "${ZST_FILE}" ]; then
+            printf "\nNo .zst file found !\n"
+            exit 1
+        else
+            sudo pacman -U --noconfirm "${ZST_FILE}"
+        fi
+
+    fi
+done
