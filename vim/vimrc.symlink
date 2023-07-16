@@ -39,6 +39,3 @@ autocmd FileType javascript,nginx,python,sh,sshconfig,zsh setlocal shiftwidth=4 
 " Ale
 packloadall
 silent! helptags ALL
-
-" TabNine
-execute 'packadd YouCompleteMe'

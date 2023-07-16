@@ -10,9 +10,10 @@ setopt APPEND_HISTORY
 #setopt SHARE_HISTORY
 setopt EXTENDED_HISTORY
 setopt HIST_EXPIRE_DUPS_FIRST
-setopt HIST_IGNORE_ALL_DUPS
-setopt HIST_IGNORE_DUPS
+setopt HIST_IGNORE_ALL_DUPS # If a new command line being added to the history list duplicates an older one, the older command is removed from the list.
+#setopt HIST_IGNORE_DUPS # Do not enter command lines into the history list if they are duplicates of the previous event.
 setopt HIST_IGNORE_SPACE
+setopt HIST_REDUCE_BLANKS
 unsetopt beep
 bindkey -e
 # End of lines configured by zsh-newuser-install
@@ -27,14 +28,16 @@ fi
 # Command completion
 # https://stackoverflow.com/questions/67136714/how-to-properly-call-compinit-and-bashcompinit-in-zsh
 #autoload -Uz compinit
-autoload -Uz compinit bashcompinit
+autoload -Uz compinit #bashcompinit
 compinit
-bashcompinit
+#bashcompinit
 
 #autoload -U +X bashcompinit && bashcompinit
 
 # Config GRML Zsh
 autoload -U colors && colors
+zstyle ':grml:chpwd:dirstack' enable false # Disable DIRSTACK, because of NFS shares
+
 zstyle ':vcs_info:*' enable git
 zstyle ':vcs_info:*' check-for-changes true
 zstyle ':vcs_info:*' unstagedstr '!'
@@ -77,7 +80,8 @@ fi
 #whence minikube > /dev/null && source "${HOME}/.dotfiles/completion/minikube-zsh"
 
 # Hashicorp
-whence terraform > /dev/null && complete -o nospace -C $(whence terraform) terraform
+# Terraform package has: /usr/share/zsh/site-functions/_terraform
+#whence terraform > /dev/null && complete -o nospace -C $(whence terraform) terraform
 #type vault > /dev/null && complete -o nospace -C $(whence vault) vault
 
 # Python
@@ -100,10 +104,6 @@ if [ "$(uname)" = "Linux" ]; then
         source /usr/share/fzf/key-bindings.zsh  # Arch Linux
     fi
 
-    if [ -f ~/.config/broot/launcher/zsh/br ]; then
-        source ~/.config/broot/launcher/zsh/br
-    fi
-
     RANGER_BIN="/usr/bin/ranger"
 
 
@@ -123,9 +123,6 @@ elif [ "$(uname)" = "Darwin" ]; then
         source /usr/local/bin/virtualenvwrapper_lazy.sh
     fi
 
-    if [ -f ~/Library/Preferences/org.dystroy.broot/launcher/bash/br ]; then
-        source ~/Library/Preferences/org.dystroy.broot/launcher/bash/br
-    fi
 fi
 
 ranger() {
@@ -143,9 +140,6 @@ if [[ $TERM == xterm-termite ]]; then
   . /etc/profile.d/vte.sh
   __vte_osc7
 fi
-
-# AWS CLI v2 command completion
-whence aws_completer > /dev/null && complete -C $(whence aws_completer) aws
 
 EDITOR="nvim"
 export EDITOR
@@ -165,6 +159,12 @@ fi
 if [ -e ~/.zshrc.local.work ]; then
     xsource ~/.zshrc.local.work
 fi
+
+NEXTCLOUD_PHP_CONFIG="/etc/webapps/nextcloud/php.ini"
+export NEXTCLOUD_PHP_CONFIG
+
+RIPGREP_CONFIG_PATH="${HOME}/.config/ripgrep/rgrc"
+export RIPGREP_CONFIG_PATH
 
 # Turn off profiling
 #zprof
