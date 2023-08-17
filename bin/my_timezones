@@ -3,7 +3,8 @@
 BOLD='\033[1m'
 NC='\033[m'
 
-printf "%bVietnam%b:   %s\n" "${BOLD}" "${NC}" "$(TZ="Asia/Ho_Chi_Minh" date)"
+printf "%bUTC%b:       %s\n" "${BOLD}" "${NC}" "$(TZ=UTC date)"
 printf "%bAEST%b:      %s\n" "${BOLD}" "${NC}" "$(TZ="Australia/Brisbane" date)"
 printf "%bMelbourne%b: %s\n" "${BOLD}" "${NC}" "$(TZ="Australia/Melbourne" date)"
-printf "%bUTC%b:       %s\n" "${BOLD}" "${NC}" "$(TZ=UTC date)"
+printf "%bAdelaide%b:  %s\n" "${BOLD}" "${NC}" "$(TZ="Australia/Adelaide" date)"
+printf "%bPerth%b:     %s\n" "${BOLD}" "${NC}" "$(TZ="Australia/Perth" date)"

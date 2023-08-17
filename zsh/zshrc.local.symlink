@@ -6,8 +6,6 @@ HISTFILE=~/.histfile
 HISTSIZE=10000
 SAVEHIST=9000
 setopt APPEND_HISTORY
-# 2019-04-27 - disabled in attempt to keep history sequence in tact
-#setopt SHARE_HISTORY
 setopt EXTENDED_HISTORY
 setopt HIST_EXPIRE_DUPS_FIRST
 setopt HIST_IGNORE_ALL_DUPS # If a new command line being added to the history list duplicates an older one, the older command is removed from the list.
@@ -27,12 +25,9 @@ fi
 
 # Command completion
 # https://stackoverflow.com/questions/67136714/how-to-properly-call-compinit-and-bashcompinit-in-zsh
-#autoload -Uz compinit
-autoload -Uz compinit #bashcompinit
+autoload -Uz compinit bashcompinit
 compinit
-#bashcompinit
-
-#autoload -U +X bashcompinit && bashcompinit
+bashcompinit
 
 # Config GRML Zsh
 autoload -U colors && colors
