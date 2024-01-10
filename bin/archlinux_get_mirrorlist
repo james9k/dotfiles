@@ -1,0 +1,5 @@
+#!/bin/bash
+
+
+curl -s 'https://archlinux.org/mirrorlist/?country=AU&protocol=https&ip_version=4&use_mirror_status=on'
+
