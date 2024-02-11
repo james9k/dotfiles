@@ -27,3 +27,6 @@ TabNineExample.toml
 **/TabNine/*token
 
 **/*.bak
+
+# Jetbrains
+.idea/

@@ -12,5 +12,6 @@ touch "${FILENAME}"
 if [ "$(uname)" = "Darwin" ]; then
     mvim "${FILENAME}"
 else
-    gvim "${FILENAME}"
+    neovide "${FILENAME}"
+    #gvim "${FILENAME}"
 fi

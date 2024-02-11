@@ -1,6 +1,9 @@
 #!/bin/bash
 # vim: set ts=4 sw=4 sts=4 et:
 # Run this script as root
+# EXAMPLE:
+#    cd ~/.dotfiles
+#    DOTFILE_PROFILE=gnome ./archlinux/install_packages
 
 # See case statement for profile options
 DOTFILE_PROFILE="${DOTFILE_PROFILE:-default}"
@@ -48,6 +51,7 @@ dbeaver
 flake8
 gvim
 ipython
+neovide
 python
 python-docs
 python-ipdb
@@ -64,7 +68,7 @@ ttf-dejavu
 ttf-fira-code
 ttf-freefont
 ttf-hack
-ttf-liberation"
+ttf-liberation
 vim-jedi
 xfce4-terminal
 WSEOF
@@ -85,6 +89,9 @@ function install_pkgs() {
 }
 
 sudo pacman --noconfirm -Sy
+
+# Default stuff to install
+install_pkgs "My default pkgs" "$(for pkg in ${MY_DEFAULTS}; do printf "%s " "${pkg}"; done)"
 
 case "${DOTFILE_PROFILE}" in
     gnome)
@@ -116,6 +123,3 @@ case "${DOTFILE_PROFILE}" in
         printf "Profile not specified, going with defaults.\n"
         ;;
 esac
-
-# Default stuff to install
-install_pkgs "My default pkgs" "$(for pkg in ${MY_DEFAULTS}; do printf "%s " "${pkg}"; done)"

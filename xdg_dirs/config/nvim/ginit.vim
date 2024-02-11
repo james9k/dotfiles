@@ -1,19 +1,19 @@
-if has("unix")
-    let firacode=system('fc-list | grep -c Fira\ Code')
-    let dejavu=system('fc-list | grep -c DejaVu\ Sans\ Mono')
-    let incon=system('fc-list | grep -c Inconsolata')
-
-    if ( dejavu > 0 )
-        set guifont=DejaVu\ Sans\ Mono\ 6
-    elseif ( firacode > 0 )
-        set guifont=Fira\ Code\ 10
-    elseif ( incon > 0 )
-        set guifont=Inconsolata 10
-    endif
-
-elseif has("mac")
-    set guifont=Menlo:h9,Monaco:h10
-endif
+"if has("unix")
+"    let firacode=system('fc-list | grep -c Fira\ Code')
+"    let dejavu=system('fc-list | grep -c DejaVu\ Sans\ Mono')
+"    let incon=system('fc-list | grep -c Inconsolata')
+"
+"    if ( dejavu > 0 )
+"        set guifont=DejaVu\ Sans\ Mono\ 6
+"    elseif ( firacode > 0 )
+"        set guifont=Fira\ Code\ 10
+"    elseif ( incon > 0 )
+"        set guifont=Inconsolata 10
+"    endif
+"
+"elseif has("mac")
+"    set guifont=Menlo:h9,Monaco:h10
+"endif
 
 set mouse=nv
 
