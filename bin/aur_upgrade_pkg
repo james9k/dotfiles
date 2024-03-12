@@ -1,6 +1,9 @@
 #!/bin/bash
 
 AUR_DIR="${HOME}/aur"
+PKGEXT=".pkg.tar.lz4"  # Override the compression type
+#PKGEXT='.pkg.tar.zst'
+export PKGEXT
 
 usage() {
     printf "\nUsage: %s PKG_NAME\n" "$(basename $"0")"
@@ -20,22 +23,26 @@ for PKG_NAME in "$@"; do
     mkdir -p "${AUR_DIR}"
     cd "${AUR_DIR}" || exit 1
 
+    echo "Removing old files"
     rm -rf "${PKG_NAME}"*
 
     wget "https://aur.archlinux.org/cgit/aur.git/snapshot/${PKG_NAME}.tar.gz"
 
     if [ -f "${PKG_NAME}.tar.gz" ]; then
+        echo "Unpacking ${PKG_NAME}.tar.gz"
         tar xvf "${PKG_NAME}.tar.gz"
         cd "${PKG_NAME}" || exit 1
 
         makepkg
 
-        ZST_FILE="$(ls ./"${PKG_NAME}"*.zst)"
-        if [ -z "${ZST_FILE}" ]; then
-            printf "\nNo .zst file found !\n"
-            exit 1
+        ARCHIVE_FILE="$(ls "${PKG_NAME}"*"${PKGEXT}" | grep -v debug)"
+        echo "Archive file: ${ARCHIVE_FILE}"
+        if [ -f "${ARCHIVE_FILE}" ]; then
+            echo "Installing ${ARCHIVE_FILE} ..."
+            sudo pacman -U --noconfirm "./${ARCHIVE_FILE}"
         else
-            sudo pacman -U --noconfirm "${ZST_FILE}"
+            echo "No ${PKGEXT} file found !"
+            exit 1
         fi
 
     fi
