@@ -30,3 +30,4 @@ TabNineExample.toml
 
 # Jetbrains
 .idea/
+.fleet/
