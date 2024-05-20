@@ -149,8 +149,12 @@ if [ "$XDG_SESSION_TYPE" = "wayland" ]; then
     export MOZ_ENABLE_WAYLAND
 fi
 
+# AWS CLI
+if command -v aws_completer &> /dev/null; then
+    complete -C "$(command -v aws_completer)" aws
+fi
 
-# Put work only stuff in here
+# Put work only stuff in here so it doesn't pollute my personal setup.
 if [ -e ~/.zshrc.local.work ]; then
     xsource ~/.zshrc.local.work
 fi
