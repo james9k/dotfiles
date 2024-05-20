@@ -153,6 +153,7 @@ fi
 if command -v aws_completer &> /dev/null; then
     complete -C "$(command -v aws_completer)" aws
 fi
+unset PAGER  # The "aws help" command show ANSI codes when this equals "less".
 
 # Put work only stuff in here so it doesn't pollute my personal setup.
 if [ -e ~/.zshrc.local.work ]; then
