@@ -1,11 +1,16 @@
 #!/bin/bash
 
+DEBUG="${DEBUG:-false}"
 AUR_DIR="${HOME}/aur"
 PKGEXT=".pkg.tar.lz4"  # Override the compression type
 #PKGEXT=".pkg.tar.zst"  # Copied from /etc/makepkg.conf
 export PKGEXT
 PKG_NAME="${1}"
 TARBALL="${PKG_NAME}.tar.gz"
+
+if [ "${DEBUG}" == "true" ]; then
+    set -x
+fi
 
 usage() {
     printf "\nUsage: %s PKG_NAME\n" "$(basename $"0")"
@@ -25,8 +30,11 @@ cd "${AUR_DIR}" || exit 1
 echo "Removing old files"
 rm -rf "${PKG_NAME}"*
 
-wget "https://aur.archlinux.org/cgit/aur.git/snapshot/${TARBALL}"
 
+# Get snapshot URL
+snapshot_path=$(curl -s "https://aur.archlinux.org/rpc/v5/info?arg[]=${PKG_NAME}" | jq -r '.results[].URLPath')
+# /cgit/aur.git/snapshot/libanjuta.tar.gz
+wget "https://aur.archlinux.org${snapshot_path}"
 
 
 if [ -f "${TARBALL}" ]; then
@@ -45,4 +53,8 @@ if [ -f "${TARBALL}" ]; then
         echo "${PKG_FILENAME} not found !"
         exit 1
     fi
+fi
+
+if [ "${DEBUG}" == "true" ]; then
+    set +x
 fi
