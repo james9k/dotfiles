@@ -33,3 +33,10 @@ packloadall
 silent! helptags ALL
 
 set title
+
+if exists("g:neovide")
+    " Put anything you want to happen only in Neovide here
+    " set guifont=Source\ Code\ Pro:h14
+    "set guifont=Noto\ Sans\ Mono:h14
+    set guifont=Noto\ Sans\ Mono:h11
+endif
