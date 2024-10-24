@@ -1,0 +1,4 @@
+#!/bin/bash
+
+/usr/bin/python ~/.dotfiles/bin/aur_pkg_tool.py "$@"
+
