@@ -1,4 +1,3 @@
-import = ["/home/james/.config/alacritty/dracula.toml"]
 
 [env]
 TERM = "xterm-256color"
@@ -77,3 +76,6 @@ startup_mode = "Windowed"
 [window.padding]
 x = 2
 y = 2
+
+[general]
+import = ["/home/james/.config/alacritty/dracula.toml"]
