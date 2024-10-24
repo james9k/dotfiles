@@ -144,7 +144,7 @@ elif [ "$(uname)" == "Linux" ]; then
             export DOTFILE_PROFILE
         fi
 
-        archlinux/install_packages.bash
+        archlinux/install_packages
         success "Arch Linux packages installed."
     fi
 fi

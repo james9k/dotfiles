@@ -19,8 +19,7 @@ MY_DEFAULTS=$(cat <<MDEOF
 bat
 bash-completion
 bind-tools
-broot
-exa
+eza
 fzf
 git
 gnu-netcat
@@ -35,7 +34,6 @@ ranger
 ripgrep
 shellcheck
 sipcalc
-the_silver_searcher
 tig
 tree
 wget
