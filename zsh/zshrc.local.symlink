@@ -166,5 +166,12 @@ export NEXTCLOUD_PHP_CONFIG
 RIPGREP_CONFIG_PATH="${HOME}/.config/ripgrep/rgrc"
 export RIPGREP_CONFIG_PATH
 
+# fzf/zoxide for fast directory navigation
+if command -v fzf zoxide > /dev/null; then
+    eval "$(zoxide init zsh)"
+else
+    echo "Maybe fzf and zoxide need to be installed \"sudo pacman -S --needed fzf zoxide\""
+fi
+
 # Turn off profiling
 #zprof
