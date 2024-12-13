@@ -1,49 +1,65 @@
 #!/bin/bash
 
+DEBUG="${DEBUG:-false}"
 AUR_DIR="${HOME}/aur"
+AUR_RPC_URL="https://aur.archlinux.org/rpc/v5/"
 PKGEXT=".pkg.tar.lz4"  # Override the compression type
-#PKGEXT='.pkg.tar.zst'
 export PKGEXT
+
+if [ "${DEBUG}" == "true" ]; then
+    set -x
+fi
 
 usage() {
     printf "\nUsage: %s PKG_NAME\n" "$(basename $"0")"
     printf "\nExample:\n %s slack-desktop\n" "$(basename $"0")"
 }
 
+printf "Working directory: %s\n" "${AUR_DIR}"
+mkdir -p "${AUR_DIR}"
+
 # Now allow one or more pkgs to be provided as arguments
 for PKG_NAME in "$@"; do
-    echo "################################################################################"
+    TARBALL="${PKG_NAME}.tar.gz"
+
+    printf "################################################################################\n"
+    printf "# %s\n" "${PKG_NAME}"
+    printf "################################################################################\n"ln
     if [ -z "${PKG_NAME}" ]; then
-        printf "\nPKG_NAME is required\n"
+        printf "\nOn or more PKG_NAME is required.\n"
         usage
         exit 1
     fi
 
-    printf "Working directory: %s\n" "${AUR_DIR}"
-    mkdir -p "${AUR_DIR}"
     cd "${AUR_DIR}" || exit 1
 
     echo "Removing old files"
     rm -rf "${PKG_NAME}"*
 
-    wget "https://aur.archlinux.org/cgit/aur.git/snapshot/${PKG_NAME}.tar.gz"
+    package_urlpath=$(curl -s "${AUR_RPC_URL}info?arg[]=${PKG_NAME}" | jq -r '.results[].URLPath')
 
-    if [ -f "${PKG_NAME}.tar.gz" ]; then
-        echo "Unpacking ${PKG_NAME}.tar.gz"
-        tar xvf "${PKG_NAME}.tar.gz"
+    wget "https://aur.archlinux.org/${package_urlpath}"
+
+    if [ -f "${TARBALL}" ]; then
+        printf "Unpacking %s\n" "${TARBALL}"
+        tar xvf "${TARBALL}"
         cd "${PKG_NAME}" || exit 1
 
         makepkg
 
-        ARCHIVE_FILE="$(ls "${PKG_NAME}"*"${PKGEXT}" | grep -v debug)"
-        echo "Archive file: ${ARCHIVE_FILE}"
-        if [ -f "${ARCHIVE_FILE}" ]; then
-            echo "Installing ${ARCHIVE_FILE} ..."
-            sudo pacman -U --noconfirm "./${ARCHIVE_FILE}"
-        else
-            echo "No ${PKGEXT} file found !"
-            exit 1
-        fi
+    PKG_FILENAME=$(ls -1 ${PKG_NAME}*${PKGEXT} | grep -v debug)
+    printf "Package file: %s\n" "${PKG_FILENAME}"
+    if [ -f "${PKG_FILENAME}" ]; then
+        printf "Installing %s ...\n" "${PKG_FILENAME}"
+        sudo pacman -U --noconfirm "./${PKG_FILENAME}"
+    else
+        printf "%s not found !\n" "${PKG_FILENAME}"
+        exit 1
+    fi
 
     fi
 done
+
+if [ "${DEBUG}" == "true" ]; then
+    set +x
+fi
