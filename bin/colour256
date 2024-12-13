@@ -25,8 +25,8 @@ for FGs in '    m' '   1m' '  30m' '1;30m' '  31m' '1;31m' '  32m' \
   done
   echo;
 done
-printf "\nExamples:\n"
-echo 'echo -e "\033[m\033[41mExample 1\033[m"'
-echo 'printf "\033[m\033[42mExample 2\033[m\n"'
-echo 'printf "%bExample 2%b\n" "\033[m\033[43m" "\033[m"'
-echo
+printf "\nEXAMPLES:\n"
+printf 'echo -e "\\033[m\\033[41mExample 1\\033[m"\n'
+printf 'printf "\\033[m\\033[42mExample 2\\033[m\\n"\n'
+printf 'printf "%%bExample 3%%b\\n" "\\033[m\\033[43m" "\\033[m"\n'
+printf '\n'
