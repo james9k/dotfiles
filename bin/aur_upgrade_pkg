@@ -24,7 +24,7 @@ for PKG_NAME in "$@"; do
 
     printf "################################################################################\n"
     printf "# %s\n" "${PKG_NAME}"
-    printf "################################################################################\n"ln
+    printf "################################################################################\n"
     if [ -z "${PKG_NAME}" ]; then
         printf "\nOn or more PKG_NAME is required.\n"
         usage
@@ -33,7 +33,7 @@ for PKG_NAME in "$@"; do
 
     cd "${AUR_DIR}" || exit 1
 
-    echo "Removing old files"
+    printf "Removing old files\n"
     rm -rf "${PKG_NAME}"*
 
     package_urlpath=$(curl -s "${AUR_RPC_URL}info?arg[]=${PKG_NAME}" | jq -r '.results[].URLPath')
