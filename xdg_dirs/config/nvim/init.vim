@@ -25,7 +25,7 @@ colorscheme palenight
 
 set background=dark
 
-autocmd FileType apache,conf,html,htmldjango,json,nftables,sql,yaml,xml setlocal shiftwidth=2 softtabstop=2 expandtab
+autocmd FileType apache,conf,html,hcl,htmldjango,json,nftables,sql,yaml,xml setlocal shiftwidth=2 softtabstop=2 expandtab
 autocmd FileType javascript,nginx,python,sh,sshconfig,zsh setlocal shiftwidth=4 softtabstop=4 expandtab
 
 " Ale
