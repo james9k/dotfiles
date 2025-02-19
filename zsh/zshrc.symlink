@@ -1,0 +1,57 @@
+# Requires the startship command
+# pacman -S starship
+
+alias h='history 0'
+
+alias ls='ls --color=auto'
+alias ll='ls -l'
+alias lla='ls -la'
+alias l='ls'
+alias la='ls -a'
+alias el='eza -l'
+alias ela='eza -la'
+alias e='eza'
+alias ea='eza -a'
+
+alias rm='rm -v'
+alias cp='cp -v'
+alias mv='mv -v'
+
+# ifconfig is deprecated
+alias ifconfig='ip address show'
+
+# iproute2
+alias ip='ip -c'
+alias bridge='bridge -c'
+
+# Git
+alias g='git'
+alias ga='git add'
+alias gb='git branch'
+alias gba='git branch -a'
+alias gbm='git branch --merged'
+alias gca='git commit --amend'
+alias gcm='git commit -m'
+alias gco='git checkout'
+alias gcom='git checkout master'
+alias gd='git diff'
+alias gf='git fetch'
+alias gfo='git fetch origin'
+alias gl='git log'
+alias glo='git log --pretty=format:"%h%x09%an%x09%ad%x09%s"'
+alias glp='git log -p'
+alias glg='git log --graph --oneline'
+alias gpom='git pull origin master'
+alias gpull='git pull'
+alias gpush='git push'
+alias grh='git reset --hard'
+alias grhom='git reset --hard origin/master'
+alias grm='git rebase master'
+alias grpo='git remote prune origin'
+alias gst='git status'
+alias gsuir='git submodule update --init --recursive'
+
+################################################################################
+eval "$(starship init zsh)"
+eval "$(zoxide init zsh)"
+
