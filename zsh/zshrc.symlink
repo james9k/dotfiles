@@ -1,6 +1,10 @@
 # Requires the startship command
 # pacman -S starship
 
+bindkey '\e[3~' delete-char  # Del key
+bindkey '\e[H' beginning-of-line  # Home key
+bindkey '\e[F' end-of-line  # End key
+
 alias h='history 0'
 
 alias ls='ls --color=auto'
