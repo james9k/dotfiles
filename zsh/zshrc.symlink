@@ -56,6 +56,19 @@ alias gst='git status'
 alias gsuir='git submodule update --init --recursive'
 
 ################################################################################
+# fzf - command-line fuzzy finder
+if [ -f "/usr/share/fzf/key-bindings.zsh" ]; then
+    source /usr/share/fzf/key-bindings.zsh  # Arch Linux
+fi
+
+################################################################################
+# zoxide
+if command -v fzf zoxide > /dev/null; then
+    eval "$(zoxide init zsh)"
+else
+    echo "Maybe fzf and zoxide need to be installed \"sudo pacman -S --needed fzf zoxide\""
+fi
+
+################################################################################
 eval "$(starship init zsh)"
-eval "$(zoxide init zsh)"
 
