@@ -5,6 +5,22 @@ bindkey '\e[3~' delete-char  # Del key
 bindkey '\e[H' beginning-of-line  # Home key
 bindkey '\e[F' end-of-line  # End key
 
+
+################################################################################
+HISTSIZE=10000
+SAVEHIST=10000
+HISTFILE=~/.zsh_history
+
+setopt HIST_IGNORE_DUPS
+setopt SHARE_HISTORY
+setopt INC_APPEND_HISTORY
+setopt HIST_SAVE_NO_DUPS
+setopt HIST_EXPIRE_DUPS_FIRST
+setopt EXTENDED_HISTORY
+
+
+################################################################################
+
 alias h='history 0'
 
 alias ls='ls --color=auto'
