@@ -23,6 +23,7 @@ abbr --add -- bridge bridge -c
 # Git
 abbr --add -- g git
 abbr --add -- ga git add
+abbr --add -- gbm git branch --merged
 abbr --add -- gco git checkout
 abbr --add -- gcm git commit -m
 abbr --add -- gd git diff
@@ -35,6 +36,9 @@ abbr --add -- gst git status
 
 # Kubernetes
 abbr --add -- kc kubectl
+
+# Enable AWS CLI autocompletion: github.com/aws/aws-cli/issues/1079
+complete --command aws --no-files --arguments '(begin; set --local --export COMP_SHELL fish; set --local --export COMP_LINE (commandline); aws_completer | sed \'s/ $//\'; end)'
 
 # Customisable prompt
 starship init fish | source
