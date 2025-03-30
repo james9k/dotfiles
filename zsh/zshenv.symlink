@@ -1,5 +1,5 @@
 typeset -U path
-path=(${HOME}/bitbucket/myautomation/bin ${HOME}/bin ${HOME}/.dotfiles/bin ${HOME}/.cargo/bin ${HOME}/.local/bin $path[@])
+path=(${HOME}/texlive/2023/bin/x86_64-linux  ${HOME}/gitea/myautomation/bin ${HOME}/bin ${HOME}/.dotfiles/bin ${HOME}/.cargo/bin ${HOME}/.local/bin $path[@])
 
 if [ "$(uname)" = "Darwin" ] ; then
     path=(${HOME}/Library/Python/3.7/bin $path[@])
