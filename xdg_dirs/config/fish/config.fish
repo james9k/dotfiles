@@ -23,6 +23,7 @@ abbr --add -- bridge bridge -c
 # Git
 abbr --add -- g git
 abbr --add -- ga git add
+abbr --add -- gba git branch -a
 abbr --add -- gbm git branch --merged
 abbr --add -- gco git checkout
 abbr --add -- gcm git commit -m
@@ -32,6 +33,7 @@ abbr --add -- glo git log --pretty=format:"%h%x09%an%x09%ad%x09%s"
 abbr --add -- gpom git pull origin master
 abbr --add -- gpull git pull
 abbr --add -- gpush git push
+abbr --add -- grpo git remote prune origin
 abbr --add -- gst git status
 
 # Kubernetes
