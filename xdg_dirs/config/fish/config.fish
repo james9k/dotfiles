@@ -38,6 +38,8 @@ abbr --add -- gst git status
 
 # Kubernetes
 abbr --add -- kc kubectl
+abbr --add -- ktx kubectx
+abbr --add -- kns kubens
 kubectl completion fish | source
 
 # Enable AWS CLI autocompletion: github.com/aws/aws-cli/issues/1079
