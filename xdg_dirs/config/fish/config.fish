@@ -31,6 +31,7 @@ abbr --add -- gcm git commit -m
 abbr --add -- gd git diff
 abbr --add -- gfo git fetch origin
 abbr --add -- glo git log --pretty=format:"%h%x09%an%x09%ad%x09%s"
+abbr --add -- glp git log -p
 abbr --add -- gpom git pull origin master
 abbr --add -- gpull git pull
 abbr --add -- gpush git push
