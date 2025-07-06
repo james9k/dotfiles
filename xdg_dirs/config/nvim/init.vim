@@ -20,9 +20,6 @@ nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 
-packadd! palenight.vim
-colorscheme palenight
-
 set background=dark
 
 autocmd FileType apache,conf,html,hcl,htmldjango,json,nftables,sql,yaml,xml setlocal shiftwidth=2 softtabstop=2 expandtab
