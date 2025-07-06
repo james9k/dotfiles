@@ -23,6 +23,7 @@ abbr --add -- bridge bridge -c
 # Git
 abbr --add -- g git
 abbr --add -- ga git add
+abbr --add -- gb git branch
 abbr --add -- gba git branch -a
 abbr --add -- gbm git branch --merged
 abbr --add -- gco git checkout
@@ -41,6 +42,9 @@ abbr --add -- kc kubectl
 abbr --add -- ktx kubectx
 abbr --add -- kns kubens
 kubectl completion fish | source
+# Requires: pacman -S kubectx
+abbr --add -- ktx kubectx
+abbr --add -- kns kubens
 
 # Enable AWS CLI autocompletion: github.com/aws/aws-cli/issues/1079
 complete --command aws --no-files --arguments '(begin; set --local --export COMP_SHELL fish; set --local --export COMP_LINE (commandline); aws_completer | sed \'s/ $//\'; end)'
