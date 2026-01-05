@@ -4,14 +4,14 @@ endif
 
 syntax enable
 
-set number          " Case insensitive matching
-set hlsearch        " Highlight all search matches
 set colorcolumn=80  " Show coloured line at column 80
+set hlsearch        " Highlight all search matches
 set ignorecase      " Ignore case when searching
-set nowrap          " Keep lines long
 set incsearch       " Start highlighting matching parts immediately
-
+set nowrap          " Keep lines long
+set number          " Case insensitive matching
 set termguicolors
+set title
 
 " Navigate between splits with keyboard shortcuts
 " https://realpython.com/blog/python/vim-and-python-a-match-made-in-heaven/
@@ -29,7 +29,6 @@ autocmd FileType javascript,nginx,python,sh,sshconfig,zsh setlocal shiftwidth=4 
 packloadall
 silent! helptags ALL
 
-set title
 
 if exists("g:neovide")
     " Put anything you want to happen only in Neovide here
