@@ -1,0 +1,28 @@
+#!/usr/bin/env bash
+# Bash script scratchpad
+
+DATE="$(date "+%Y-%m-%d")"
+YEAR="$(date "+%Y")"
+MONTH="$(date "+%m")"
+NOTEDIR="${HOME}/notepad/${YEAR}/${MONTH}"
+FILENAME="${NOTEDIR}/${DATE}_bash"
+
+mkdir -p "${NOTEDIR}"
+
+if [ ! -e "${FILENAME}" ]; then
+    echo "Creating script ${FILENAME}"
+    cat << EOF > "${FILENAME}"
+#!/usr/bin/env bash
+# Date: ${DATE}
+# Notes: ${FILENAME}
+EOF
+fi
+
+chmod +x ${FILENAME}
+
+if [ "$(uname)" = "Darwin" ]; then
+    mvim "${FILENAME}"
+else
+    neovide "${FILENAME}"
+    #gvim "${FILENAME}"
+fi
