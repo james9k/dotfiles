@@ -127,6 +127,9 @@ def find_longest_strings(aur_data):
     )
     return name_length, installed_version_length, aur_version_length
 
+def is_version_newer(aur_version:str, installed_version: str):
+    return aur_version > installed_version
+
 
 def handle_versions(aur_data: dict) -> None:
     """Check versions and display them. Upgrade package if upgrade flag is set."""
@@ -142,7 +145,7 @@ def handle_versions(aur_data: dict) -> None:
 
         for installed_name, installed_version in installed_name_and_versions:
             if installed_name == aur_name:
-                newer_version = aur_version > installed_version
+                newer_version = is_version_newer(aur_version, installed_version)
                 if out_of_date is not None:
                     aur_version = f"{COLOUR_RED}{aur_version}{COLOUR_RESET}"
                 elif newer_version:
