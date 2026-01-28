@@ -35,7 +35,7 @@ def myrename(src_filename):
             filename = filename.replace(string, '_')
 
     # filename = filename.replace('..', '.')
-    filename = re.sub('\.+', '.', filename)
+    filename = re.sub(r'\.+', '.', filename) # Collapse multiple dots into a single dot
     filename = re.sub(r'\.$', '', filename)
     filename = re.sub(r'-$', '', filename)
 
