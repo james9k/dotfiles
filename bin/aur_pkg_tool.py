@@ -50,8 +50,17 @@ def aur_rpc_request(url: str):
     output(f"Requesting: {url}", level=1)
     request = urllib.request.Request(url)
 
-    with urllib.request.urlopen(request) as response:
-        response_data = response.read().decode("utf-8")
+    # with urllib.request.urlopen(request) as response:
+    #     response_data = response.read().decode("utf-8")
+    try:
+        with urllib.request.urlopen(request) as response:
+            response_data = response.read().decode("utf-8")
+    except urllib.error.URLError as e:
+        print(f"ERROR: {e}: Check DNS or internet connection.")
+        return None
+    except Exception as e:
+        print(f"ERROR: {e}")
+        return None
     data = json.loads(response_data)
     output(data, level=2, payload_type="dict")
     output(f"Packages: {data['resultcount']}", level=1)
@@ -183,15 +192,21 @@ def main():
     if len(args.pkgs) == 1:
         output(args.pkgs, level=1)
         aur_data = aur_rpc_info_single_package(args.pkgs[0])
+        if not aur_data:
+            main_parser.exit(9,"No AUR data\n")
         handle_versions(aur_data)
     elif len(args.pkgs) > 1:
         output(args.pkgs, level=1)
         aur_data = aur_rpc_info_multiple_packages(args.pkgs)
+        if not aur_data:
+            main_parser.exit(9,"No AUR data\n")
         handle_versions(aur_data)
     elif len(args.pkgs) == 0:
         print("Getting all installed AUR packages.")
         names = get_installed_aur_pkg_names()
         aur_data = aur_rpc_info_multiple_packages(names)
+        if not aur_data:
+            main_parser.exit(9, "No AUR data\n")
         handle_versions(aur_data)
     else:
         main_parser.print_help()
