@@ -26,7 +26,7 @@ for PKG_NAME in "$@"; do
     printf "# %s\n" "${PKG_NAME}"
     printf "################################################################################\n"
     if [ -z "${PKG_NAME}" ]; then
-        printf "\nOn or more PKG_NAME is required.\n"
+        printf "\nOne or more PKG_NAME is required.\n"
         usage
         exit 1
     fi
@@ -38,7 +38,7 @@ for PKG_NAME in "$@"; do
 
     package_urlpath=$(curl -s "${AUR_RPC_URL}info?arg[]=${PKG_NAME}" | jq -r '.results[].URLPath')
 
-    wget "https://aur.archlinux.org/${package_urlpath}"
+    wget "https://aur.archlinux.org${package_urlpath}"
 
     if [ -f "${TARBALL}" ]; then
         printf "Unpacking %s\n" "${TARBALL}"
