@@ -1,9 +1,15 @@
 #!/usr/bin/env bash
 
+if [ ! -e "${HOME}/.config/notepad.env" ]; then
+    echo "Creating ${HOME}/.config/notepad.env"
+    echo "BASE_DIR=\"${HOME}/notepad\"" > "${HOME}/.config/notepad.env"
+fi
+source "${HOME}/.config/notepad.env"
+
 DATE="$(date "+%Y-%m-%d")"
 YEAR="$(date "+%Y")"
 MONTH="$(date "+%m")"
-NOTEDIR="${HOME}/notepad/${YEAR}/${MONTH}"
+NOTEDIR="${BASE_DIR}/${YEAR}/${MONTH}"
 FILENAME="${NOTEDIR}/${DATE}.txt"
 
 mkdir -p "${NOTEDIR}"
@@ -12,6 +18,11 @@ touch "${FILENAME}"
 if [ "$(uname)" = "Darwin" ]; then
     mvim "${FILENAME}"
 else
-    neovide "${FILENAME}"
-    #gvim "${FILENAME}"
+    if command -v neovide >/dev/null 2>&1; then
+        neovide "${FILENAME}"
+        exit
+    else
+        gvim "${FILENAME}"
+        exit
+    fi
 fi
