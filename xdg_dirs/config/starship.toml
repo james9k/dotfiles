@@ -1,0 +1,7 @@
+[kubernetes]
+disabled = false
+
+contexts = [
+  { context_pattern = "arn:aws:eks:au-southeast-2:123456789000:cluster/dev-001", context_alias = "dev-001" },
+  { context_pattern = "arn:aws:eks:au-southeast-2:123456789000:cluster/stage-001", context_alias = "stage-001" },
+]
