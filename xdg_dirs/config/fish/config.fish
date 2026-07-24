@@ -39,7 +39,7 @@ abbr --add -- grpo git remote prune origin
 abbr --add -- gst git status
 
 # Kubernetes
-abbr --add -- kc kubectl
+abbr --add -- k kubectl
 abbr --add -- ktx kubectx
 abbr --add -- kns kubens
 kubectl completion fish | source
@@ -52,4 +52,7 @@ complete --command aws --no-files --arguments '(begin; set --local --export COMP
 
 # Customisable prompt
 starship init fish | source
+
+# Fuzzy Finder
+#fzf --fish | source
 
