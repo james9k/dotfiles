@@ -2,6 +2,9 @@ if status is-interactive
     # Commands to run in interactive sessions can go here
 end
 
+# Set new files=660 and directories=770
+umask 0007
+
 ################################################################################
 # Abbreviations (aliases)
 ################################################################################
